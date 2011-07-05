@@ -1,0 +1,12 @@
+[submodule "vim/bundle/nerd-tree"]
+	path = vim/bundle/nerd-tree
+	url = https://github.com/vim-scripts/The-NERD-tree.git
+[submodule "vim/bundle/molokai"]
+	path = vim/bundle/molokai
+	url = https://github.com/tomasr/molokai
+[submodule "vim/bundle/taglist"]
+	path = vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "vim/bundle/railscasts"]
+	path = vim/bundle/railscasts
+	url = https://github.com/jpo/vim-railscasts-theme
