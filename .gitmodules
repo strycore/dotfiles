@@ -37,3 +37,6 @@
 [submodule "vim/bundle/buftabs"]
 	path = vim/bundle/buftabs
 	url = https://github.com/vim-scripts/buftabs.git
+[submodule "vim/bundle/surround"]
+	path = vim/bundle/surround
+	url = https://github.com/tpope/vim-surround.git
