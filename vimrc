@@ -254,7 +254,7 @@ if has('autocmd')
     endif
     if filereadable('./symfony')
         "symfony plugin configuration
-        map <silent> <F8> :SfSwitchView<CR>
+        map <silent> <F8> :Salternate<CR>
     endif
     autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
 endif
