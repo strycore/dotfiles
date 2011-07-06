@@ -10,3 +10,30 @@
 [submodule "vim/bundle/railscasts"]
 	path = vim/bundle/railscasts
 	url = https://github.com/jpo/vim-railscasts-theme
+[submodule "vim/bundle/less"]
+	path = vim/bundle/less
+	url = https://github.com/lunaru/vim-less.git
+[submodule "vim/bundle/django.vim"]
+	path = vim/bundle/django.vim
+	url = https://github.com/vim-scripts/django.vim.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "vim/bundle/zencoding"]
+	path = vim/bundle/zencoding
+	url = https://github.com/mattn/zencoding-vim
+[submodule "vim/bundle/snipmate"]
+	path = vim/bundle/snipmate
+	url = https://github.com/msanders/snipmate.vim.git
+[submodule "vim/bundle/snipmate-django"]
+	path = vim/bundle/snipmate-django
+	url = https://github.com/robhudson/snipmate_for_django.git
+[submodule "vim/bundle/symfony"]
+	path = vim/bundle/symfony
+	url = https://github.com/soh335/vim-symfony.git
+[submodule "vim/bundle/snipmate-symfony"]
+	path = vim/bundle/snipmate-symfony
+	url = https://github.com/soh335/vim-symfony-snipmate.git
+[submodule "vim/bundle/buftabs"]
+	path = vim/bundle/buftabs
+	url = https://github.com/vim-scripts/buftabs.git

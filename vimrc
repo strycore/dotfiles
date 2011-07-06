@@ -98,7 +98,7 @@ set viminfo='100,f1,:1000,/1000,%  " big viminfo :)
 set mouse=a
 syntax on
 
-call pathogen#runtime_append_all_bundles() 
+call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " Color scheme
@@ -193,9 +193,6 @@ let g:php_folding=2
 " omnicomplete from: http://vim.wikia.com/wiki/VimTip1386
 "
 set completeopt=longest,menuone
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 set complete+=kspellset
 filetype plugin on
 filetype indent on
@@ -225,7 +222,7 @@ if has('autocmd')
     autocmd FileType html set equalprg=tidy\ -i\ -q
 
     autocmd BufNewFile,BufRead *.rss setfiletype xml
-    autocmd BufNewFile,BufRead *.less setfiletype css
+    autocmd BufNewFile,BufRead *.less setfiletype less
 
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd FileType css set equalprg=csstidy
@@ -254,6 +251,10 @@ if has('autocmd')
     if filereadable('./manage.py')
         autocmd FileType python set ft=python.django " For SnipMate
         autocmd FileType html set ft=htmldjango.html " For SnipMate
+    endif
+    if filereadable('./symfony')
+        "symfony plugin configuration
+        map <silent> <F8> :SfSwitchView<CR>
     endif
     autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
 endif
@@ -292,12 +293,6 @@ map <kMultiply> <c-w>>
 inoremap <Nul> <C-x><C-o>
 imap <C-space> <C-x><C-o>
 
-" MiniBufExplorer configuration
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
 " TagList configuration
 map <silent> <F4> :TlistToggle<CR>
 let Tlist_Exit_OnlyWindow = 1
@@ -327,8 +322,6 @@ map <silent> <F6> :bnext<CR>
 " Toggle paste mode
 set pastetoggle=<F7>
 
-"symfony plugin configuration
-map <silent> <F8> :SfSwitchView<CR>
 
 "Shortcut to auto indent entire file
 nmap <F9> 1G=G
