@@ -40,3 +40,6 @@
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/phpdoc"]
+	path = vim/bundle/phpdoc
+	url = https://github.com/vim-scripts/PDV--phpDocumentor-for-Vim.git

@@ -33,6 +33,10 @@
 
 " Howto setup vim ide for php development from @hameedullah
 " http://hameedullah.com/howto-setup-vim-ide-for-php-development.html
+
+" gmarik's vimrc
+" https://github.com/gmarik/vimfiles/blob/master/vimrc
+
 "
 " Plugins
 " -------
@@ -85,10 +89,16 @@
 "
 " Better autocompletion
 " Better help system
-" Prevent files from opening on the left side of miniBufExpl
-"
-"
+
+
+" == General
+
 set nocompatible
+set history=1000
+set undolevels=1000
+set clipboard+=unnamed
+set tags=./tags;$HOME
+
 set showcmd
 set showmode
 set showmatch
@@ -135,8 +145,6 @@ set foldmethod=marker foldopen=all,insert foldclose=all
 set foldlevelstart=99
 set nowrap
 set gdefault  " Search all occurrences by default
-set history=1000
-set undolevels=1000
 " Enable enhanced command line completion.
 set wildmenu
 set wildmode=longest:full,list
@@ -150,7 +158,8 @@ set wildignore+=*.pyc " Python byte code
 set wildignore+=*.spl " compiled spelling word lists
 set wildignore+=*.sw? " Vim swap files
 set title
-set noerrorbells
+set novisualbell  " No blinking
+set noerrorbells  " No noise
 set nobackup    " Backup files are sooo 90's
 set noswapfile  " Swap files are very annoying
 set lazyredraw
@@ -222,22 +231,20 @@ if has('autocmd')
     autocmd FileType html set equalprg=tidy\ -i\ -q
 
     autocmd BufNewFile,BufRead *.rss setfiletype xml
-    autocmd BufNewFile,BufRead *.less setfiletype less
 
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd FileType css set equalprg=csstidy
+
+    autocmd BufNewFile,BufRead *.less setfiletype less
+    autocmd FileType less set omnifunc=csscomplete#CompleteCSS
 
     autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     autocmd FileType php set ft=php.html
     autocmd FileType php set equalprg=php_beautifier\ -l\ \"Pear()\ ArrayNested()\"\ -s2
 
-    " run file with PHP CLI (CTRL-M)
-    autocmd FileType php noremap <C-M> :w!<CR>:!php %<CR>
-
-    " PHP parser check (CTRL-L)
-    autocmd FileType php noremap <C-L> :!php -l %<CR>
-    " PHP Code Sniffer
-    autocmd FileType php noremap <C-P> :!phpcs %<CR>
+    autocmd FileType php noremap <C-M> :w!<CR>:!php %<CR> " Run script with php-cli 
+    autocmd FileType php noremap <C-L> :!php -l %<CR> " php syntax check
+    autocmd FileType php noremap <C-P> :!phpcs %<CR>  " php CodeSniffer
 
     " Shortcuts to php-docs
     autocmd FileType php inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
@@ -262,6 +269,9 @@ endif
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
     set guifont=Inconsolata\ Medium\ 10
+    set guioptions=ecmg "console dialogs, do not show menu and toolbar
+    set showtabline=2
+    "set fuoptions=maxvert,maxhorz ",background:#00AAaaaa
     colorscheme molokai
 endif
 
@@ -303,7 +313,6 @@ let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
 let Tlist_GainFocus_On_ToggleOpen =  0 " Jump to taglist window on open.
 let Tlist_WinWidth = 40
 
-set tags=tags;$HOME/.vim/tags/
 
 " SnipMate config
 let g:snips_author = 'Mathieu Comandon'
