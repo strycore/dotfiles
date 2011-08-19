@@ -116,7 +116,7 @@ call pathogen#helptags()
 "                     tango, django
 set t_Co=256
 set background=dark
-colorscheme molokai
+colorscheme railscasts
 
 " Identation and tabs
 set smartindent
@@ -242,7 +242,7 @@ if has('autocmd')
     autocmd FileType php set ft=php.html
     autocmd FileType php set equalprg=php_beautifier\ -l\ \"Pear()\ ArrayNested()\"\ -s2
 
-    autocmd FileType php noremap <C-M> :w!<CR>:!php %<CR> " Run script with php-cli 
+    autocmd FileType php noremap <C-M> :w!<CR>:!php %<CR> " Run script with php-cli
     autocmd FileType php noremap <C-L> :!php -l %<CR> " php syntax check
     autocmd FileType php noremap <C-P> :!phpcs %<CR>  " php CodeSniffer
 
@@ -272,7 +272,7 @@ if has("gui_running")
     set guioptions=ecmg "console dialogs, do not show menu and toolbar
     set showtabline=2
     "set fuoptions=maxvert,maxhorz ",background:#00AAaaaa
-    colorscheme molokai
+    colorscheme solarized
 endif
 
 " Invisible characters
@@ -341,7 +341,7 @@ cmap w!! w !sudo tee % > /dev/null
 
 set path=$PWD/**
 
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+"command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
 python << EOF
 import os
