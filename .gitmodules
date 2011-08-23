@@ -67,3 +67,6 @@
 [submodule "_vim/bundle/molokai"]
 	path = _vim/bundle/molokai
 	url = https://github.com/tomasr/molokai
+[submodule "_vim/bundle/symfony"]
+	path = _vim/bundle/symfony
+	url = https://github.com/soh335/vim-symfony.git
