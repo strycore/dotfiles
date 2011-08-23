@@ -52,3 +52,18 @@
 [submodule "_vim/bundle/solarized"]
 	path = _vim/bundle/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "_vim/bundle/snipmate-django"]
+	path = _vim/bundle/snipmate-django
+	url = https://github.com/robhudson/snipmate_for_django.git
+[submodule "_vim/bundle/zencoding"]
+	path = _vim/bundle/zencoding
+	url = https://github.com/mattn/zencoding-vim
+[submodule "_vim/bundle/django-syntax"]
+	path = _vim/bundle/django-syntax
+	url = https://github.com/vim-scripts/django.vim
+[submodule "_vim/bundle/railscasts"]
+	path = _vim/bundle/railscasts
+	url = https://github.com/jpo/vim-railscasts-theme
+[submodule "_vim/bundle/molokai"]
+	path = _vim/bundle/molokai
+	url = https://github.com/tomasr/molokai
