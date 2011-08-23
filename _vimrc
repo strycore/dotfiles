@@ -62,6 +62,8 @@ command! W :w
 " sudo write this
 cmap W! w !sudo tee % >/dev/null
 
+" Yes, mouse !
+set mouse=a
 
 " Toggle the tasklist
 map <leader>td <Plug>TaskList
@@ -93,17 +95,29 @@ nmap <leader>cc :cclose<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 " ctrl-jklm  changes to that split
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+map <c-Down> <c-w>j
+map <c-Up> <c-w>k
+map <c-Right> <c-w>l
+map <c-Left> <c-w>h
 
+" Resize splits with keypad
+map <kPlus> <C-W>+
+map <kMinus> <C-W>-
+map <kDivide> <c-w><
+map <kMultiply> <c-w>>
 " and lets make these all work in insert mode too ( <C-O> makes next cmd
 "  happen as if in command mode )
 imap <C-W> <C-O><C-W>
 
+" Close buffer
+map <silent> <F2> :bd<CR>
 " Open NerdTree
-map <leader>n :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
+" Move between buffers
+map <silent> <F5> :bprevious<CR>
+map <silent> <F6> :bnext<CR>
+" Toggle paste mode
+set pastetoggle=<F7>
 
 " Run command-t file search
 map <leader>f :CommandT<CR>
@@ -199,6 +213,8 @@ set noautoread              " Don't automatically re-read changed files.
 set modeline                " Allow vim options to be embedded in files;
 set modelines=5             " they must be within the first or last 5 lines.
 set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
+set nobackup
+set noswapfile
 
 """" Messages, Info, Status
 set ls=2                    " allways show status line
@@ -212,7 +228,8 @@ set laststatus=2            " Always show statusline, even if only 1 window.
 set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 
 " displays tabs with :set list & displays when a line runs off-screen
-set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
+set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
+nmap <leader>l :set list!<CR>
 set list
 
 """ Searching and Patterns
@@ -225,6 +242,9 @@ set incsearch               " Incrementally search while typing a /regex
 """" Display
 if has("gui_running")
     colorscheme solarized
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
+    set guifont=Inconsolata\ Medium\ 10
+    set guioptions=ecmg "console dialogs, do not show menu and toolbar
 else
     colorscheme torte
 endif
@@ -244,10 +264,12 @@ nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 " Select the item in the list with enter
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+set omnifunc=syntaxcomplete#Complete
 " ==========================================================
 " Javascript
 " ==========================================================
 au BufRead *.js set makeprg=jslint\ %
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Don't allow snipmate to take over tab
 autocmd VimEnter * ino <c-j> <c-r>=TriggerSnippet()<cr>
@@ -263,6 +285,12 @@ let g:acp_completeoptPreview=1
 " Mako/HTML
 autocmd BufNewFile,BufRead *.mako,*.mak setlocal ft=html
 autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html set equalprg=tidy\ -i\ -q
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType css set equalprg=csstidy
+autocmd BufNewFile,BufRead *.less setfiletype less
+autocmd FileType less set omnifunc=csscomplete#CompleteCSS
 
 " Python
 "au BufRead *.py compiler nose
@@ -271,8 +299,55 @@ au FileType python setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smart
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 " Don't let pyflakes use the quickfix window
 let g:pyflakes_use_quickfix = 0
+" Make trailing whitespace be flagged as bad.
+highlight BadWhitespace ctermbg=red guibg=red
+autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" Highlight more python
+let python_highlight_builtin_funcs = 1
+let python_print_as_function = 1
+let python_highlight_builtin_objs = 1
+let python_highlight_doctests = 1
+let python_highlight_string_templates = 1
+" Am I in django land ?
+if filereadable('./manage.py')
+    autocmd FileType python set ft=python.django " For SnipMate
+    autocmd FileType html set ft=htmldjango.html " For SnipMate
+endif
 
+" Makefiles
+autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab "Makefiles require hard tabs
+" Yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" PHP
+autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType php set ft=php.html
+autocmd FileType php set equalprg=php_beautifier\ -l\ \"Pear()\ ArrayNested()\"\ -s2
+" Shortcuts to php-docs
+autocmd FileType php inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
+autocmd FileType php nnoremap <C-D> :call PhpDocSingle()<CR>
+autocmd FileType php vnoremap <C-D> :call PhpDocRange()<CR>
 
+autocmd FileType php noremap <C-M> :w!<CR>:!php %<CR> " Run script with php-cli
+autocmd FileType php noremap <C-L> :!php -l %<CR> " php syntax check
+autocmd FileType php noremap <C-P> :!phpcs %<CR>  " php CodeSniffer
+" am i in a symfony project ?
+if filereadable('./symfony')
+    "symfony plugin configuration
+    map <silent> <F8> :Salternate<CR>
+endif
+autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
+" C
+autocmd FileType c set omnifunc=ccomplete#Complete
+" XML
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+" rss
+autocmd BufNewFile,BufRead *.rss setfiletype xml
+" Vala
+autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+autocmd BufRead,BufNewFile *.vala setfiletype vala
+autocmd BufRead,BufNewFile *.vapi setfiletype vala
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
