@@ -225,7 +225,7 @@ set report=0                " : commands always print changed line count.
 set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
 set ruler                   " Show some info, even without statuslines.
 set laststatus=2            " Always show statusline, even if only 1 window.
-set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
+set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ [TYPE=%Y\ %{&ff}]\ %{fugitive#statusline()}
 
 " displays tabs with :set list & displays when a line runs off-screen
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
@@ -272,11 +272,11 @@ au BufRead *.js set makeprg=jslint\ %
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Don't allow snipmate to take over tab
-autocmd VimEnter * ino <c-j> <c-r>=TriggerSnippet()<cr>
+" autocmd VimEnter * ino <c-j> <c-r>=TriggerSnippet()<cr>
 " Use tab to scroll through autocomplete menus
-autocmd VimEnter * imap <expr> <Tab> pumvisible() ? "<C-N>" : "<Tab>"
-autocmd VimEnter * imap <expr> <S-Tab> pumvisible() ? "<C-P>" : "<S-Tab>"
-snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
+"autocmd VimEnter * imap <expr> <Tab> pumvisible() ? "<C-N>" : "<Tab>"
+"autocmd VimEnter * imap <expr> <S-Tab> pumvisible() ? "<C-P>" : "<S-Tab>"
+"snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
 let g:acp_completeoptPreview=1
 
 " ===========================================================

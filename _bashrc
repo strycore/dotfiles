@@ -101,6 +101,7 @@ if $TERM_IS_COLOR && ( dircolors --help && ls --color ) &> /dev/null; then
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
+  alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 else
   # No color, so put a slash at the end of directory names, etc. to differentiate.
   alias ls="ls -F"
