@@ -96,6 +96,8 @@ alias hosts='$EDITOR /etc/hosts'
 alias sfba="./symfony doctrine:build --all --and-load"
 alias alert_helper='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/;\s*alert$//"'
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "[0] "'
+#Start urxvt and do whatever is needed to open the screen session named "main"
+alias scrurxvt="screen -ls | grep main && urxvt -name screen -e screen -x main || urxvt -name screen -e screen -R -S main"
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion

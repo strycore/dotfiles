@@ -16,9 +16,6 @@
 [submodule "vim/bundle/django.vim"]
 	path = vim/bundle/django.vim
 	url = https://github.com/vim-scripts/django.vim.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "vim/bundle/zencoding"]
 	path = vim/bundle/zencoding
 	url = https://github.com/mattn/zencoding-vim

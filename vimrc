@@ -72,7 +72,7 @@
 " F7:  Toggle paste mode
 " F8:  Toggle between action and template in symfony
 " F9:  Reindent whole file
-" F10: Available
+" F10: Run file (currently supported: python, bash, html)
 " F11: Reserved for fullscreen switching by WM or Terminal emulator
 " F12: Available
 
@@ -97,7 +97,7 @@ set nocompatible
 set history=1000
 set undolevels=1000
 set clipboard+=unnamed
-set tags=./tags;$HOME
+"set tags=./tags;$HOME
 
 set showcmd
 set showmode
@@ -131,8 +131,6 @@ set linespace=4
 set ruler
 set hidden     "don't whine when trying to move away from an unsaved buffer
 
-
-
 " Searching
 set ignorecase "ignore case when searching
 set smartcase  " ignore case if search pattern is all lowercase,
@@ -164,6 +162,7 @@ set nobackup    " Backup files are sooo 90's
 set noswapfile  " Swap files are very annoying
 set lazyredraw
 set scrolloff=3 "Keep 3 lines below and above the cursor
+set guioptions+=b
 
 set cursorline
 set number
@@ -178,7 +177,6 @@ set showfulltag
 let mapleader=","
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
-
 
 " Highlight long lines
 if exists('+colorcolumn')
@@ -199,10 +197,6 @@ let php_sql_query=1
 let php_htmlInStrings=1
 let g:php_folding=2
 
-" omnicomplete from: http://vim.wikia.com/wiki/VimTip1386
-"
-set completeopt=longest,menuone
-set complete+=kspellset
 filetype plugin on
 filetype indent on
 
@@ -212,6 +206,8 @@ if has('autocmd')
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+
+    autocmd FileType sh nmap <F10> :!. %<CR>
 
     autocmd FileType c set omnifunc=ccomplete#Complete
 
@@ -224,19 +220,23 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
     " Make trailing whitespace be flagged as bad.
     autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
+    autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+    autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+    autocmd BufRead *.py nmap <F10> :!python %<CR>
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType html set equalprg=tidy\ -i\ -q
+
+    autocmd FileType html nmap <F10> :!firefox %<CR>
 
     autocmd BufNewFile,BufRead *.rss setfiletype xml
 
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd FileType css set equalprg=csstidy
 
-    autocmd BufNewFile,BufRead *.less setfiletype less
     autocmd FileType less set omnifunc=csscomplete#CompleteCSS
+    autocmd BufNewFile,BufRead *.less setfiletype less
 
     autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     autocmd FileType php set ft=php.html
@@ -264,7 +264,12 @@ if has('autocmd')
         map <silent> <F8> :Salternate<CR>
     endif
     autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
+    " Closes the Omni-Completion tip window when a selection is made
+    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 endif
+
+
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
@@ -313,9 +318,11 @@ let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
 let Tlist_GainFocus_On_ToggleOpen =  0 " Jump to taglist window on open.
 let Tlist_WinWidth = 40
 
-
 " SnipMate config
 let g:snips_author = 'Mathieu Comandon'
+
+" Supertab configuration
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " json formating
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
