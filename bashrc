@@ -1,19 +1,15 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-
 [ -z "$PS1" ] && return
 
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export HISTFILESIZE=100000000
 export HISTSIZE=100000
 export HISTIGNORE="cd:ls:[bf]g:clear:exit"
-export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export EDITOR='vim'
 export BROWSER='firefox'
-export DEBEMAIL="strycore@gmail.com"
-export DEBFULLNAME="Mathieu Comandon"
 
-if [ -d /var/lib/gems/1.8/bin ] ; then
-    export PATH=$PATH:/var/lib/gems/1.8/bin
-fi
+# Debian packaging variables
+export DEBEMAIL="strycore@gmail.com"   #Change this to your email
+export DEBFULLNAME="Mathieu Comandon"
 
 #minor errors in the spelling of a directory
 #component in a cd command will be corrected.
@@ -50,9 +46,9 @@ force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	color_prompt=yes
+        color_prompt=yes
     else
-	color_prompt=
+        lor_prompt=
     fi
 fi
 
@@ -94,10 +90,11 @@ alias df='df -h'
 alias du='du -h -c'
 alias hosts='$EDITOR /etc/hosts'
 alias sfba="./symfony doctrine:build --all --and-load"
+alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias alert_helper='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/;\s*alert$//"'
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "[0] "'
 #Start urxvt and do whatever is needed to open the screen session named "main"
-alias scrurxvt="screen -ls | grep main && urxvt -name screen -e screen -x main || urxvt -name screen -e screen -R -S main"
+alias scrux="screen -ls | grep main && urxvt -name screen -e screen -x main || urxvt -name screen -e screen -R -S main"
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion

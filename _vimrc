@@ -328,7 +328,7 @@ autocmd FileType php inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
 autocmd FileType php nnoremap <C-D> :call PhpDocSingle()<CR>
 autocmd FileType php vnoremap <C-D> :call PhpDocRange()<CR>
 
-autocmd FileType php noremap <C-M> :w!<CR>:!php %<CR> " Run script with php-cli
+autocmd FileType php noremap <F10> :w!<CR>:!php %<CR> " Run script with php-cli
 autocmd FileType php noremap <C-L> :!php -l %<CR> " php syntax check
 autocmd FileType php noremap <C-P> :!phpcs %<CR>  " php CodeSniffer
 " am i in a symfony project ?

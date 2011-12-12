@@ -1,14 +1,6 @@
-# If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-#osx color terminal
-export CLICOLOR=1
-# don't put duplicate lines in the history. See bash(1) for more options
-# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoreboth
-
 # append to the history file, don't overwrite it
 shopt -s histappend
 # check the window size after each command and, if necessary,
@@ -102,6 +94,7 @@ if $TERM_IS_COLOR && ( dircolors --help && ls --color ) &> /dev/null; then
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
   alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
+  alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 else
   # No color, so put a slash at the end of directory names, etc. to differentiate.
   alias ls="ls -F"
@@ -137,11 +130,6 @@ fi
 venwrap=`type -P virtualenvwrapper_bashrc`
 if [ "$venwrap" != "" ]; then
     source $venwrap
-fi
-
-# osx vim
-if [ -x "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
-    PATH=/Applications/MacVim.app/Contents/MacOS/:$PATH
 fi
 
 export PATH
