@@ -1,6 +1,6 @@
 [ -z "$PS1" ] && return
 
-export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+#export UBUNTU_MENUPROXY=0
 export HISTFILESIZE=100000000
 export HISTSIZE=100000
 export HISTIGNORE="cd:ls:[bf]g:clear:exit"
@@ -11,20 +11,21 @@ export BROWSER='firefox'
 export DEBEMAIL="strycore@gmail.com"   #Change this to your email
 export DEBFULLNAME="Mathieu Comandon"
 
+
 #minor errors in the spelling of a directory
 #component in a cd command will be corrected.
 shopt -s cdspell
-#Bash attempts spelling correction on directory 
-#names during word completion if the directory 
-#name initially supplied does not exist. 
+#Bash attempts spelling correction on directory
+#names during word completion if the directory
+#name initially supplied does not exist.
 shopt -s dirspell
-#the history list is appended to the file 
-#named by the value of the HISTFILE variable 
-#when the shell exits, rather than overwriting 
+#the history list is appended to the file
+#named by the value of the HISTFILE variable
+#when the shell exits, rather than overwriting
 #the file.
 shopt -s histappend
-#Bash checks the window size after each command 
-#and, if necessary, updates the values of LINES 
+#Bash checks the window size after each command
+#and, if necessary, updates the values of LINES
 #and COLUMNS.
 shopt -s checkwinsize
 
@@ -46,9 +47,9 @@ force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        color_prompt=yes
+	color_prompt=yes
     else
-        lor_prompt=
+	color_prompt=
     fi
 fi
 
@@ -93,9 +94,18 @@ alias sfba="./symfony doctrine:build --all --and-load"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias alert_helper='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/;\s*alert$//"'
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "[0] "'
+
 #Start urxvt and do whatever is needed to open the screen session named "main"
 alias scrux="screen -ls | grep main && urxvt -name screen -e screen -x main || urxvt -name screen -e screen -R -S main"
 
+# Virtualenv wrapper
+export WORKON_HOME=$HOME/Projects/virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
+fi
+
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
 fi
