@@ -1,61 +1,79 @@
 [ -z "$PS1" ] && return
 
-#export UBUNTU_MENUPROXY=0
+# == Bash history
 export HISTFILESIZE=100000000
 export HISTSIZE=100000
 export HISTIGNORE="cd:ls:[bf]g:clear:exit"
-export EDITOR='vim'
-export BROWSER='firefox'
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 
-# Debian packaging variables
+# == Default programs
+export EDITOR='vim'      # Default text editor
+export BROWSER='firefox' # Default web browser
+
+# == Debian packaging variables
 export DEBEMAIL="strycore@gmail.com"   #Change this to your email
 export DEBFULLNAME="Mathieu Comandon"
 
+# == Ubuntu specific
+# Uncomment the following line to deactivate Ubuntu's global menu
+#export UBUNTU_MENUPROXY=0
+# Uncomment the following line to remove the battery indicator in wingpanel
+#export UNITY_PANEL_INDICATORS_SKIP="libpower.so"
 
-#minor errors in the spelling of a directory
-#component in a cd command will be corrected.
-shopt -s cdspell
-#Bash attempts spelling correction on directory
-#names during word completion if the directory
-#name initially supplied does not exist.
-shopt -s dirspell
-#the history list is appended to the file
-#named by the value of the HISTFILE variable
-#when the shell exits, rather than overwriting
-#the file.
-shopt -s histappend
-#Bash checks the window size after each command
-#and, if necessary, updates the values of LINES
-#and COLUMNS.
-shopt -s checkwinsize
+# == Bash options
+shopt -s cdspell # Correct minor spelling errors in directories
+shopt -s dirspell # Attempt autocompletion for directories 
+shopt -s checkwinsize # Update window size between each commands
+complete -cf sudo #tab complete for sudo
+set -o noclobber # prevent overwriting files with cat
 
-complete -cf sudo           #tab complete for sudo
 
-set -o noclobber            # prevent overwriting files with cat
-
+# ==Misc
+# Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
+# Add ~/bin to path
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$HOME/bin:$PATH"
+fi
+# VirtualenvWrapper configuration
+virtualenv=$(type -P virtualenvwrapper.sh)
+if [ "$virtualenv" != "" ]; then
+    export WORKON_HOME=$HOME/Projects/virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+# Bash completion
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
 
+# == Prompt configuration
+force_color_prompt=yes
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
-
-force_color_prompt=yes
-
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	color_prompt=yes
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
 if [ "$color_prompt" = yes ]; then
-    export PS1="(\[\e[0;37m\]\A\[\e[0;37m\]) \[\e[0;32m\]\u@\h\[\e[0;37m\]:\[\e[0;36m\]\w\[\e[0;37m\] \$ "
-
+    # Clock and one line
+    #PS1="(\[\e[0;37m\]\A\[\e[0;37m\]) \[\e[0;32m\]\u@\h\[\e[0;37m\]:\[\e[0;36m\]\w\[\e[0;37m\] \$ "
+    # Dumb prompt
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # Directory on one line, user on another
+    #PS1='\[\033[01;31m\]\w\[\033[00m\]\n${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[00m\]\$ '
+    # Directory on one line, user on another
+    PS1='(\[\e[0;37m\]\A\[\e[0;37m\]) \[\033[01;31m\]\w\[\033[00m\]\n${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[00m\]\$ '
+    export PS1
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -90,22 +108,13 @@ alias back='cd $OLDPWD'
 alias df='df -h'
 alias du='du -h -c'
 alias hosts='$EDITOR /etc/hosts'
-alias sfba="./symfony doctrine:build --all --and-load"
-alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias alert_helper='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/;\s*alert$//"'
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "[0] "'
-
-#Start urxvt and do whatever is needed to open the screen session named "main"
+# Start urxvt and do whatever is needed to open the screen session named "main"
 alias scrux="screen -ls | grep main && urxvt -name screen -e screen -x main || urxvt -name screen -e screen -R -S main"
+# Symfony aliases
+alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
+alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 
-# Virtualenv wrapper
-export WORKON_HOME=$HOME/Projects/virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+function ffind() { find . -iname "*$@*" ; }
 
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
