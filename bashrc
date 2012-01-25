@@ -22,7 +22,7 @@ export DEBFULLNAME="Mathieu Comandon"
 
 # == Bash options
 shopt -s cdspell # Correct minor spelling errors in directories
-shopt -s dirspell # Attempt autocompletion for directories 
+shopt -s dirspell # Attempt autocompletion for directories
 shopt -s checkwinsize # Update window size between each commands
 complete -cf sudo #tab complete for sudo
 set -o noclobber # prevent overwriting files with cat
@@ -46,6 +46,8 @@ if [ "$virtualenv" != "" ]; then
     export WORKON_HOME=$HOME/Projects/virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh
 fi
+# RVM Configuration: Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 # Bash completion
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
@@ -115,6 +117,12 @@ alias scrux="screen -ls | grep main && urxvt -name screen -e screen -x main || u
 # Symfony aliases
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
+alias ohshit="find ~/.mozilla/firefox/*.default/*.sqlite -exec sqlite3 {} 'VACUUM;' \;"
 
-function ffind() { find . -iname "*$@*" ; }
+function search ()
+{
+    for i in "$@"; do
+        ( find -iname "*$i*" | grep -i "$i" --color=auto ) 2> /dev/null;
+    done
+}
 
