@@ -41,11 +41,11 @@ if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:$PATH"
 fi
 # VirtualenvWrapper configuration
-virtualenv=$(type -P virtualenvwrapper.sh)
-if [ "$virtualenv" != "" ]; then
-    export WORKON_HOME=$HOME/Projects/virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
+#virtualenv=$(type -P virtualenvwrapper.sh)
+#if [ "$virtualenv" != "" ]; then
+#    export WORKON_HOME=$HOME/Projects/virtualenvs
+#    source $virtualenv
+#fi
 # RVM Configuration: Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 # Bash completion

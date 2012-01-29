@@ -273,11 +273,11 @@ endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=Inconsolata\ Medium\ 10
+    set guifont=Inconsolata\ Medium\ 12
     set guioptions=ecmg "console dialogs, do not show menu and toolbar
     set showtabline=2
     "set fuoptions=maxvert,maxhorz ",background:#00AAaaaa
-    colorscheme solarized
+    colorscheme molokai
 endif
 
 " Invisible characters

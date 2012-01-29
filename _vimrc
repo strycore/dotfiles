@@ -71,6 +71,7 @@ map <leader>td <Plug>TaskList
 " Run pep8
 let g:pep8_map='<leader>8'
 
+let g:Powerline_symbols = 'fancy'
 " run py.test's
 nmap <silent><Leader>tf <Esc>:Pytest file<CR>
 nmap <silent><Leader>tc <Esc>:Pytest class<CR>
@@ -225,7 +226,7 @@ set report=0                " : commands always print changed line count.
 set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
 set ruler                   " Show some info, even without statuslines.
 set laststatus=2            " Always show statusline, even if only 1 window.
-set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ [TYPE=%Y\ %{&ff}]\ %{fugitive#statusline()}
+set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ [TYPE=%Y\ %{&ff}]
 
 " displays tabs with :set list & displays when a line runs off-screen
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
@@ -241,9 +242,9 @@ set incsearch               " Incrementally search while typing a /regex
 
 """" Display
 if has("gui_running")
-    colorscheme solarized
+    colorscheme molokai
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=Inconsolata\ Medium\ 10
+    set guifont=Inconsolata\ Medium\ 12
     set guioptions=ecmg "console dialogs, do not show menu and toolbar
 else
     colorscheme torte

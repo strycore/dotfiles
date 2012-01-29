@@ -31,9 +31,6 @@
 [submodule "vim/bundle/snipmate-symfony"]
 	path = vim/bundle/snipmate-symfony
 	url = https://github.com/soh335/vim-symfony-snipmate.git
-[submodule "vim/bundle/buftabs"]
-	path = vim/bundle/buftabs
-	url = https://github.com/vim-scripts/buftabs.git
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = https://github.com/tpope/vim-surround.git
@@ -43,3 +40,9 @@
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim-powerline"]
+	path = vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "vim/bundle/vim-powerline"]
+	path = vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
