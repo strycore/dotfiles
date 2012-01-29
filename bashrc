@@ -55,9 +55,6 @@ fi
 
 # == Prompt configuration
 force_color_prompt=yes
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
         color_prompt=yes
@@ -65,6 +62,9 @@ if [ -n "$force_color_prompt" ]; then
         color_prompt=
     fi
 fi
+case "$TERM" in
+    xterm-color|xterm) color_prompt=yes;;
+esac
 
 if [ "$color_prompt" = yes ]; then
     # Clock and one line
