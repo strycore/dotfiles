@@ -178,6 +178,8 @@ let mapleader=","
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
 
+let g:Powerline_symbols = 'fancy'
+
 " Highlight long lines
 if exists('+colorcolumn')
     set colorcolumn=80
@@ -196,6 +198,10 @@ let python_highlight_string_templates = 1
 let php_sql_query=1
 let php_htmlInStrings=1
 let g:php_folding=2
+
+" pep8 checking, pep8 must be installed (pip install pep8)
+" https://github.com/saghul/vim-pep8
+let g:pep8_map='<F8>'
 
 filetype plugin on
 filetype indent on
@@ -273,7 +279,7 @@ endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=Inconsolata\ Medium\ 12
+    set guifont=Monaco\ for\ Powerline\ 12
     set guioptions=ecmg "console dialogs, do not show menu and toolbar
     set showtabline=2
     "set fuoptions=maxvert,maxhorz ",background:#00AAaaaa
