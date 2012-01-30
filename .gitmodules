@@ -55,3 +55,6 @@
 [submodule "vim/bundle/pep8"]
 	path = vim/bundle/pep8
 	url = https://github.com/vim-scripts/pep8.git
+[submodule "vim/bundle/acp"]
+	path = vim/bundle/acp
+	url = https://github.com/vim-scripts/AutoComplPop.git
