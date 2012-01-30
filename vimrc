@@ -206,6 +206,8 @@ let g:pep8_map='<F8>'
 filetype plugin on
 filetype indent on
 
+set completeopt=menuone,longest,preview
+
 set omnifunc=syntaxcomplete#Complete
 if has('autocmd')
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab "Makefiles require hard tabs
