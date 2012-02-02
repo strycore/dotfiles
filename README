@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Various config files for my Linux boxes
 
 Getting vim plugins:
@@ -12,3 +13,29 @@ Adding a vim plugin :
 git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive
 git add .
 git commit -m "Install Fugitive.vim bundle as a submodule."
+=======
+Installation
+============
+
+Install SnipMate:
+http://www.vim.org/scripts/script.php?script_id=2540
+
+Copy `django.snippets` and `django_template.snippets` to your snippets
+directory, typically at ~/.vim/snippets.
+
+Activate the snippets by using the filetype setting.  For example:
+
+	:set ft=python.django
+
+For Django templates:
+
+	:set ft=htmldjango.html
+
+To set these automatically each time you run vim, add the following lines to
+your .vimrc:
+
+	autocmd FileType python set ft=python.django " For SnipMate
+	autocmd FileType html set ft=htmldjango.html " For SnipMate
+
+Enjoy!
+>>>>>>> 8a0805c2e333d0854fd6a3fa775c5b6aa1d643b1

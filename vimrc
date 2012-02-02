@@ -203,6 +203,11 @@ let g:php_folding=2
 " https://github.com/saghul/vim-pep8
 let g:pep8_map='<F8>'
 
+" Rope configuration
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
+
+
 filetype plugin on
 filetype indent on
 
