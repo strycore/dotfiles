@@ -24,7 +24,7 @@
 	url = https://github.com/msanders/snipmate.vim.git
 [submodule "vim/bundle/snipmate-django"]
 	path = vim/bundle/snipmate-django
-	url = https://github.com/robhudson/snipmate_for_django.git
+	url = git@github.com:strycore/snipmate_for_django.git
 [submodule "vim/bundle/symfony"]
 	path = vim/bundle/symfony
 	url = https://github.com/soh335/vim-symfony.git
