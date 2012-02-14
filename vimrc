@@ -121,7 +121,7 @@ call pathogen#helptags()
 " Color scheme
 set t_Co=256
 set background=dark
-colorscheme railscasts
+colorscheme molokai
 
 " == Identation and tabs
 set smartindent
@@ -289,17 +289,14 @@ if has('autocmd')
     autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 endif
 
-
-
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=Monaco\ for\ Powerline\ 11
+    set guifont=Monaco\ for\ Powerline\ 10
     set guioptions=ecmg "console dialogs, do not show menu and toolbar
     set showtabline=2
     set lines=75
     set columns=180
-    set background=dark
-    "set fuoptions=maxvert,maxhorz ",background:#00AAaaaa
+    "set background=dark
     colorscheme molokai
 endif
 
@@ -340,6 +337,9 @@ let Tlist_Compart_Format = 1    " Remove extra information and blank lines.
 let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
 let Tlist_GainFocus_On_ToggleOpen =  0 " Jump to taglist window on open.
 let Tlist_WinWidth = 40
+
+let g:NERDTreeWinSize = 25
+
 
 " SnipMate config
 let g:snips_author = 'Mathieu Comandon'
