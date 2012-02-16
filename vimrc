@@ -37,6 +37,9 @@
 " gmarik's vimrc
 " https://github.com/gmarik/vimfiles/blob/master/vimrc
 
+" Rick Harding (mitechie)
+" https://github.com/mitechie/pyvim
+
 "
 " Plugins
 " -------
@@ -91,7 +94,7 @@
 " Better help system
 
 
-" == General
+" == General & interface
 
 set nocompatible
 set history=1000
@@ -101,24 +104,26 @@ set clipboard+=unnamed
 
 set showcmd
 set showmode
-set showmatch
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
-set laststatus=2          " always show status line
 set viminfo='100,f1,:1000,/1000,%  " big viminfo :)
 set mouse=a
+set cmdheight=2     " Make command line 2 lines high
+set laststatus=2    " always show status line
+set scrolloff=3     " Keep 3 lines below and above the cursor
+set matchpairs+=<:> " Show matching <> as well
+set showmatch
+
 syntax on
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " Color scheme
-" available schemes : desert256, railscasts, wombat, wombat256, wombat256mod,
-"                     tango, django
 set t_Co=256
 set background=dark
-colorscheme railscasts
+colorscheme molokai
 
-" Identation and tabs
+" == Identation and tabs
 set smartindent
 set tabstop=4
 set softtabstop=4
@@ -161,7 +166,6 @@ set noerrorbells  " No noise
 set nobackup    " Backup files are sooo 90's
 set noswapfile  " Swap files are very annoying
 set lazyredraw
-set scrolloff=3 "Keep 3 lines below and above the cursor
 set guioptions+=b
 
 set cursorline
@@ -171,7 +175,6 @@ set shortmess+=a
 set report=0
 set confirm
 set encoding=utf8
-set matchpairs+=<:>
 set showfulltag
 
 let mapleader=","
@@ -187,6 +190,11 @@ if exists('+colorcolumn')
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
+
+" ,v brings up my .vimrc
+" ,V reloads it -- making all changes active (have to save first)
+map <leader>v :sp ~/.vimrc<CR><C-W>_
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 highlight BadWhitespace ctermbg=red guibg=red
 let python_highlight_builtin_funcs = 1
@@ -206,7 +214,6 @@ let g:pep8_map='<F8>'
 " Rope configuration
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
-
 
 filetype plugin on
 filetype indent on
@@ -282,14 +289,14 @@ if has('autocmd')
     autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 endif
 
-
-
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
     set guifont=Monaco\ for\ Powerline\ 10
     set guioptions=ecmg "console dialogs, do not show menu and toolbar
     set showtabline=2
-    "set fuoptions=maxvert,maxhorz ",background:#00AAaaaa
+    set lines=75
+    set columns=180
+    "set background=dark
     colorscheme molokai
 endif
 
@@ -331,6 +338,9 @@ let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
 let Tlist_GainFocus_On_ToggleOpen =  0 " Jump to taglist window on open.
 let Tlist_WinWidth = 40
 
+let g:NERDTreeWinSize = 25
+
+
 " SnipMate config
 let g:snips_author = 'Mathieu Comandon'
 
@@ -341,7 +351,7 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " Toggle NerdTree
-map <silent> <F2> :bd<CR>:vsp<CR>
+map <silent> <F2> :bd<CR>
 map <silent> <F3> :NERDTreeToggle<CR>
 
 " Move between buffers
