@@ -1,11 +1,12 @@
 [user]
 	name = Mathieu Comandon
-	email = mathieu@a2v.eu
+	email = strider@gmail.com
 
 [color]
     diff = auto
     status = auto
     branch = auto
+    ui = auto
 
 [push]
     default = matching
