@@ -123,6 +123,7 @@ set t_Co=256
 set background=dark
 colorscheme molokai
 
+
 " == Identation and tabs
 set smartindent
 set tabstop=4
@@ -210,6 +211,7 @@ let g:php_folding=2
 " pep8 checking, pep8 must be installed (pip install pep8)
 " https://github.com/saghul/vim-pep8
 let g:pep8_map='<F8>'
+" let g:molokai_original=1
 
 " Rope configuration
 map <leader>j :RopeGotoDefinition<CR>
@@ -235,6 +237,7 @@ if has('autocmd')
 
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
+    autocmd BufRead,BufNewFile *.wsgi setfiletype python
 
     " Display tabs at the beginning of a line in Python mode as bad.
     autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
