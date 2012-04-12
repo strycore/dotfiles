@@ -1,5 +1,4 @@
 *logs*
 *.log
 *~
-_vim/ropevim/src*
-_vim/ropevim/pylibs*
+vim/.netrwhist
