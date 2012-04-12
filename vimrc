@@ -225,7 +225,7 @@ if has('autocmd')
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab "Makefiles require hard tabs
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
+    autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 
     autocmd FileType sh nmap <F10> :!. %<CR>
 
@@ -294,9 +294,9 @@ if has("gui_running")
     set guifont=Monaco\ for\ Powerline\ 10
     set guioptions=ecmg "console dialogs, do not show menu and toolbar
     set showtabline=2
-    set lines=75
-    set columns=180
-    "set background=dark
+    set lines=65
+    set columns=120
+    set background=dark
     colorscheme molokai
 endif
 
@@ -323,6 +323,12 @@ map <kPlus> <C-W>+
 map <kMinus> <C-W>-
 map <kDivide> <c-w><
 map <kMultiply> <c-w>>
+
+" Allow moving in insert mode with home row keys
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
 
 " Remap autocompletion to Ctrl-Space
 inoremap <Nul> <C-x><C-o>
