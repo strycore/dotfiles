@@ -217,6 +217,9 @@ let g:pep8_map='<F8>'
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 
+" Disable ex mode
+map Q <Nop>
+
 filetype plugin on
 filetype indent on
 
