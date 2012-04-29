@@ -61,3 +61,6 @@
 [submodule "vim/bundle/ropevim"]
 	path = vim/bundle/ropevim
 	url = https://github.com/sontek/rope-vim.git
+[submodule "vim/bundle/lusty_juggler"]
+	path = vim/bundle/lusty_juggler
+	url = https://github.com/strycore/LustyJuggler.git

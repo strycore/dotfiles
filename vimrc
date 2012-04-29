@@ -184,6 +184,8 @@ let g:showmarks_enable = 1
 
 let g:Powerline_symbols = 'fancy'
 
+
+
 " Highlight long lines
 if exists('+colorcolumn')
     set colorcolumn=80
@@ -257,9 +259,11 @@ if has('autocmd')
 
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd FileType css set equalprg=csstidy
+    autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 
     autocmd FileType less set omnifunc=csscomplete#CompleteCSS
     autocmd BufNewFile,BufRead *.less setfiletype less
+    autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
 
     autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     autocmd FileType php set ft=php.html
@@ -281,6 +285,7 @@ if has('autocmd')
     if filereadable('./manage.py')
         autocmd FileType python set ft=python.django " For SnipMate
         autocmd FileType html set ft=htmldjango.html " For SnipMate
+        autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
     endif
     if filereadable('./symfony')
         "symfony plugin configuration
@@ -370,6 +375,10 @@ map <silent> <F6> :bnext<CR>
 " Toggle paste mode
 set pastetoggle=<F7>
 
+" Lusty juggler config
+let g:LustyJugglerKeyboardLayout = "azerty"
+let g:LustyJugglerAltTabMode = 1
+noremap <silent> <Leader>s :LustyJuggler<CR>
 
 "Shortcut to auto indent entire file
 nmap <F9> 1G=G
