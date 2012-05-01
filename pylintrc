@@ -9,3 +9,6 @@ include-ids=yes
 [FORMAT]
 indent-string='    '
 max-line-length=80
+
+[TYPECHECK]
+generated-members="pack_start"

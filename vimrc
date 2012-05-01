@@ -218,7 +218,7 @@ let g:php_folding=2
 " pep8 checking, pep8 must be installed (pip install pep8)
 " https://github.com/saghul/vim-pep8
 let g:pep8_map='<F8>'
-map <silent> <S-F8> :make<CR>
+map <silent> <S-F8> :w<CR>:make<CR>:cw<CR>
 " let g:molokai_original=1
 
 " Rope configuration
