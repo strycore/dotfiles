@@ -1,0 +1,11 @@
+[MESSAGES CONTROL]
+#I0011 : Locally disabling {rule}
+disable=I0011
+
+[REPORTS]
+output-format=colorized
+include-ids=yes
+
+[FORMAT]
+indent-string='    '
+max-line-length=80
