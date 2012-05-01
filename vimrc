@@ -206,6 +206,11 @@ let python_highlight_builtin_objs = 1
 let python_highlight_doctests = 1
 let python_highlight_string_templates = 1
 
+let g:pylint_onwrite = 1
+let g:pylint_show_rate = 1
+let g:pylint_cwindow = 1
+
+
 let php_sql_query=1
 let php_htmlInStrings=1
 let g:php_folding=2
@@ -213,6 +218,7 @@ let g:php_folding=2
 " pep8 checking, pep8 must be installed (pip install pep8)
 " https://github.com/saghul/vim-pep8
 let g:pep8_map='<F8>'
+map <silent> <S-F8> :make<CR>
 " let g:molokai_original=1
 
 " Rope configuration
@@ -243,6 +249,7 @@ if has('autocmd')
     autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
     autocmd FileType python set omnifunc=pythoncomplete#Complete
+    autocmd FileType compiler pylint
     autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
 
@@ -250,8 +257,9 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
     " Make trailing whitespace be flagged as bad.
     autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-    autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-    autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+    " autocmd BufRead *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+    " autocmd BufRead *.py set errorformat=%f:%l:\ %m
+    " autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
     autocmd BufRead *.py nmap <F10> :!python %<CR>
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 

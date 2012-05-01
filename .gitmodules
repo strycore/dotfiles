@@ -64,3 +64,6 @@
 [submodule "vim/bundle/lusty_juggler"]
 	path = vim/bundle/lusty_juggler
 	url = https://github.com/strycore/LustyJuggler.git
+[submodule "vim/bundle/indentpython"]
+	path = vim/bundle/indentpython
+	url = https://github.com/vim-scripts/indentpython.vim.git
