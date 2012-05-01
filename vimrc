@@ -249,7 +249,6 @@ if has('autocmd')
     autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
     autocmd FileType python set omnifunc=pythoncomplete#Complete
-    autocmd FileType compiler pylint
     autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
 
@@ -257,8 +256,8 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
     " Make trailing whitespace be flagged as bad.
     autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-    " autocmd BufRead *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-    " autocmd BufRead *.py set errorformat=%f:%l:\ %m
+    autocmd BufRead *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+    autocmd BufRead *.py set errorformat=%f:%l:\ %m
     " autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
     autocmd BufRead *.py nmap <F10> :!python %<CR>
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
