@@ -75,7 +75,6 @@ if [ "$color_prompt" = yes ]; then
     #PS1='\[\033[01;31m\]\w\[\033[00m\]\n${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[00m\]\$ '
     # Directory on one line, user on another
     PS1='(\[\e[0;37m\]\A\[\e[0;37m\]) \[\033[01;31m\]\w\[\033[00m\]\n${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[00m\]\$ '
-    export PS1
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -89,6 +88,11 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+#Your Bash Prompt Needs This
+# http://jonisalonen.com/2012/your-bash-prompt-needs-this/
+PS1="\[\033[G\]$PS1"
+export PS1
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
