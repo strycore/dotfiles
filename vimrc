@@ -225,6 +225,10 @@ map <silent> <S-F8> :w<CR>:make<CR>:cw<CR>
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 
+" CtrlP configuration
+
+let g:ctrlp_working_path_mode = 2
+
 " Disable ex mode
 map Q <Nop>
 " Map :w< to :w because my fingers slip
@@ -239,6 +243,7 @@ set omnifunc=syntaxcomplete#Complete
 if has('autocmd')
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab "Makefiles require hard tabs
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 
