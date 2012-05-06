@@ -22,7 +22,7 @@ export DEBFULLNAME="Mathieu Comandon"
 
 # == Bash options
 shopt -s cdspell # Correct minor spelling errors in directories
-shopt -s dirspell # Attempt autocompletion for directories
+#shopt -s dirspell # Attempt autocompletion for directories
 shopt -s checkwinsize # Update window size between each commands
 complete -cf sudo #tab complete for sudo
 set -o noclobber # prevent overwriting files with cat
