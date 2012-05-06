@@ -67,6 +67,6 @@
 [submodule "vim/bundle/indentpython"]
 	path = vim/bundle/indentpython
 	url = https://github.com/vim-scripts/indentpython.vim.git
-[submodule "vim-rails"]
-	path = vim-rails
+[submodule "vim/bundle/vim-rails"]
+	path = vim/bundle/vim-rails
 	url = https://github.com/tpope/vim-rails.git

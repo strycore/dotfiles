@@ -100,7 +100,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-alias ls='ls -hp --color'
+alias ls='ls -hp'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
