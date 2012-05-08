@@ -253,7 +253,7 @@ if has('autocmd')
 
     autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
-    autocmd FileType python set omnifunc=pythoncomplete#Complete
+    autocmd FileType python setlocal omnifunc=pysmell#Complete
     autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
 
