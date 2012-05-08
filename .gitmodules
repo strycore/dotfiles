@@ -82,3 +82,6 @@
 [submodule "vim/bundle/pysmell.vim"]
 	path = vim/bundle/pysmell.vim
 	url = https://github.com/webframp/pysmell.vim.git
+[submodule "vim/bundle/pyflakes.vim"]
+	path = vim/bundle/pyflakes.vim
+	url = https://github.com/kevinw/pyflakes-vim.git
