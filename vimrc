@@ -73,7 +73,7 @@
 " F5:  Previous buffer
 " F6:  Next buffer
 " F7:  Toggle paste mode
-" F8:  Toggle between action and template in symfony
+" F8:  Run Flake8
 " F9:  Reindent whole file
 " F10: Run file (currently supported: python, bash, html)
 " F11: Reserved for fullscreen switching by WM or Terminal emulator
@@ -223,9 +223,6 @@ let php_sql_query=1
 let php_htmlInStrings=1
 let g:php_folding=2
 
-" pep8 checking, pep8 must be installed (pip install pep8)
-" https://github.com/saghul/vim-pep8
-let g:pep8_map='<F8>'
 map <silent> <S-F8> :w<CR>:make<CR>:cw<CR>
 " let g:molokai_original=1
 
@@ -234,7 +231,6 @@ map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 
 " CtrlP configuration
-
 let g:ctrlp_working_path_mode = 2
 
 " Disable ex mode
@@ -271,7 +267,8 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
     autocmd BufRead *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
-    " autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+    autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
+    autocmd BufWritePost *.py call Flake8()
     autocmd BufRead *.py nmap <F10> :!python %<CR>
     autocmd BufRead *.js set makeprg=jslint\ %
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
