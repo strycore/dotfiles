@@ -178,12 +178,20 @@ set confirm
 set encoding=utf8
 set showfulltag
 
+" don't outdent hashes
+inoremap # #  
+
 let mapleader=","
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
 
 let g:Powerline_symbols = 'fancy'
 
+" Copy to clipboard
+map <leader>y "+y
+
+" Paste from clipboard
+map <leader>p "+gP
 
 
 " Highlight long lines
@@ -265,6 +273,7 @@ if has('autocmd')
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
     " autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
     autocmd BufRead *.py nmap <F10> :!python %<CR>
+    autocmd BufRead *.js set makeprg=jslint\ %
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
