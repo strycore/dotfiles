@@ -31,6 +31,13 @@ ZSH_THEME="bira"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git python pip django command-not-found)
 
+# VirtualenvWrapper configuration
+virtualenv=$(which virtualenvwrapper.sh)
+if [ "$virtualenv" != "" ]; then
+    export WORKON_HOME=$HOME/Projects/virtualenvs
+    source $virtualenv
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
