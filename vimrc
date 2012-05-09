@@ -370,6 +370,7 @@ let Tlist_GainFocus_On_ToggleOpen =  0 " Jump to taglist window on open.
 let Tlist_WinWidth = 40
 
 let g:NERDTreeWinSize = 25
+let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS']
 
 
 " SnipMate config
