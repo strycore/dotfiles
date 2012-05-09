@@ -179,7 +179,7 @@ set encoding=utf8
 set showfulltag
 
 " don't outdent hashes
-inoremap # #  
+inoremap # #
 
 let mapleader=","
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -325,7 +325,7 @@ endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=Monaco\ for\ Powerline\ 10
+    set guifont=Monaco\ for\ Powerline\ 9
     set guioptions=ecmg "console dialogs, do not show menu and toolbar
     set showtabline=2
     set lines=65
