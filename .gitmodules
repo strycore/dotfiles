@@ -82,3 +82,6 @@
 [submodule "vim/bundle/flake8"]
 	path = vim/bundle/flake8
 	url = https://github.com/nvie/vim-flake8.git
+[submodule "vim/bundle/css-color"]
+	path = vim/bundle/css-color
+	url = https://github.com/ap/vim-css-color.git
