@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#Sample postactivate file for virtualenv
+
+cdvirtualenv
+cd PROJECT_NAME
+bzr pull
+ctags -R --languages=python --python-kinds=-v ../lib/python2.7
+ctags -R -a --languages=python --python-kinds=-v .
+django-vim
+./manage.py runserver
