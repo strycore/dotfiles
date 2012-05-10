@@ -404,8 +404,8 @@ cmap w!! w !sudo tee % > /dev/null
 set path=$PWD/**
 
 "command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-
-python << EOF
+if has('python')
+    python << EOF
 import os
 import sys
 import vim
@@ -413,3 +413,4 @@ for p in sys.path:
     if os.path.isdir(p):
         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
 EOF
+endif
