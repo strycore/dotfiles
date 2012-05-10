@@ -394,6 +394,9 @@ let g:LustyJugglerKeyboardLayout = "azerty"
 let g:LustyJugglerAltTabMode = 1
 noremap <silent> <Leader>s :LustyJuggler<CR>
 
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
 "Shortcut to auto indent entire file
 nmap <F9> 1G=G
 imap <F9> <ESC>1G=Ga
