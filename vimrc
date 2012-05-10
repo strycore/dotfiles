@@ -46,8 +46,6 @@
 " For automatic plugin installation, see the vim-setup script
 "
 " NERDTree
-" taglist
-" command-t: https://wincent.com/products/command-t
 " ack-grep
 "
 "
@@ -69,7 +67,7 @@
 " F1:  Help
 " F2:  Close buffer
 " F3:  Toggle NERDTree
-" F4:  Toggle TagList
+" F4:  Toggle Tagbar
 " F5:  Previous buffer
 " F6:  Next buffer
 " F7:  Toggle paste mode
@@ -100,7 +98,6 @@ set nocompatible
 set history=1000
 set undolevels=1000
 set clipboard+=unnamed
-"set tags=./tags;$HOME
 
 set showcmd
 set showmode
@@ -365,15 +362,8 @@ inoremap <C-l> <Right>
 inoremap <Nul> <C-x><C-o>
 imap <C-space> <C-x><C-o>
 
-" TagList configuration
-map <silent> <F4> :TlistToggle<CR>
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Use_Right_Window = 1  " split to the right side of the screen
-let Tlist_Sort_Type = "order"   " sort by order or name
-let Tlist_Compart_Format = 1    " Remove extra information and blank lines.
-let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
-let Tlist_GainFocus_On_ToggleOpen =  0 " Jump to taglist window on open.
-let Tlist_WinWidth = 40
+" Tagbar configuration
+map <silent> <F4> :TagbarToggle<CR>
 
 let g:NERDTreeWinSize = 25
 let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS']
