@@ -1,6 +1,3 @@
-[submodule "vim/bundle/nerd-tree"]
-	path = vim/bundle/nerd-tree
-	url = https://github.com/vim-scripts/The-NERD-tree.git
 [submodule "vim/bundle/molokai"]
 	path = vim/bundle/molokai
 	url = https://github.com/tomasr/molokai
@@ -16,9 +13,6 @@
 [submodule "vim/bundle/zencoding"]
 	path = vim/bundle/zencoding
 	url = https://github.com/mattn/zencoding-vim
-[submodule "vim/bundle/symfony"]
-	path = vim/bundle/symfony
-	url = https://github.com/soh335/vim-symfony.git
 [submodule "vim/bundle/snipmate-symfony"]
 	path = vim/bundle/snipmate-symfony
 	url = https://github.com/soh335/vim-symfony-snipmate.git
@@ -85,3 +79,9 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule "vim/bundle/NERD-tree"]
+	path = vim/bundle/NERD-tree
+	url = https://github.com/vim-scripts/The-NERD-tree.git
+[submodule "vim/bundle/vim-symfony"]
+	path = vim/bundle/vim-symfony
+	url = https://github.com/soh335/vim-symfony.git
