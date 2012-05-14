@@ -269,6 +269,8 @@ if has('autocmd')
     autocmd BufRead *.py nmap <F10> :!python %<CR>
     autocmd BufRead *.js set makeprg=jslint\ %
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType javascript map <buffer> <F8> :JSHint<CR>
+
 
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType html set equalprg=tidy\ -i\ -q

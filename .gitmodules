@@ -85,3 +85,6 @@
 [submodule "vim/bundle/vim-symfony"]
 	path = vim/bundle/vim-symfony
 	url = https://github.com/soh335/vim-symfony.git
+[submodule "vim/bundle/jshint.vim"]
+	path = vim/bundle/jshint.vim
+	url = https://github.com/walm/jshint.vim.git
