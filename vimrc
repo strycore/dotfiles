@@ -394,6 +394,9 @@ let g:LustyJugglerKeyboardLayout = "azerty"
 let g:LustyJugglerAltTabMode = 1
 noremap <silent> <Leader>s :LustyJuggler<CR>
 
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
 "Shortcut to auto indent entire file
 nmap <F9> 1G=G
 imap <F9> <ESC>1G=Ga
@@ -404,8 +407,8 @@ cmap w!! w !sudo tee % > /dev/null
 set path=$PWD/**
 
 "command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-
-python << EOF
+if has('python')
+    python << EOF
 import os
 import sys
 import vim
@@ -413,3 +416,4 @@ for p in sys.path:
     if os.path.isdir(p):
         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
 EOF
+endif
