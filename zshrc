@@ -1,3 +1,13 @@
+
+# == Default programs
+export EDITOR='vim'      # Default text editor
+export BROWSER='firefox' # Default web browser
+
+# == Debian packaging variables
+export DEBEMAIL="strycore@gmail.com"   #Change this to your email
+export DEBFULLNAME="Mathieu Comandon"
+
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
