@@ -254,7 +254,11 @@ if has('autocmd')
 
     autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
-    autocmd FileType python setlocal omnifunc=pysmell#Complete
+    if filereadable('./PYSMELLTAGS')
+        autocmd FileType python setlocal omnifunc=pysmell#Complete
+    else
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    endif
     autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
 
@@ -378,7 +382,7 @@ let g:snips_author = 'Mathieu Comandon'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " json formating
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+" map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " Toggle NerdTree
 map <silent> <F2> :bd<CR>
