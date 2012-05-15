@@ -238,6 +238,7 @@ map :w<<CR> :w<CR>
 filetype plugin on
 filetype indent on
 
+
 set completeopt=menuone,longest,preview
 
 set omnifunc=syntaxcomplete#Complete
@@ -266,7 +267,11 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
     " Make trailing whitespace be flagged as bad.
     autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-    autocmd BufRead *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+    if !empty($VIRTUAL_ENV)
+        autocmd BufRead *.py set makeprg=pylint\ --init-hook=\"import\ os;execfile(os.environ[\'VIRTUAL_ENV']+\'/bin/activate_this.py\'\,\ dict(__file__=os.environ[\'VIRTUAL_ENV\']+\'/bin/activate_this.py\'))\"\ --reports=n\ --output-format=parseable\ %:p
+    else
+        autocmd BufRead *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+    endif
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
     autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
     autocmd BufWritePost *.py call Flake8()
