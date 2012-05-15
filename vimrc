@@ -273,7 +273,7 @@ if has('autocmd')
     autocmd BufRead *.py nmap <F10> :!python %<CR>
     autocmd BufRead *.js set makeprg=jslint\ %
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType javascript map <buffer> <F8> :JSHint<CR>
+    autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
 
 
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -355,8 +355,8 @@ noremap <C-S-pageDown> gT
 
 map <kPlus> <C-W>+
 map <kMinus> <C-W>-
-map <kDivide> <c-w><
-map <kMultiply> <c-w>>
+map <kDivide> <c-w>>
+map <kMultiply> <c-w><
 
 " Allow moving in insert mode with home row keys
 inoremap <C-h> <Left>
@@ -412,7 +412,9 @@ cmap w!! w !sudo tee % > /dev/null
 
 set path=$PWD/**
 
-"command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+map <Leader>d :DiffOrig<CR>
+
 if has('python')
     python << EOF
 import os
