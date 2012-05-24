@@ -52,3 +52,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
+alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"

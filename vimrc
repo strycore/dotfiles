@@ -302,8 +302,8 @@ if has('autocmd')
     autocmd FileType php set equalprg=php_beautifier\ -l\ \"Pear()\ ArrayNested()\"\ -s2
 
     autocmd FileType php noremap <C-M> :w!<CR>:!php %<CR> " Run script with php-cli
-    autocmd FileType php noremap <C-L> :!php -l %<CR> " php syntax check
-    autocmd FileType php noremap <C-P> :!phpcs %<CR>  " php CodeSniffer
+    autocmd FileType php noremap <S-F8> :!php -l %<CR> " php syntax check
+    autocmd FileType php noremap <F8> :!phpcs %<CR>  " php CodeSniffer
 
     " Shortcuts to php-docs
     autocmd FileType php inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
@@ -318,10 +318,6 @@ if has('autocmd')
         autocmd FileType python set ft=python.django " For SnipMate
         autocmd FileType html set ft=htmldjango.html " For SnipMate
         autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
-    endif
-    if filereadable('./symfony')
-        "symfony plugin configuration
-        map <silent> <F8> :Salternate<CR>
     endif
     autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
     " Closes the Omni-Completion tip window when a selection is made
