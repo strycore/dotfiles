@@ -279,6 +279,7 @@ if has('autocmd')
     autocmd BufRead *.js set makeprg=jslint\ %
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
+    autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 
 
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
