@@ -11,7 +11,7 @@ export EDITOR='vim'      # Default text editor
 export BROWSER='firefox' # Default web browser
 
 # == Debian packaging variables
-export DEBEMAIL="strycore@gmail.com"   #Change this to your email
+export DEBEMAIL="strider@strycore.com"   #Change this to your email
 export DEBFULLNAME="Mathieu Comandon"
 
 # == Ubuntu specific
