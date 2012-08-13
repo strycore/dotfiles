@@ -279,6 +279,7 @@ if has('autocmd')
     autocmd BufRead *.js set makeprg=jslint\ %
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
+    autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 
     autocmd BufRead *.coffee setfiletype coffee
 
@@ -319,9 +320,9 @@ if has('autocmd')
     if filereadable('./manage.py')
         autocmd FileType python set ft=python.django " For SnipMate
         autocmd FileType html set ft=htmldjango.html " For SnipMate
-        autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
     endif
     autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
+    autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
     " Closes the Omni-Completion tip window when a selection is made
     autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
     autocmd InsertLeave * if pumvisible() == 0|pclose|endif

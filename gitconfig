@@ -1,6 +1,6 @@
 [user]
     name = Mathieu Comandon
-    email = strider@gmail.com
+    email = strycore@gmail.com
 
 [color]
     diff = auto
@@ -12,5 +12,6 @@
     default = matching
 [core]
     editor = vim
+	excludesfile = /home/mathieu/.gitignore_global
 [alias]
     st = status
