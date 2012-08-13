@@ -280,6 +280,8 @@ if has('autocmd')
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
 
+    autocmd BufRead *.coffee setfiletype coffee
+
 
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType html set equalprg=tidy\ -i\ -q
