@@ -263,11 +263,8 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
 
-    " Display tabs at the beginning of a line in Python mode as bad.
-    autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-    " Make trailing whitespace be flagged as bad.
-    autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
     " Remove trailing whitespace on save
+    autocmd BufWritePre *.py :%s/\s\+$//e
     if !empty($VIRTUAL_ENV)
         autocmd BufRead *.py set makeprg=pylint\ --init-hook=\"import\ os;execfile(os.environ[\'VIRTUAL_ENV']+\'/bin/activate_this.py\'\,\ dict(__file__=os.environ[\'VIRTUAL_ENV\']+\'/bin/activate_this.py\'))\"\ --reports=n\ --output-format=parseable\ %:p
     else
