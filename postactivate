@@ -7,7 +7,8 @@ cd PROJECT_NAME
 bzr pull
 ctags -R --languages=python --python-kinds=-v ../lib/python2.7
 ctags -R -a --languages=python --python-kinds=-v .
-pysmell ../lib/python2.7 -o PYSMELLTAGS.stdlib
+pysmell ../lib/python2.7 -x tests -o PYSMELLTAGS.stdlib
+pysmell ../src -x tests -o PYSMELLTAGS.src
 pysmell .
 django-vim
 ./manage.py runserver
