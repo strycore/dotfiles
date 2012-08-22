@@ -28,3 +28,24 @@ link_file screenrc
 link_file pylintrc
 link_file gitconfig
 
+if [ ! -e "$HOME/.oh-my-zsh" ]
+then
+    echo "[INST] Installing oh-my-zsh"
+    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+else
+    echo "[SKIP] oh-my-zsh is already installed"
+fi
+
+if [ ! -e $(which flake8) ]
+then
+   sudo pip install flake8
+else
+    echo "[SKIP] Flake8 is already installed"
+fi
+
+if [ ! -e $(which pysmell) ]
+then
+   sudo pip install pysmell
+else
+    echo "[SKIP] Pysmell is already installed"
+fi
