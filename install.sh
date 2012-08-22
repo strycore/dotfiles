@@ -5,7 +5,7 @@ function link_file {
 
     if [ -e "${target}" ]
     then
-        if [ $(readlink ${target}) == ${source} ]
+        if [ "_$(readlink ${target})" == "_${source}" ]
         then
             echo "[SKIP] Existing target ${target}, skipping file $1"
             return
@@ -21,6 +21,8 @@ function link_file {
 
 link_file vim
 link_file vimrc
+link_file profile
+link_file bashrc
 link_file zshrc
 link_file screenrc
 link_file pylintrc
