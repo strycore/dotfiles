@@ -91,8 +91,9 @@ esac
 
 #Your Bash Prompt Needs This
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
-PS1="\[\033[G\]$PS1"
-export PS1
+# no !! it messes up virtualenv prompts
+# PS1="\[\033[G\]$PS1"
+# export PS1
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

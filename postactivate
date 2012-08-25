@@ -2,12 +2,11 @@
 
 #Sample postactivate file for virtualenv
 
-cdvirtualenv
-cd PROJECT_NAME
-bzr pull
-ctags -R --languages=python --python-kinds=-v ../lib/python2.7
+cdproject
+git pull
+ctags -R --languages=python --python-kinds=-v $VIRTUAL_ENV/lib/python2.7
 ctags -R -a --languages=python --python-kinds=-v .
-pysmell ../lib/python2.7 -o PYSMELLTAGS.stdlib
+pysmell $VIRTUAL_ENV/lib/python2.7 -o PYSMELLTAGS.stdlib
 pysmell .
 django-vim
 ./manage.py runserver
