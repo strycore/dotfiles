@@ -296,7 +296,7 @@ if has('autocmd')
     autocmd FileType less set omnifunc=csscomplete#CompleteCSS
     autocmd BufNewFile,BufRead *.less setfiletype less
     autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd BufWritePost *.less silent exe  '!lessc ' . shellescape(expand('<afile>')) . ' ' . shellescape(expand('<afile>:r')) . '.css'
+    "autocmd BufWritePost *.less silent exe  '!lessc ' . shellescape(expand('<afile>')) . ' ' . shellescape(expand('<afile>:r')) . '.css'
 
     autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     autocmd FileType php set ft=php.html
