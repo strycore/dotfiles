@@ -52,6 +52,13 @@ fi
 
 if [ ! -e $(which jshint) ]
 then
-    echo "[INST] Installing jshint" 
+    echo "[INST] Installing jshint"
     sudo npm install jshint -g
-else
+fi
+
+if [ ! -e $(which lessc) ]
+then
+    echo "[INST] Installing lesscss compiler"
+    sudo npm install less -g
+fi
+
