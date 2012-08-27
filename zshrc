@@ -44,8 +44,8 @@ plugins=(git python pip django command-not-found rails ruby git)
 # VirtualenvWrapper configuration
 virtualenv=$(which virtualenvwrapper.sh)
 if [ "$virtualenv" != "" ]; then
-    export WORKON_HOME=$HOME/.virtualenvs/
-    export PROJECT_HOME=$HOME/Projects/
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/Projects
     source $virtualenv
 fi
 

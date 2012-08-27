@@ -9,7 +9,7 @@ function link_file {
         then
             echo "[SKIP] Existing target ${target}, skipping file $1"
             return
-        else 
+        else
             backup=$target.backup$(date +%s)
             echo "[BCKP] Saving backup of exising file ${target} as ${backup}"
             mv $target $backup
@@ -49,3 +49,9 @@ then
 else
     echo "[SKIP] Pysmell is already installed"
 fi
+
+if [ ! -e $(which jshint) ]
+then
+    echo "[INST] Installing jshint" 
+    sudo npm install jshint -g
+else
