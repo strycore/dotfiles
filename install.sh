@@ -62,3 +62,8 @@ then
     sudo npm install less -g
 fi
 
+if [ ! -e $(which coffee) ]
+then
+    echo "[INST] Installing coffeescript compiler"
+    sudo npm install coffee-script -g
+fi
