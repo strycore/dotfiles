@@ -274,7 +274,7 @@ if has('autocmd')
     autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
     autocmd BufWritePost *.py call Flake8()
     autocmd BufRead *.py nmap <F10> :!python %<CR>
-    autocmd BufRead *.js set makeprg=jslint\ %
+    autocmd BufRead *.js set makeprg=jshint\ %
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
     autocmd BufNewFile,BufRead *.coffee setfiletype coffee
@@ -296,7 +296,7 @@ if has('autocmd')
     autocmd FileType less set omnifunc=csscomplete#CompleteCSS
     autocmd BufNewFile,BufRead *.less setfiletype less
     autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd BufWritePost *.less silent exe  '!lessc ' . shellescape(expand('<afile>')) . ' ' . shellescape(expand('<afile>:r')) . '.css'
+    "autocmd BufWritePost *.less silent exe  '!lessc ' . shellescape(expand('<afile>')) . ' ' . shellescape(expand('<afile>:r')) . '.css'
 
     autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     autocmd FileType php set ft=php.html

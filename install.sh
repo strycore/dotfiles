@@ -9,7 +9,7 @@ function link_file {
         then
             echo "[SKIP] Existing target ${target}, skipping file $1"
             return
-        else 
+        else
             backup=$target.backup$(date +%s)
             echo "[BCKP] Saving backup of exising file ${target} as ${backup}"
             mv $target $backup
@@ -48,4 +48,22 @@ then
    sudo pip install pysmell
 else
     echo "[SKIP] Pysmell is already installed"
+fi
+
+if [ -z $(which jshint) ]
+then
+    echo "[INST] Installing jshint"
+    sudo npm install jshint -g
+fi
+
+if [ -z $(which lessc) ]
+then
+    echo "[INST] Installing lesscss compiler"
+    sudo npm install less -g
+fi
+
+if [ -z $(which coffee) ]
+then
+    echo "[INST] Installing coffeescript compiler"
+    sudo npm install coffee-script -g
 fi
