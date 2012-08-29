@@ -50,19 +50,19 @@ else
     echo "[SKIP] Pysmell is already installed"
 fi
 
-if [ ! -e $(which jshint) ]
+if [ -z $(which jshint) ]
 then
     echo "[INST] Installing jshint"
     sudo npm install jshint -g
 fi
 
-if [ ! -e $(which lessc) ]
+if [ -z $(which lessc) ]
 then
     echo "[INST] Installing lesscss compiler"
     sudo npm install less -g
 fi
 
-if [ ! -e $(which coffee) ]
+if [ -z $(which coffee) ]
 then
     echo "[INST] Installing coffeescript compiler"
     sudo npm install coffee-script -g
