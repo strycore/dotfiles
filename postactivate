@@ -1,13 +1,38 @@
 #!/bin/bash
 
-#Sample postactivate file for virtualenv
-
 cdproject
-git pull
+
+if [ -e .git ]
+then
+    git pull
+fi
+
+if [ -e .bzr ]
+then
+    bzr pull
+fi
+
+# Building tags file
 ctags -R --languages=python --python-kinds=-v $VIRTUAL_ENV/lib/python2.7
+if [ -e $VIRTUAL_ENV/src ]
+then
+    ctags -R -a --languages=python --python-kinds=-v $VIRTUAL_ENV/src
+fi
 ctags -R -a --languages=python --python-kinds=-v .
+
+
 pysmell $VIRTUAL_ENV/lib/python2.7 -x tests -o PYSMELLTAGS.stdlib
-pysmell $VIRTUAL_ENV/src -x tests -o PYSMELLTAGS.src
+if [ -e $VIRTUAL_ENV/src ]
+then
+    pysmell $VIRTUAL_ENV/src -x tests -o PYSMELLTAGS.src
+fi
 pysmell .
-django-vim
-./manage.py runserver
+
+if [ -e manage.py ]
+then
+    django-vim
+    ./manage.py runserver
+else
+    gvim
+fi
+
