@@ -272,7 +272,7 @@ if has('autocmd')
     endif
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
     autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
-    autocmd BufWritePost *.py call Flake8()
+    "autocmd BufWritePost *.py call Flake8()
     autocmd BufRead *.py nmap <F10> :!python %<CR>
     autocmd BufRead *.js set makeprg=jshint\ %
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -383,6 +383,13 @@ let g:snips_author = 'Mathieu Comandon'
 
 " Supertab configuration
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+" Syntastic configuration
+
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_auto_jump=1
 
 " json formating
 " map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
