@@ -385,11 +385,10 @@ let g:snips_author = 'Mathieu Comandon'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " Syntastic configuration
-
 let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
-let g:syntastic_auto_jump=1
+let g:syntastic_auto_jump=0
 
 " json formating
 " map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
