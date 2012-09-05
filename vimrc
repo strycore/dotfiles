@@ -230,10 +230,16 @@ map <leader>r :RopeRename<CR>
 " CtrlP configuration
 let g:ctrlp_working_path_mode = 2
 
+""" Keybindings
+
 " Disable ex mode
 map Q <Nop>
 " Map :w< to :w because my fingers slip
 map :w<<CR> :w<CR>
+
+" Stuff to piss off vim purists
+inoremap <silent> <C-Backspace> <C-w>
+inoremap <silent> <C-z> <Esc>:undo<CR>i
 
 filetype plugin on
 filetype indent on
