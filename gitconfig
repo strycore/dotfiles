@@ -15,3 +15,5 @@
 	excludesfile = /home/mathieu/.gitignore_global
 [alias]
     st = status
+    pul = pull
+    psh = push
