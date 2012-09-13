@@ -25,7 +25,8 @@ then
     bzr pull
 fi
 
-# Building tags file
+echo 'Building tags file'
+
 ctags -R --languages=python --python-kinds=-v $VIRTUAL_ENV/lib/python2.7
 if [ -e $VIRTUAL_ENV/src ]
 then
@@ -33,13 +34,19 @@ then
 fi
 ctags -R -a --languages=python --python-kinds=-v .
 
+echo -ne 'Building pysmell catalogs.'
 
-pysmell $VIRTUAL_ENV/lib/python2.7 -x tests -o PYSMELLTAGS.stdlib
+
+pysmell $VIRTUAL_ENV/lib/python2.7 -x tests -o PYSMELLTAGS.stdlib >/dev/null
+echo -ne '.'
 if [ -e $VIRTUAL_ENV/src ]
 then
-    pysmell $VIRTUAL_ENV/src -x tests -o PYSMELLTAGS.src
+    echo -ne '.'
+    pysmell $VIRTUAL_ENV/src -x tests -o PYSMELLTAGS.src >/dev/null
 fi
+echo -ne '.'
 pysmell .
+echo ' Done!'
 
 if [ -e manage.py ]
 then
