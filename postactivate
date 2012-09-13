@@ -1,5 +1,18 @@
 #!/bin/bash
 
+if [ ! -e $VIRTUAL_ENV/$VIRTUALENVWRAPPER_PROJECT_FILENAME ]
+then
+    echo 'No project defined for this virtualenv.'
+    return
+fi
+
+project_path=$(cat $VIRTUAL_ENV/$VIRTUALENVWRAPPER_PROJECT_FILENAME)
+if [ ! -e $project_path ]
+then
+    echo "Project referenced in $project_path does not exists."
+fi
+unset $project_path
+
 cdproject
 
 if [ -e .git ]
