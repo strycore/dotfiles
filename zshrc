@@ -53,6 +53,8 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 source $ZSH/oh-my-zsh.sh
+# Disable autocorrect
+unsetopt correct_all
 
 # Customize to your needs...
 PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
