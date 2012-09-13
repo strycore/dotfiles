@@ -41,16 +41,6 @@ ZSH_THEME="bira"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git python pip django command-not-found rails ruby git)
 
-# VirtualenvWrapper configuration
-virtualenv=$(which virtualenvwrapper_lazy.sh)
-if [ "$virtualenv" != "" ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    export PROJECT_HOME=$HOME/Projects
-    source $virtualenv
-fi
-
-# RVM Configuration: Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 source $ZSH/oh-my-zsh.sh
 # Disable autocorrect
@@ -63,3 +53,14 @@ alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#
+# VirtualenvWrapper configuration
+virtualenv=$(which virtualenvwrapper_lazy.sh)
+if [ "$virtualenv" != "" ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/Projects
+    source $virtualenv
+fi
+
+# RVM Configuration: Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
