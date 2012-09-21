@@ -27,6 +27,7 @@ link_file zshrc
 link_file screenrc
 link_file pylintrc
 link_file gitconfig
+link_file hgrc
 
 if [ ! -e "$HOME/.oh-my-zsh" ]
 then
