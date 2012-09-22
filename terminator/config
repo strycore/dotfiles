@@ -1,0 +1,24 @@
+[global_config]
+  title_hide_sizetext = True
+  title_transmit_bg_color = "#000000"
+  title_inactive_fg_color = "#0078a0"
+  title_transmit_fg_color = "#5595ff"
+  title_inactive_bg_color = "#000000"
+[keybindings]
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    use_system_font = False
+    palette = "#005a78:#bf5f4a:#cdca72:#c4a000:#7aa0b6:#75507b:#83b4b1:#d3d7cf:#96947c:#cc6863:#87a980:#fce94f:#7fa5bb:#ad7fa8:#66aab9:#eeeeec"
+    foreground_color = "#c3c7c4"
+    font = Monaco for Powerline 10
+    background_color = "#27292c"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
