@@ -77,12 +77,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-#Your Bash Prompt Needs This
-# http://jonisalonen.com/2012/your-bash-prompt-needs-this/
-# no !! it messes up virtualenv prompts
-# PS1="\[\033[G\]$PS1"
-# export PS1
-
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias grep='grep --color=auto'
@@ -111,6 +105,7 @@ alias scrux="screen -ls | grep main && urxvt -name screen -e screen -x main || u
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias ohshit="find ~/.mozilla/firefox/*.default/*.sqlite -exec sqlite3 {} 'VACUUM;' \;"
+alias djrep="grep -r --exclude=tags --exclude=PYSMELLTAGS"
 
 function search ()
 {

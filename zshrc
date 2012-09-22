@@ -51,6 +51,7 @@ PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin
 
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
+alias djrep="grep -r --exclude=tags --exclude=PYSMELLTAGS"
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #

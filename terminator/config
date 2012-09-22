@@ -11,7 +11,7 @@
     use_system_font = False
     palette = "#005a78:#bf5f4a:#cdca72:#c4a000:#7aa0b6:#75507b:#83b4b1:#d3d7cf:#96947c:#cc6863:#87a980:#fce94f:#7fa5bb:#ad7fa8:#66aab9:#eeeeec"
     foreground_color = "#c3c7c4"
-    font = Monaco for Powerline 10
+    font = Monaco for Powerline 9
     background_color = "#27292c"
 [layouts]
   [[default]]
