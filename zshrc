@@ -53,6 +53,11 @@ alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias djrep="grep -r --exclude=tags --exclude=PYSMELLTAGS"
 
+if [ -e "$(which ls++)" ]; then
+    alias ls=ls++
+fi
+
+
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #
 # VirtualenvWrapper configuration
@@ -65,3 +70,9 @@ fi
 
 # RVM Configuration: Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+export PERL_LOCAL_LIB_ROOT="/home/strider/perl5";
+export PERL_MB_OPT="--install_base /home/strider/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/strider/perl5";
+export PERL5LIB="/home/strider/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:/home/strider/perl5/lib/perl5";
+export PATH="/home/strider/perl5/bin:$PATH";
