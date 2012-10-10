@@ -397,7 +397,7 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_jump=0
 
 " json formating
-" map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " Toggle NerdTree
 map <silent> <F2> :bd<CR>

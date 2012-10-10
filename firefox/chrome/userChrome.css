@@ -1,0 +1,658 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/************************ DO NOT remove the Above line  **********************/
+/************************ Add USER code BELLOW this line *********************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************ Add USER code ABOVE this line *********************/
+    /* Blank background before clicked link page loads....
+    see userContent.css for blank tab and initial Firefox startup blank
+    before homepage loads */
+    tabbrowser tabpanels {
+    background-color: rgb(32,32,32) !important;
+    }
+
+/* NavBar */
+
+#navigator-toolbox > toolbar:not(:-moz-lwtheme):not(#toolbar-menubar):not(#TabsToolbar) {
+  -moz-appearance: none !important;
+  background-color:rgb(32,32,32) !important;
+}
+
+#nav-bar:not(:-moz-lwtheme),
+#nav-bar[collapsed=true] + toolbar:not(:-moz-lwtheme),
+#nav-bar[collapsed=true] + #customToolbars + #PersonalToolbar:not(:-moz-lwtheme),
+#nav-bar[tabsontop=true],
+#nav-bar[tabsontop=true][collapsed=true]:not([customizing]) + toolbar,
+#nav-bar[tabsontop=true][collapsed=true]:not([customizing]) + #customToolbars + #PersonalToolbar {
+  background:  rgb(32,32,32)!important;
+  background-image: -moz-linear-gradient(rgba(0,0,0,.0), rgba(0,0,0,0.12) 51%, rgba(0,0,0,0.3)) !important;
+	/*border-top: 1px solid rgba(255,255,255,0.11) !important;*/
+box-shadow: 0px -1px 0 rgb(82,82,82) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.4) !important;
+}
+
+/* Restyle bookmark bars -- tabs on top */
+#navigator-toolbox #PersonalToolbar {
+  background-image: -moz-linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,0.16) 90%, rgba(0,0,0,0.3));
+  box-shadow: 0 4px 2px rgba(0,0,0,0.12) inset,
+			0 -1px 0 rgba(0,0,0,0.46) inset !important;
+}
+
+/* Places toolbar *//* ::::: bookmark buttons ::::: */
+toolbarbutton.bookmark-item {
+  -moz-appearance: none !important;
+  border: 1px solid rgba(0,0,0,.0) !important;
+  border-radius: 2px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  color: #a6a6a6 !important;
+  text-shadow: none !important;
+ background: transparent
+			-moz-linear-gradient(rgba(0,0,0,.04), rgba(0,0,0,.04)) !important;
+}
+
+
+toolbarbutton.bookmark-item:hover {
+  color: #dbdbdb !important;
+  border: 1px solid rgba(0,0,0,.3) !important;
+background: transparent
+              -moz-linear-gradient(rgba(0,106,168,0.7), rgba(0,106,168,.68)) !important;
+    box-shadow: 1px 1px 0px rgba(255,255,255,.03)inset,
+			  -1px -1px 0px rgba(0,0,0,.03) inset !important;
+  -moz-transition: background-color .1s ease-in,
+                   border-color .2s ease-in,
+                   box-shadow .3s ease-in !important;
+}
+
+toolbarbutton.bookmark-item:hover:active:not([disabled="true"]),
+toolbarbutton.bookmark-item[open="true"] {
+  color: #ababab !important;
+  text-shadow: 0px 0px 3px rgba(0,106,168,0.85) !important;
+background: transparent
+              -moz-linear-gradient(rgba(0,106,168,0.3), rgba(0,106,168,.28)) !important;
+  border: 1px solid rgba(0,0,0,.7) !important;
+  box-shadow: 0px -1px 0px rgba(255,255,255,.03)inset,
+			  0 1px 3px rgba(0,0,0,.45) inset !important;
+}
+
+/* Location bar */
+
+
+
+#urlbar,
+.searchbar-textbox {
+  -moz-appearance: none !important;
+    padding: 1px 3px  !important;
+	border: 1px solid rgb(0,0,0) !important;
+  border-top: 1px solid rgb(11,11,11) !important;
+  border-left: 1px solid rgb(14,14,14) !important;
+  border-right: 1px solid rgb(14,14,14) !important;
+  border-bottom: 1px solid rgb(20,20,20) !important;
+    border-radius: 5px 17px 17px 5px !important;
+  background: #3c3c3c
+              -moz-linear-gradient(rgba(0,0,0,.16), 
+                                   rgba(0,0,0,.02)) !important;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.6) inset,
+			  0px 1px 0 rgba(255,255,255,.19) !important;
+}
+
+#urlbar:hover,
+.searchbar-textbox:hover
+{
+  background:  #424242
+              -moz-linear-gradient(rgba(0,0,0,.16), 
+                                   rgba(0,0,0,.02)) !important;
+  -moz-transition: .45s ease-in !important;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.6) inset,
+			  0px 1px 0 rgba(255,255,255,.21) !important;
+}
+
+#urlbar[focused="true"],
+.searchbar-textbox[focused="true"] {
+  border-top: 1px solid rgb(9,9,9) !important;
+  border-left: 1px solid rgb(12,12,12) !important;
+  border-right: 1px solid rgb(12,12,12) !important;
+  border-bottom: 1px solid rgb(18,18,18) !important;
+  background:  #4c4c4c
+              -moz-linear-gradient(rgba(0,0,0,.16), 
+                                   rgba(0,0,0,.02)) !important;
+  -moz-transition: .30s ease-in !important;
+    box-shadow: 0px 2px 4px  rgba(0,0,0,0.6) inset, 
+				0px 0px 2px 1px  rgba(0,106,168, 0.8) inset,
+			  0px 1px 0 rgba(255,255,255,.23) !important;
+}
+
+.searchbar-textbox[focused="true"] {
+  	color: #e1e1e1 !important;
+  }
+
+.urlbar-textbox-container {
+  -moz-appearance: none !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  margin-right: 2px !important;
+  color:#dbdbdb !important;
+}
+
+.urlbar-textbox-container:-moz-locale-dir(rtl) {
+  margin-right: 0px!important;
+  margin-left: 2px!important;
+}
+
+.urlbar-textbox-container[focused="true"] {
+  color: #ebebeb !important;
+}
+
+.urlbar-textbox-container:hover {
+ color: #e1e1e1 !important;
+}
+
+#page-proxy-favicon {
+  list-style-image: url(images/identity-icons-generic.png) !important;
+}
+
+#identity-box {
+  -moz-appearance: none !important;
+  background: transparent !important;
+  color: #ffffff!important;
+  border-right: 2px solid!important;
+  -moz-border-right-colors:    rgba(0, 0, 0, 0.32) rgba(255, 255, 255, 0.02)!important;
+  font-weight: bold!important;
+  border-radius: 4px 0px 0px 4px!important;
+  min-width:20px!important;
+  padding-left:2px!important;
+  padding-right:1px!important;
+  height:22px!important;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.75) !important;
+  background-image: -moz-linear-gradient(rgba(255,255,255,0.04),rgba(255,255,255,0.04)) !important;
+  -moz-transition: .45s ease-in !important;
+}
+
+/* combined go/reload/stop button in location bar */
+
+#urlbar > toolbarbutton {
+  -moz-appearance: none !important;
+  padding: 0 3px !important;
+  background-origin: border-box!important;
+  border: none!important;
+  border-left: 2px solid !important;
+  -moz-border-left-colors:    rgba(0, 0, 0, 0.32) rgba(255, 255, 255, 0.04)!important;
+  border-top-right-radius: 17px!important;
+  border-bottom-right-radius: 17px!important;
+    -moz-transition: .45s ease-in !important;
+}
+
+#urlbar > toolbarbutton:not([disabled]):active:hover {
+  background: rgba(0,0,0,0.36) !important;
+  margin-right: -2px !important;
+  margin-top: -1px !important;
+  margin-bottom: -1px !important;
+  padding-right: 5px !important;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+}
+
+#urlbar-reload-button:not([disabled]):hover {
+  background: rgba(0,148,235,0.4);
+    margin-right: -2px !important;
+  margin-top: -1px !important;
+  margin-bottom: -1px !important;
+  padding-right: 5px !important;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  }
+
+#urlbar-go-button:hover {
+  background: rgba(0,148,235,0.3);
+    margin-right: -2px !important;
+  margin-top: -1px !important;
+  margin-bottom: -1px !important;
+  padding-right: 5px !important;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  }
+
+#urlbar-stop-button:hover {
+  background: rgba(125,1,38, 0.6)!important;
+    margin-right: -2px !important;
+  margin-top: -1px !important;
+  margin-bottom: -1px !important;
+  padding-right: 5px !important;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  }
+
+/* Tabstrip */
+
+#TabsToolbar[tabsontop=true]:not(:-moz-lwtheme) {
+  -moz-appearance: none !important;
+  color: -moz-menubartext !important;
+  background: url("images/ToolbarDark.png") repeat-x !important;
+    border-width: 1px 0px 0px 0px !important;
+    border-radius: 2px !important;
+    border-style: solid !important;
+    border-top-color: rgb(26,26,26) !important;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.1) inset !important;
+  text-shadow: 0px -1px 0px rgba(0,0,0,0.36) !important;
+}
+
+.tabbrowser-tab:hover {
+color: rgb(0,175,255) !important;
+background-image: none !important;
+}
+
+.tabbrowser-tab[selected="true"]{
+background-image: -moz-linear-gradient(rgb(22,64,89)1px, rgb(28,49,61) 3px, rgb(34,34,34) 6px, rgb(34,34,34) 18px, rgb(32,32,32)) !important;
+}
+
+.tabbrowser-tab[selected="true"]:hover {
+color: rgb(0,175,255) !important;
+background-image: -moz-linear-gradient(rgb(31,90,125)1px, rgb(39,69,85) 3px, rgb(40,40,40) 6px, rgb(38,38,38) 18px, rgb(32,32,32)) !important;
+}
+
+.tabs-newtab-button {
+background-image: -moz-linear-gradient(rgb(0,148,235)1px, rgb(0,127,202) 3px, rgb(0,106,168) 6px, rgb(0,106,168) 18px, rgb(0,69,109)) !important;
+}
+
+.tab-throbber[progress] {
+  list-style-image: url("images/loading.png") !important;
+}
+
+.tab-throbber {
+list-style-image: url("images/connecting.png") !important;
+}
+
+/* primary toolbar buttons */
+
+#back-button {
+  list-style-image: url("moz-icon://stock/gtk-go-back-ltr?size=toolbar");
+  -moz-appearance: none !important;    
+  border-radius: 17px;
+  padding: 0;
+  position: relative !important;
+  z-index: 1 !important;
+  margin-top: 2px!important;
+  margin-bottom: 2px !important;
+  margin-left: 2px!important;
+  margin-right: -6px !important;
+  background-image: -moz-linear-gradient(rgba(97,97,97,.65), rgba(97,97,97,.3) 49%, 
+               rgba(70,70,70,.36) 51%, rgba(70,70,70,.28));
+  background-color: rgb(12,12,12);
+  border: 1px solid #000000;
+  box-shadow:  0px 1px 1px rgba(255, 255, 255, 0.18) inset, 0pt 1px 0pt rgba(255, 255, 255, 0.14);
+  -moz-transition: .30s ease-in !important;
+}
+
+#back-button:not([disabled]):hover {
+  list-style-image: url("moz-icon://stock/gtk-go-back-ltr?size=toolbar");
+  background-color: rgb(0,106,168);
+  background-image: -moz-linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.04) 49%, 
+               rgba(0,0,0,.16) 51%, rgba(0,0,0,.08));
+  box-shadow:  0px 1px 1px rgba(255, 255, 255, 0.21) inset, 0pt 1px 0pt rgba(255, 255, 255, 0.18);             
+}
+
+#back-button:not([disabled]):active,
+#back-button:not([disabled]):active:hover {
+  list-style-image: url("moz-icon://stock/gtk-go-back-ltr?size=toolbar");
+  background-color: rgb(0,106,168);
+  background-image: -moz-linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.16) 49%, 
+               rgba(0,0,0,.08) 51%, rgba(0,0,0,.16))!important;
+  box-shadow:  0px 1px 3px rgba(0, 0, 0, 0.26) inset, 0pt 1px 0pt rgba(255, 255, 255, 0.18);             
+}
+
+#back-button[disabled="true"] {
+  list-style-image: url("moz-icon://stock/gtk-go-back-ltr?size=toolbar&state=disabled");
+  background-color: rgb(32,32,32);
+  background-image: -moz-linear-gradient(rgba(97,97,97,.45), rgba(97,97,97,.1) 49%, 
+               rgba(70,70,70,.16) 51%, rgba(70,70,70,.08));
+}
+
+#forward-button,
+      window:not([chromehidden~=toolbar]) :-moz-any(#nav-bar[currentset*="unified-back-forward-button,urlbar-container"][mode=icons],                #nav-bar:not([currentset])[mode=icons])                 > #unified-back-forward-button > #forward-button {
+  -moz-appearance: none !important; 
+  list-style-image: url("moz-icon://stock/gtk-go-forward-ltr?size=toolbar");
+  -moz-margin-start: -5px !important;
+  border-radius: 0px 17px 17px 0px !important;
+  margin-top: 4px!important;
+  margin-bottom: 4px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-left: 10px !important;
+  padding-right: 3px !important;
+  background: rgba(12,12,12,1)
+              -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.12) 49%,
+			  rgba(255, 255, 255, 0.094) 51%, rgba(255, 255, 255, 0.05));
+  border: 1px solid #000000;
+  box-shadow:  0px 1px 1px rgba(255, 255, 255, 0.18) inset, 0pt 1px 0pt rgba(255, 255, 255, 0.1);
+  -moz-transition: .30s ease-in !important;
+}
+
+#forward-button:not([disabled]):hover {
+  list-style-image: url("moz-icon://stock/gtk-go-forward-ltr?size=toolbar");
+  background-color: rgb(0,106,168)!important;
+  background-image: -moz-linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.04) 49%, 
+               rgba(0,0,0,.16) 51%, rgba(0,0,0,.08))!important;
+  box-shadow:  0px 1px 1px rgba(255, 255, 255, 0.21) inset, 0pt 1px 0pt rgba(255, 255, 255, 0.18)!important;             
+}
+
+#forward-button:not([disabled]):active,
+#forward-button:not([disabled]):active:hover {
+  list-style-image: url("moz-icon://stock/gtk-go-forward-ltr?size=toolbar");
+  background-color: rgb(0,106,168)!important;
+  background-image: -moz-linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.16) 49%, 
+               rgba(0,0,0,.08) 51%, rgba(0,0,0,.16))!important;
+  box-shadow:  0px 1px 3px rgba(0, 0, 0, 0.26) inset, 0pt 1px 0pt rgba(255, 255, 255, 0.18)!important;            
+}
+
+#forward-button[disabled] {
+  list-style-image: url("moz-icon://stock/gtk-go-forward-ltr?size=toolbar&state=disabled");
+  background-color: rgb(32,32,32);
+  background-image: -moz-linear-gradient(rgba(97,97,97,.45), rgba(97,97,97,.1) 49%, 
+               rgba(70,70,70,.16) 51%, rgba(70,70,70,.08));
+}
+
+/******************************* Status panel ********************************/
+.statuspanel-label {
+  margin: 0!important;
+  padding: 2px 4px!important;
+  border: 1px none #6b6b6b!important;
+  border-top-style: solid;
+  color: #ababab!important;
+  text-shadow: none!important;
+  background-image: -moz-linear-gradient(rgb(68, 68, 68),rgb(62, 62, 62))!important;
+  box-shadow: 0px 0px 1px rgba(255,255,255,.15)inset, 0px 0px rgba(4, 4, 4, 1) inset!important;
+  color: #dbdbdb !important;
+}
+
+/************************* Text Input Boxes ***************************/
+
+textbox,
+.menulist-editable-box {
+  -moz-appearance: none !important;
+  border: 1px solid rgb(0,0,0) !important;
+  border-top: 1px solid rgb(11,11,11) !important;
+  border-left: 1px solid rgb(14,14,14) !important;
+  border-right: 1px solid rgb(14,14,14) !important;
+  border-bottom: 1px solid rgb(20,20,20) !important;  
+  background: #3c3c3c
+              -moz-linear-gradient(rgba(0,0,0,.16), 
+                                   rgba(0,0,0,.02)) !important;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.6) inset,
+			  0px 1px 0 rgba(255,255,255,.19) !important;
+}
+
+.numberbox-input-box,
+.spinnbuttons-box,
+.spinbuttons-button {
+  -moz-appearance: none !important;
+  background: transparent !important;
+  border: transparent !important;
+}
+
+.spinbuttons-button {
+  border-left: 2px solid !important;
+  -moz-border-left-colors:    rgba(0, 0, 0, 0.32) rgba(255, 255, 255, 0.04)!important;
+  } 
+
+textbox:not([disabled]):hover,
+.menulist-editable-box:not([disabled]):hover {
+  background:  #424242
+              -moz-linear-gradient(rgba(0,0,0,.16), 
+                                   rgba(0,0,0,.02)) !important;
+  -moz-transition: .45s ease-in !important;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.6) inset,
+			  0px 1px 0 rgba(255,255,255,.21) !important;
+}
+
+textbox[focused="true"],
+.menulist-editable-box[focused="true"] {
+  border-top: 1px solid rgb(9,9,9) !important;
+  border-left: 1px solid rgb(12,12,12) !important;
+  border-right: 1px solid rgb(12,12,12) !important;
+  border-bottom: 1px solid rgb(18,18,18) !important;
+  background:  #4c4c4c
+              -moz-linear-gradient(rgba(0,0,0,.16), 
+                                   rgba(0,0,0,.02)) !important;
+  -moz-transition: .30s ease-in !important;
+  box-shadow: 0px 2px 4px  rgba(0,0,0,0.6) inset, 
+				0px 0px 2px 1px  rgba(0,106,168, 0.8) inset,
+			  0px 1px 0 rgba(255,255,255,.23) !important;
+}
+
+textbox[disabled="true"],
+.menulist-editable-box[disabled="true"] {
+  border-top: 1px solid rgb(9,9,9) !important;
+  border-left: 1px solid rgb(12,12,12) !important;
+  border-right: 1px solid rgb(12,12,12) !important;
+  border-bottom: 1px solid rgb(18,18,18) !important;
+  background:  #2f2f2f !important;
+  box-shadow: 0px 1px 0 rgba(255,255,255,.23) !important;
+}
+
+.spinbuttons-up {
+  -moz-appearance: none !important;
+  background-image: url("images/arrow-up.gif") !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+    background-color: transparent !important;
+}
+
+.spinbuttons-up:not([disabled]):hover,
+.spinbuttons-up:not([disabled]):active:hover {
+  background-image: url("images/arrow-up-hov.gif") !important;
+}
+
+.spinbuttons-up[disabled="true"] {
+  background-image: url("images/arrow-up-dis.gif") !important;
+}
+
+.spinbuttons-down {
+  -moz-appearance: none !important;
+  background-image: url("images/arrow-down.gif") !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+    background-color: transparent !important;
+}
+
+.spinbuttons-down:not([disabled]):hover,
+.spinbuttons-down:not([disabled]):active:hover {
+  background-image: url("images/arrow-down-hov.gif") !important;
+}
+
+.spinbuttons-down[disabled="true"] {
+  background-image: url("images/arrow-down-dis.gif") !important;
+}
+
+/*************************** Tree Columns *****************************/
+tree {
+  -moz-appearance: none !important;
+  color: #cbcbcb !important;
+  background-color: rgb(32,32,32) !important; 
+  }
+  
+treechildren:not(.autocomplete-treebody)::-moz-tree-row {
+  -moz-appearance: none !important;
+  background-color: rgb(32,32,32) !important;
+  border-bottom: 2px solid !important;
+  -moz-border-bottom-colors: rgb(45,45,45) rgb(22,22,22) !important;
+}
+   
+treechildren::-moz-tree-row {
+  border: 1px solid transparent !important;
+  min-height: 20px !important;
+  height: 1.5em !important;				
+}  
+treechildren:not(.autocomplete-treebody)::-moz-tree-row(multicol, even),
+treechildren:not(.autocomplete-treebody)::-moz-tree-row(multicol, odd) {
+  -moz-appearance: none !important;
+  background-color: transparent !important;
+}
+
+treechildren:not(.autocomplete-treebody)::-moz-tree-row(selected) {
+  background: rgb(0,81,128) !important;
+  border-bottom: 1px solid rgba(0,0,0,.65)!important;
+}
+
+treechildren:not(.autocomplete-treebody)::-moz-tree-row(hover) {
+  background: -moz-linear-gradient(rgba(0,0,0, 0.18), rgba(0,0,0, 0.16) ) !important;
+}
+
+treechildren:not(.autocomplete-treebody)::-moz-tree-row(selected, hover) {
+  background: rgb(0,81,128) !important;
+  border-bottom: 1px solid rgba(0,0,0,.65)!important;
+}
+
+treechildren:not(.autocomplete-treebody)::-moz-tree-row(selected, focus){
+  background: #006AA8 !important;  
+  border-bottom: 1px solid rgba(0,0,0,.65)!important;
+}
+
+tree[seltype="text"] > treechildren::-moz-tree-cell-text(active, selected, focus),
+tree[seltype="cell"] > treechildren::-moz-tree-cell(active, selected, focus),
+treechildren:not(.autocomplete-treebody)::-moz-tree-row(selected, focus, hover) {
+  background: rgb(0,112,178) !important;
+}
+
+treechildren::-moz-tree-cell {
+  padding: 0px 2px 1px 2px !important; 
+}
+
+tree[seltype="text"] > treechildren::-moz-tree-cell-text(active, selected) ,
+tree[seltype="cell"] > treechildren::-moz-tree-cell(active, selected) {
+  background: rgb(0,81,128) !important;
+} 
+
+tree[seltype="cell"] > treechildren::-moz-tree-cell-text,
+tree[seltype="text"] > treechildren::-moz-tree-cell-text,
+treechildren::-moz-tree-cell-text {
+  color: #cbcbcb !important;
+}
+
+treechildren::-moz-tree-cell-text(hover) {
+  color: #dbdbdb !important;
+}
+
+tree[seltype="text"] > treechildren::-moz-tree-cell-text(active, selected) ,
+tree[seltype="cell"] > treechildren::-moz-tree-cell-text(active, selected) {
+  color: rgb(241,241,241)!important;
+}
+
+tree[seltype="text"] > treechildren::-moz-tree-cell-text(active, selected, focus),
+tree[seltype="cell"] > treechildren::-moz-tree-cell-text(active, selected, focus),
+treechildren::-moz-tree-cell-text(selected, focus),
+treechildren::-moz-tree-cell-text(hover, selected, focus) {
+  color: #ffffff !important;
+}
+
+tree[seltype="cell"] > treechildren::-moz-tree-cell(active, current, focus) {
+  border: 1px dotted #bbbbbb!important;
+}
+
+tree[seltype="text"] > treechildren::-moz-tree-cell-text(active, current, focus) {
+  border: 1px dotted #bbbbbb!important;
+}
+
+tree[seltype="cell"] > treechildren::-moz-tree-cell(active, selected, current, focus) {
+  border: 1px dotted #ebebeb!important;
+}
+
+tree[seltype="text"] > treechildren::-moz-tree-cell-text(active, selected, current, focus) {
+  border: 1px dotted #ebebeb!important;
+}
+
+tree[seltype="cell"] > treechildren::-moz-tree-line,
+tree[seltype="text"] > treechildren::-moz-tree-line,
+treechildren::-moz-tree-line {
+  border: 1px dotted #dbdbdb !important; 
+}
+
+tree[seltype="cell"] > treechildren::-moz-tree-line(active, selected, focus),
+treechildren::-moz-tree-line(selected, focus) {
+  border: 1px dotted #ffffff !important;
+}
+
+/************/
+treecol,
+treecolpicker {
+  -moz-appearance: none!important;
+  -moz-box-align: center!important;
+  -moz-box-pack: center!important;
+  border: 2px solid #3B495C!important;
+  -moz-border-top-colors: rgba(0,0,0,.6) rgba(255,255,255,0.08)!important;
+  -moz-border-left-colors: rgba(0,0,0,.6) rgba(255,255,255,0.06)!important;
+
+  border-bottom: 1px solid rgba(0,0,0,.65)!important;
+  border-right: 1px solid rgba(255,255,255,0.06)!important;
+  background: rgb(28,28,28) -moz-linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,0.2) 51%, rgba(0,0,0,0.4)) !important;
+  color: #ababab!important;
+  text-shadow: 0 -1px 0px rgba(14,28,45,0.85);
+  padding: 0px 2px!important;
+  font-weight: bold!important;
+}
+
+treecol:first-of-type,
+treecolpicker:first-of-type {
+  border-left: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+treecol:last-of-type,
+treecolpicker:last-of-type {
+  border-right: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+treecol:hover,
+treecolpicker:hover {
+  color: #ffffff!important;
+  -moz-transition: color .4s ease-in !important;
+}
+
+treecol:hover:active,
+treecolpicker:hover:active {
+  background: rgb(28,28,28) -moz-linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,0.2) 51%, rgba(0,0,0,0.65)) !important;
+  color: #7b7b7b!important;
+  -moz-transition: .2s ease-in !important;
+  }
+
+#threadTree treechildren:not(.autocomplete-treebody){
+  background: rgb(32,32,32)!important;
+  border-radius: 0px !important;
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5) inset!important;
+}
+
+/****************************   Headers  *****************************/
+/* Headers  */
+dialogheader {
+    border: 1px solid rgba(0,0,0,0.65) !important;
+    opacity: .2px !important;
+}
+
+.dialogheader-title {
+  color: #dbdbdb !important;
+  font-weight: bold !important;
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.22) !important;
+}
+
+caption {
+  color: rgb(0,148,235) !important;
+  text-shadow: 0px -1px 0px rgba(0,0,0,0.4) !important; 
+  } 
+  
+notification {
+  background:  -moz-linear-gradient(rgb(100,100,100), rgb(68,68,68));
+  }
+
+
+
+
+

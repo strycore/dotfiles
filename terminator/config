@@ -13,7 +13,7 @@
     background_type = transparent
     use_system_font = False
     foreground_color = "#c3c7c4"
-    font = Monaco for Powerline Bold 9
+    font = Monaco for Powerline Bold 10
     background_color = "#27292c"
 [layouts]
   [[default]]
