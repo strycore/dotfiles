@@ -164,7 +164,6 @@ set noerrorbells  " No noise
 set nobackup    " Backup files are sooo 90's
 set noswapfile  " Swap files are very annoying
 set lazyredraw
-set guioptions+=b
 
 set cursorline
 set number
@@ -335,7 +334,7 @@ endif
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
     set guifont=Monaco\ for\ Powerline\ 9
-    set guioptions=ecmg "console dialogs, do not show menu and toolbar
+    "set guioptions=agim
     set showtabline=2
     set lines=65
     set columns=120
@@ -430,13 +429,25 @@ set path=$PWD/**
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 map <Leader>d :DiffOrig<CR>
 
+
 if has('python')
-    python << EOF
-import os
-import sys
-import vim
-for p in sys.path:
-    if os.path.isdir(p):
-        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
+
+function! FixVimPythonSysModule()
+  """ Certain modules which rely on sys.real_prefix to exist will raise
+  """ AttributeErrors on import, and subsequently fail to be imported
+  """ correctly. Likewise, pythoncomplete won't work correctly when
+  """ it fails to import a module for whatever reason. This function
+  """ monkey-patches the sys module to make sure it has a useful
+  """ 'real_prefix' attribute.
+python << EOL
+import os, sys
+from distutils.sysconfig import get_python_lib
+if not hasattr(sys, 'real_prefix'):
+    sys.real_prefix = os.path.dirname(get_python_lib())
+EOL
+endfunction
+call FixVimPythonSysModule()
+
 endif
+
+
