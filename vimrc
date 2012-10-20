@@ -95,6 +95,42 @@
 " == General & interface
 
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'molokai'
+Bundle 'vim-less'
+Bundle 'mattn/zencoding-vim'
+Bundle 'tpope/vim-surround'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'mileszs/ack.vim'
+Bundle 'indentpython'
+Bundle 'tpope/vim-rails'
+Bundle 'kien/ctrlp.vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'honza/snipmate-snippets'
+Bundle 'nvie/vim-flake8'
+Bundle 'majutsushi/tagbar'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'The-NERD-tree'
+Bundle 'walm/jshint.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'scrooloose/syntastic'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'reinh/vim-makegreen'
+Bundle 'strycore/django.vim'
+
+
+filetype plugin indent on
+
+
+
 set history=1000
 set undolevels=1000
 set clipboard+=unnamed
@@ -241,11 +277,21 @@ map :w<<CR> :w<CR>
 inoremap <silent> <C-Backspace> <C-w>
 inoremap <silent> <C-z> <Esc>:undo<CR>i
 
-filetype plugin on
 filetype indent on
-
-
+"
+" Add the virtualenv's site-packages to vim path
 if has('python')
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+
 function! FixVimPythonSysModule()
 """ Certain modules which rely on sys.real_prefix to exist will raise
 """ AttributeErrors on import, and subsequently fail to be imported
@@ -261,8 +307,13 @@ if not hasattr(sys, 'real_prefix'):
 EOL
 endfunction
 call FixVimPythonSysModule()
+
 endif
 
+" Load up virtualenv's vimrc if it exists
+if filereadable($VIRTUAL_ENV . '/.vimrc')
+    source $VIRTUAL_ENV/.vimrc
+endif
 
 set completeopt=menuone,longest,preview
 
@@ -290,11 +341,6 @@ if has('autocmd')
 
     " Remove trailing whitespace on save
     autocmd BufWritePre *.py :%s/\s\+$//e
-    "if !empty($VIRTUAL_ENV)
-    "    autocmd BufRead *.py set makeprg=pylint\ --init-hook=\"import\ os;execfile(os.environ[\'VIRTUAL_ENV']+\'/bin/activate_this.py\'\,\ dict(__file__=os.environ[\'VIRTUAL_ENV\']+\'/bin/activate_this.py\'))\"\ --reports=n\ --output-format=parseable\ %:p
-    "else
-    "autocmd BufRead *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-    "endif
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
     autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
     autocmd BufRead *.js set makeprg=jshint\ %
@@ -342,7 +388,7 @@ if has('autocmd')
         autocmd FileType python set ft=python.django " For SnipMate
         autocmd FileType html set ft=htmldjango.html " For SnipMate
         " Use django unittest compiler
-        compiler django
+        autocmd BufNewFile,BufRead *.py compiler django
         " Run unittest with the current editing app
         nmap <Leader>t :call DjangoMakeGreen("%")<CR>
         " Run unittest with whole project
@@ -455,21 +501,4 @@ map <Leader>d :DiffOrig<CR>
 
 
 
-" Add the virtualenv's site-packages to vim path
-if has('python')
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-endif
 
-" Load up virtualenv's vimrc if it exists
-if filereadable($VIRTUAL_ENV . '/.vimrc')
-    source $VIRTUAL_ENV/.vimrc
-endif
