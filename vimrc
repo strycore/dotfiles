@@ -225,6 +225,7 @@ map <silent> <S-F8> :w<CR>:make<CR>:cw<CR>
 " Rope configuration
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
+map <leader>m :RopeExtractMethod<CR>
 
 " CtrlP configuration
 let g:ctrlp_working_path_mode = 2
