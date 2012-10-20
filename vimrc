@@ -41,14 +41,6 @@
 " https://github.com/mitechie/pyvim
 
 "
-" Plugins
-" -------
-" For automatic plugin installation, see the vim-setup script
-"
-" NERDTree
-" ack-grep
-"
-"
 " Extarnal programs
 " -----------------
 "
@@ -102,34 +94,48 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'molokai'
 Bundle 'vim-less'
+Bundle 'AutoComplPop'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-surround'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'indentpython'
 Bundle 'tpope/vim-rails'
-Bundle 'kien/ctrlp.vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'honza/snipmate-snippets'
 Bundle 'nvie/vim-flake8'
 Bundle 'majutsushi/tagbar'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'The-NERD-tree'
 Bundle 'walm/jshint.vim'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'scrooloose/syntastic'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'reinh/vim-makegreen'
 Bundle 'strycore/django.vim'
 
+Bundle 'strycore/molokai'
+
+Bundle 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
+Bundle 'kien/ctrlp.vim'
+let g:ctrlp_working_path_mode = 2
+
+Bundle 'The-NERD-tree'
+let g:NERDTreeWinSize = 25
+let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS']
+
+Bundle 'scrooloose/syntastic'
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_auto_jump=0
+
+Bundle 'Lokaltog/vim-powerline'
+let g:Powerline_symbols = 'fancy'
 
 filetype plugin indent on
-
-
 
 set history=1000
 set undolevels=1000
@@ -186,14 +192,8 @@ set gdefault  " Search all occurrences by default
 set wildmenu
 set wildmode=longest:full,list
 " Ignore these filenames during enhanced command line completion.
-set wildignore+=*.bak,*.class
-set wildignore+=*.aux,*.out,*.toc " LaTeX intermediate files
-set wildignore+=*.jpg,*.bmp,*.gif,*.png " binary images
-set wildignore+=*.luac " Lua byte code
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.pyc " Python byte code
-set wildignore+=*.spl " compiled spelling word lists
-set wildignore+=*.sw? " Vim swap files
+set wildignore+=*.bak,*.class,*.aux,*.out,*.toc,*.jpg,*.bmp,*.gif,*.png,*.luac
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.pyc,*.spl,*.sw?
 set title
 set novisualbell  " No blinking
 set noerrorbells  " No noise
@@ -217,7 +217,6 @@ let mapleader=","
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
 
-let g:Powerline_symbols = 'fancy'
 
 " Copy to clipboard
 map <leader>y "+y
@@ -246,11 +245,6 @@ let python_highlight_builtin_objs = 1
 let python_highlight_doctests = 1
 let python_highlight_string_templates = 1
 
-let g:pylint_onwrite = 1
-let g:pylint_show_rate = 1
-let g:pylint_cwindow = 1
-
-
 let php_sql_query=1
 let php_htmlInStrings=1
 let g:php_folding=2
@@ -263,11 +257,7 @@ map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 map <leader>m :RopeExtractMethod<CR>
 
-" CtrlP configuration
-let g:ctrlp_working_path_mode = 2
-
 """ Keybindings
-
 " Disable ex mode
 map Q <Nop>
 " Map :w< to :w because my fingers slip
@@ -316,90 +306,86 @@ if filereadable($VIRTUAL_ENV . '/.vimrc')
 endif
 
 set completeopt=menuone,longest,preview
-
 set omnifunc=syntaxcomplete#Complete
-if has('autocmd')
-    autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab "Makefiles require hard tabs
-    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 
-    autocmd FileType sh nmap <F10> :!. %<CR>
+autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab "Makefiles require hard tabs
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 
-    autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType sh nmap <F10> :!. %<CR>
 
-    autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType c set omnifunc=ccomplete#Complete
 
-    if filereadable('./PYSMELLTAGS')
-        autocmd FileType python setlocal omnifunc=pysmell#Complete
-    else
-        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    endif
-    autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
-    autocmd BufRead,BufNewFile *.wsgi setfiletype python
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
-    " Remove trailing whitespace on save
-    autocmd BufWritePre *.py :%s/\s\+$//e
-    autocmd BufRead *.py set errorformat=%f:%l:\ %m
-    autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
-    autocmd BufRead *.js set makeprg=jshint\ %
-    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
-    autocmd BufNewFile,BufRead *.coffee setfiletype coffee
-
-    autocmd BufRead *.coffee setfiletype coffee
-
-
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType html set equalprg=tidy\ -i\ -q
-
-    autocmd FileType html nmap <F10> :!firefox %<CR>
-
-    autocmd BufNewFile,BufRead *.rss setfiletype xml
-
-    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-    autocmd FileType css set equalprg=csstidy
-    autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-
-    autocmd FileType less set omnifunc=csscomplete#CompleteCSS
-    autocmd BufNewFile,BufRead *.less setfiletype less
-    autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
-    "autocmd BufWritePost *.less silent exe  '!lessc ' . shellescape(expand('<afile>')) . ' ' . shellescape(expand('<afile>:r')) . '.css'
-
-    autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-    autocmd FileType php set ft=php.html
-    autocmd FileType php set equalprg=php_beautifier\ -l\ \"Pear()\ ArrayNested()\"\ -s2
-
-    autocmd FileType php noremap <C-M> :w!<CR>:!php %<CR> " Run script with php-cli
-    autocmd FileType php noremap <S-F8> :!php -l %<CR> " php syntax check
-    autocmd FileType php noremap <F8> :!phpcs %<CR>  " php CodeSniffer
-
-    " Shortcuts to php-docs
-    autocmd FileType php inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
-    autocmd FileType php nnoremap <C-D> :call PhpDocSingle()<CR>
-    autocmd FileType php vnoremap <C-D> :call PhpDocRange()<CR>
-
-    autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-    autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-    autocmd BufRead,BufNewFile *.vala setfiletype vala
-    autocmd BufRead,BufNewFile *.vapi setfiletype vala
-    if filereadable('./manage.py')
-        autocmd FileType python set ft=python.django " For SnipMate
-        autocmd FileType html set ft=htmldjango.html " For SnipMate
-        " Use django unittest compiler
-        autocmd BufNewFile,BufRead *.py compiler django
-        " Run unittest with the current editing app
-        nmap <Leader>t :call DjangoMakeGreen("%")<CR>
-        " Run unittest with whole project
-        nmap <Leader>T :call DjangoMakeGreen(".")<CR>
-    endif
-    autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
-    autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
-    " Closes the Omni-Completion tip window when a selection is made
-    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+if filereadable('./PYSMELLTAGS')
+    autocmd FileType python setlocal omnifunc=pysmell#Complete
+else
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 endif
+autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
+autocmd BufRead,BufNewFile *.wsgi setfiletype python
+
+" Remove trailing whitespace on save
+autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufRead *.py set errorformat=%f:%l:\ %m
+autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
+if filereadable('./manage.py')
+    autocmd FileType python set ft=python.django " For SnipMate
+    autocmd FileType html set ft=htmldjango.html " For SnipMate
+    " Use django unittest compiler
+    autocmd BufNewFile,BufRead *.py compiler django
+    " Run unittest with the current editing app
+    nmap <Leader>t :call DjangoMakeGreen("%")<CR>
+    " Run unittest with whole project
+    nmap <Leader>T :call DjangoMakeGreen(".")<CR>
+endif
+autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
+
+autocmd BufRead *.js set makeprg=jshint\ %
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
+
+autocmd BufNewFile,BufRead *.coffee setfiletype coffee
+autocmd BufRead *.coffee setfiletype coffee
+
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html set equalprg=tidy\ -i\ -q
+
+autocmd FileType html nmap <F10> :!firefox %<CR>
+
+autocmd BufNewFile,BufRead *.rss setfiletype xml
+
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType css set equalprg=csstidy
+autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+
+autocmd FileType less set omnifunc=csscomplete#CompleteCSS
+autocmd BufNewFile,BufRead *.less setfiletype less
+autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
+"autocmd BufWritePost *.less silent exe  '!lessc ' . shellescape(expand('<afile>')) . ' ' . shellescape(expand('<afile>:r')) . '.css'
+
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType php set ft=php.html
+autocmd FileType php set equalprg=php_beautifier\ -l\ \"Pear()\ ArrayNested()\"\ -s2
+autocmd FileType php noremap <C-M> :w!<CR>:!php %<CR> " Run script with php-cli
+autocmd FileType php noremap <S-F8> :!php -l %<CR> " php syntax check
+autocmd FileType php noremap <F8> :!phpcs %<CR>  " php CodeSniffer
+" Shortcuts to php-docs
+autocmd FileType php inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
+autocmd FileType php nnoremap <C-D> :call PhpDocSingle()<CR>
+autocmd FileType php vnoremap <C-D> :call PhpDocRange()<CR>
+
+autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+autocmd BufRead,BufNewFile *.vala setfiletype vala
+autocmd BufRead,BufNewFile *.vapi setfiletype vala
+autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
+" Closes the Omni-Completion tip window when a selection is made
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
@@ -449,22 +435,6 @@ imap <C-space> <C-x><C-o>
 " Tagbar configuration
 map <silent> <F4> :TagbarToggle<CR>
 
-let g:NERDTreeWinSize = 25
-let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS']
-
-
-" SnipMate config
-let g:snips_author = 'Mathieu Comandon'
-
-" Supertab configuration
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-" Syntastic configuration
-let g:syntastic_check_on_open=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_auto_jump=0
-
 " json formating
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
@@ -479,17 +449,7 @@ map <silent> <F6> :bnext<CR>
 " Toggle paste mode
 set pastetoggle=<F7>
 
-" Lusty juggler config
-let g:LustyJugglerKeyboardLayout = "azerty"
-let g:LustyJugglerAltTabMode = 1
-noremap <silent> <Leader>s :LustyJuggler<CR>
 
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-
-"Shortcut to auto indent entire file
-nmap <F9> 1G=G
-imap <F9> <ESC>1G=Ga
 
 " Save file with sudo
 cmap w!! w !sudo tee % > /dev/null
@@ -498,7 +458,3 @@ set path=$PWD/**
 
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 map <Leader>d :DiffOrig<CR>
-
-
-
-
