@@ -79,3 +79,12 @@
 [submodule "vim/bundle/jedi-vim"]
 	path = vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "vim/bundle/vim-makegreen"]
+	path = vim/bundle/vim-makegreen
+	url = https://github.com/reinh/vim-makegreen.git
+[submodule "vim/bundle/vim-nosecompiler"]
+	path = vim/bundle/vim-nosecompiler
+	url = https://github.com/olethanh/Vim-nosecompiler.git
+[submodule "vim/bundle/djangocompiler.vim"]
+	path = vim/bundle/djangocompiler.vim
+	url = https://github.com/lambdalisue/django.vim.git

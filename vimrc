@@ -245,6 +245,25 @@ filetype plugin on
 filetype indent on
 
 
+if has('python')
+function! FixVimPythonSysModule()
+""" Certain modules which rely on sys.real_prefix to exist will raise
+""" AttributeErrors on import, and subsequently fail to be imported
+""" correctly. Likewise, pythoncomplete won't work correctly when
+""" it fails to import a module for whatever reason. This function
+""" monkey-patches the sys module to make sure it has a useful
+""" 'real_prefix' attribute.
+python << EOL
+import os, sys
+from distutils.sysconfig import get_python_lib
+if not hasattr(sys, 'real_prefix'):
+    sys.real_prefix = os.path.dirname(get_python_lib())
+EOL
+endfunction
+call FixVimPythonSysModule()
+endif
+
+
 set completeopt=menuone,longest,preview
 
 set omnifunc=syntaxcomplete#Complete
@@ -271,15 +290,13 @@ if has('autocmd')
 
     " Remove trailing whitespace on save
     autocmd BufWritePre *.py :%s/\s\+$//e
-    if !empty($VIRTUAL_ENV)
-        autocmd BufRead *.py set makeprg=pylint\ --init-hook=\"import\ os;execfile(os.environ[\'VIRTUAL_ENV']+\'/bin/activate_this.py\'\,\ dict(__file__=os.environ[\'VIRTUAL_ENV\']+\'/bin/activate_this.py\'))\"\ --reports=n\ --output-format=parseable\ %:p
-    else
-        autocmd BufRead *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-    endif
+    "if !empty($VIRTUAL_ENV)
+    "    autocmd BufRead *.py set makeprg=pylint\ --init-hook=\"import\ os;execfile(os.environ[\'VIRTUAL_ENV']+\'/bin/activate_this.py\'\,\ dict(__file__=os.environ[\'VIRTUAL_ENV\']+\'/bin/activate_this.py\'))\"\ --reports=n\ --output-format=parseable\ %:p
+    "else
+    "autocmd BufRead *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+    "endif
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
     autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
-    "autocmd BufWritePost *.py call Flake8()
-    autocmd BufRead *.py nmap <F10> :!python %<CR>
     autocmd BufRead *.js set makeprg=jshint\ %
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
@@ -324,6 +341,12 @@ if has('autocmd')
     if filereadable('./manage.py')
         autocmd FileType python set ft=python.django " For SnipMate
         autocmd FileType html set ft=htmldjango.html " For SnipMate
+        " Use django unittest compiler
+        compiler django
+        " Run unittest with the current editing app
+        nmap <Leader>t :call DjangoMakeGreen("%")<CR>
+        " Run unittest with whole project
+        nmap <Leader>T :call DjangoMakeGreen(".")<CR>
     endif
     autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
     autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
@@ -431,24 +454,22 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | di
 map <Leader>d :DiffOrig<CR>
 
 
+
+" Add the virtualenv's site-packages to vim path
 if has('python')
-
-function! FixVimPythonSysModule()
-  """ Certain modules which rely on sys.real_prefix to exist will raise
-  """ AttributeErrors on import, and subsequently fail to be imported
-  """ correctly. Likewise, pythoncomplete won't work correctly when
-  """ it fails to import a module for whatever reason. This function
-  """ monkey-patches the sys module to make sure it has a useful
-  """ 'real_prefix' attribute.
-python << EOL
-import os, sys
-from distutils.sysconfig import get_python_lib
-if not hasattr(sys, 'real_prefix'):
-    sys.real_prefix = os.path.dirname(get_python_lib())
-EOL
-endfunction
-call FixVimPythonSysModule()
-
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
 endif
 
-
+" Load up virtualenv's vimrc if it exists
+if filereadable($VIRTUAL_ENV . '/.vimrc')
+    source $VIRTUAL_ENV/.vimrc
+endif
