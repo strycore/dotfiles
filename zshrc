@@ -54,12 +54,11 @@ function gvim () { /usr/bin/gvim -f $* & }
 
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
-alias image_reduce="find . -size +2M -name "*.jpg" -exec convert -resize 33% {} {} \;"
+alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} {} \;"
 
 if [ -e "$(which ls++)" ]; then
     alias ls=ls++
 fi
-
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #
