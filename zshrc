@@ -54,7 +54,7 @@ function gvim () { /usr/bin/gvim -f $* & }
 
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
-alias djrep="grep -n -r --exclude=tags --exclude=\*.pyc --exclude=PYSMELLTAGS --exclude-dir=htmlcov"
+alias image_reduce="find . -size +2M -name "*.jpg" -exec convert -resize 33% {} {} \;"
 
 if [ -e "$(which ls++)" ]; then
     alias ls=ls++

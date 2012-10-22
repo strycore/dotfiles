@@ -34,28 +34,28 @@ then
 fi
 ctags -R -a --languages=python --python-kinds=-v .
 
-echo -ne "Building pysmell catalogs."
-
-if [[ ! -f PYSMELLTAGS.stdlib || -n "$(find . -maxdepth 1 -mmin +45 -name PYSMELLTAGS.stdlib)" ]]
-then
-    pysmell $VIRTUAL_ENV/lib/python2.7 -x tests -o PYSMELLTAGS.stdlib >/dev/null
-    echo -ne "."
-fi
-
-if [ -e $VIRTUAL_ENV/src   ]
-then
-    if [[ ! -f PYSMELLTAGS.src || -n "$(find . -maxdepth 1 -mmin +45 -name PYSMELLTAGS.src)" ]]
-    then
-        pysmell $VIRTUAL_ENV/src -x tests -o PYSMELLTAGS.src >/dev/null
-        echo -ne "."
-    fi
-fi
-if [[ ! -f PYSMELLTAGS || -n "$(find . -maxdepth 1 -mmin +45 -name PYSMELLTAGS)" ]]
-then
-    pysmell .
-    echo -ne '.'
-fi
-echo ' Done!'
+#echo -ne "Building pysmell catalogs."
+#
+#if [[ ! -f PYSMELLTAGS.stdlib || -n "$(find . -maxdepth 1 -mmin +45 -name PYSMELLTAGS.stdlib)" ]]
+#then
+#    pysmell $VIRTUAL_ENV/lib/python2.7 -x tests -o PYSMELLTAGS.stdlib >/dev/null
+#    echo -ne "."
+#fi
+#
+#if [ -e $VIRTUAL_ENV/src   ]
+#then
+#    if [[ ! -f PYSMELLTAGS.src || -n "$(find . -maxdepth 1 -mmin +45 -name PYSMELLTAGS.src)" ]]
+#    then
+#        pysmell $VIRTUAL_ENV/src -x tests -o PYSMELLTAGS.src >/dev/null
+#        echo -ne "."
+#    fi
+#fi
+#if [[ ! -f PYSMELLTAGS || -n "$(find . -maxdepth 1 -mmin +45 -name PYSMELLTAGS)" ]]
+#then
+#    pysmell .
+#    echo -ne '.'
+#fi
+#echo ' Done!'
 
 if [ -e manage.py ]
 then

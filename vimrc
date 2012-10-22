@@ -99,7 +99,7 @@ Bundle 'AutoComplPop'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'mileszs/ack.vim'
-Bundle 'indentpython'
+Bundle 'gg/python.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tlib_vim'
@@ -109,7 +109,6 @@ Bundle 'nvie/vim-flake8'
 Bundle 'majutsushi/tagbar'
 Bundle 'walm/jshint.vim'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'davidhalter/jedi-vim'
 Bundle 'reinh/vim-makegreen'
 Bundle 'strycore/django.vim'
 
@@ -135,6 +134,10 @@ let g:syntastic_auto_jump=0
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 
+Bundle 'davidhalter/jedi-vim'
+let g:jedi#show_function_definition = 0
+let g:jedi#popup_on_dot = 0
+
 filetype plugin indent on
 
 set history=1000
@@ -154,14 +157,10 @@ set showmatch
 
 syntax on
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
 " Color scheme
 set t_Co=256
 set background=dark
 colorscheme molokai
-
 
 " == Identation and tabs
 set smartindent
@@ -252,11 +251,6 @@ let g:php_folding=2
 map <silent> <S-F8> :w<CR>:make<CR>:cw<CR>
 " let g:molokai_original=1
 
-" Rope configuration
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
-map <leader>m :RopeExtractMethod<CR>
-
 """ Keybindings
 " Disable ex mode
 map Q <Nop>
@@ -320,11 +314,9 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
-if filereadable('./PYSMELLTAGS')
-    autocmd FileType python setlocal omnifunc=pysmell#Complete
-else
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-endif
+"if filereadable('./PYSMELLTAGS')
+    "autocmd FileType python setlocal omnifunc=pysmell#Complete
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
 autocmd BufRead,BufNewFile *.wsgi setfiletype python
 
@@ -392,8 +384,6 @@ if has("gui_running")
     set guifont=Monaco\ for\ Powerline\ 9
     "set guioptions=agim
     set showtabline=2
-    set lines=65
-    set columns=120
     set background=dark
     colorscheme molokai
 endif
@@ -448,8 +438,6 @@ map <silent> <F6> :bnext<CR>
 
 " Toggle paste mode
 set pastetoggle=<F7>
-
-
 
 " Save file with sudo
 cmap w!! w !sudo tee % > /dev/null
