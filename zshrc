@@ -63,7 +63,7 @@ fi
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #
 # VirtualenvWrapper configuration
-virtualenv=$(which virtualenvwrapper_lazy.sh)
+virtualenv=$(which virtualenvwrapper.sh)
 if [ "$virtualenv" != "" ]; then
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/Projects
