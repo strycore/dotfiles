@@ -52,6 +52,7 @@ PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin
 # Workaround for bug #776499
 function gvim () { /usr/bin/gvim -f $* & }
 
+alias ack="ack-grep"
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} {} \;"
