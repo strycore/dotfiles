@@ -198,7 +198,6 @@ set novisualbell  " No blinking
 set noerrorbells  " No noise
 set nobackup    " Backup files are sooo 90's
 set noswapfile  " Swap files are very annoying
-set lazyredraw
 
 set cursorline
 set number
