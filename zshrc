@@ -56,6 +56,21 @@ alias ack="ack-grep"
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} {} \;"
+alias epubcheck="java -jar /opt/epubcheck-3.0b5/epubcheck-3.0b5.jar"
+
+function deploy() {
+    cwd=$(pwd)
+    if [ ! -e fabfile.py ]; then
+        cd ..
+        if [ ! -e fabfile.py ]; then
+            echo "No fabfile found"
+            return -2
+        fi
+    fi
+    fab staging deploy --password="$(cat ~/.django.password)"
+    cd $cwd
+    unset $cwd
+}
 
 if [ -e "$(which ls++)" ]; then
     alias ls=ls++
@@ -73,12 +88,6 @@ fi
 
 # RVM Configuration: Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-export PERL_LOCAL_LIB_ROOT="/home/strider/perl5";
-export PERL_MB_OPT="--install_base /home/strider/perl5";
-export PERL_MM_OPT="INSTALL_BASE=/home/strider/perl5";
-export PERL5LIB="/home/strider/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:/home/strider/perl5/lib/perl5";
-export PATH="/home/strider/perl5/bin:$PATH";
 
 export PERL_LOCAL_LIB_ROOT="/home/strider/perl5";
 export PERL_MB_OPT="--install_base /home/strider/perl5";
