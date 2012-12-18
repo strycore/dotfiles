@@ -10,10 +10,14 @@
 
 [push]
     default = matching
+
 [core]
     editor = vim
 	excludesfile = /home/mathieu/.gitignore_global
+
 [alias]
-    st = status
+    st = status -sb
     pul = pull
     psh = push
+    undo = reset --soft HEAD^
+    who = shortlog -sn
