@@ -95,7 +95,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'vim-less'
-Bundle 'AutoComplPop'
+Bundle 'ervandew/supertab'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'mileszs/ack.vim'
@@ -115,8 +115,7 @@ Bundle 'strycore/django.vim'
 Bundle 'strycore/molokai'
 
 Bundle 'nathanaelkane/vim-indent-guides'
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size = 4
 
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 2
@@ -135,8 +134,8 @@ Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 
 Bundle 'davidhalter/jedi-vim'
-let g:jedi#show_function_definition = 0
-let g:jedi#popup_on_dot = 0
+let g:jedi#show_function_definition = 1
+let g:jedi#popup_on_dot = 1
 
 filetype plugin indent on
 
@@ -298,7 +297,7 @@ if filereadable($VIRTUAL_ENV . '/.vimrc')
     source $VIRTUAL_ENV/.vimrc
 endif
 
-set completeopt=menuone,longest,preview
+set completeopt=menu,longest,preview
 set omnifunc=syntaxcomplete#Complete
 
 autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab "Makefiles require hard tabs
@@ -380,7 +379,8 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=Monaco\ for\ Powerline\ 9
+    "set guifont=Monaco\ for\ Powerline\ 9
+    set guifont=Menlo\ for\ Powerline\ 10
     "set guioptions=agim
     set showtabline=2
     set background=dark
