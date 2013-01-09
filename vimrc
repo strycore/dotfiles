@@ -312,8 +312,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
-"if filereadable('./PYSMELLTAGS')
-    "autocmd FileType python setlocal omnifunc=pysmell#Complete
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
 autocmd BufRead,BufNewFile *.wsgi setfiletype python
@@ -418,8 +416,8 @@ inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
 " Remap autocompletion to Ctrl-Space
-inoremap <Nul> <C-x><C-o>
-imap <C-space> <C-x><C-o>
+"inoremap <Nul> <C-x><C-o>
+"imap <C-space> <C-x><C-o>
 
 " Tagbar configuration
 map <silent> <F4> :TagbarToggle<CR>
