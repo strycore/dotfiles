@@ -95,6 +95,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'vim-less'
+Bundle 'AutoComplPop'
 Bundle 'ervandew/supertab'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-surround'
@@ -135,7 +136,7 @@ let g:Powerline_symbols = 'fancy'
 
 Bundle 'davidhalter/jedi-vim'
 let g:jedi#show_function_definition = 1
-let g:jedi#popup_on_dot = 1
+let g:jedi#popup_on_dot = 0
 
 filetype plugin indent on
 
