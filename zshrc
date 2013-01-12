@@ -46,6 +46,23 @@ source $ZSH/oh-my-zsh.sh
 # Disable autocorrect
 unsetopt correct_all
 
+
+
+function powerline_precmd() {
+  export PS1="$(~/bin/powerline-bash.py $? --shell zsh)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+install_powerline_precmd
+
 # Customize to your needs...
 PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
