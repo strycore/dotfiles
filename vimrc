@@ -113,7 +113,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'reinh/vim-makegreen'
 Bundle 'strycore/django.vim'
 
-Bundle 'strycore/molokai'
+Bundle 'tomasr/molokai'
 
 Bundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 4
