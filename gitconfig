@@ -21,3 +21,4 @@
     psh = push
     undo = reset --soft HEAD^
     who = shortlog -sn
+    gol = log --pretty=format:\"%h %an %ad %s\" --abbrev-commit --date=short 
