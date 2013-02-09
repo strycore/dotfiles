@@ -98,8 +98,7 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_jump=0
 
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'fancy'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 Bundle 'davidhalter/jedi-vim'
 let g:jedi#show_function_definition = 0
@@ -113,7 +112,6 @@ set clipboard+=unnamed
 
 set showcmd
 set showmode
-set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
 set viminfo='100,f1,:1000,/1000,%  " big viminfo :)
 set mouse=a
 set cmdheight=2     " Make command line 2 lines high
@@ -138,7 +136,6 @@ set shiftround
 set expandtab
 set backspace=indent,eol,start
 
-set linespace=4
 set ruler
 set hidden     "don't whine when trying to move away from an unsaved buffer
 
