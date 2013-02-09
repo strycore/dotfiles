@@ -4,18 +4,6 @@
 " This file is under a WTFPL License :
 " http://sam.zoy.org/wtfpl/
 "
-" You can get the latest version of this file at:
-" http://github.com/strycore/scripts/blob/master/vimrc
-"
-" One day this vimrc file will be the best vimrc EVAR!
-" Right now it just needs a lot of work done.
-"
-" This vimrc is optimised for :
-" - PHP and symfony
-" - Javascript, CSS, HTML
-" - Python
-" - Bash
-"
 " Inspirations:
 " How I boosted my Vim (nvie)
 " http://nvie.com/posts/how-i-boosted-my-vim/
@@ -24,37 +12,22 @@
 " Hacking Vim – The Ultimate Vimrc
 " http://www.jonlee.ca/hacking-vim-the-ultimate-vimrc/
 "
-
 " Python and vim: Make your own IDE
 " http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/
-
+"
 " Vim as a Python IDE
 " http://code.google.com/p/trespams-vim/
-
+"
 " Howto setup vim ide for php development from @hameedullah
 " http://hameedullah.com/howto-setup-vim-ide-for-php-development.html
-
+"
 " gmarik's vimrc
 " https://github.com/gmarik/vimfiles/blob/master/vimrc
-
+"
 " Rick Harding (mitechie)
 " https://github.com/mitechie/pyvim
-
 "
-" Extarnal programs
-" -----------------
 "
-"  These are needed by this vim config
-"
-"  tidy : apt-get install tidy
-"  ctags : apt-get install ctags
-"  json_xs : http://search.cpan.org/dist/JSON-XS/
-"
-"  may include in the near future:
-"
-"  PHP_Beautifier : pear install PHP_Beautifier-0.1.15
-"
-
 " Function keys:
 " F1:  Help
 " F2:  Close buffer
@@ -78,12 +51,6 @@
 " "+y  copy to system clipboard
 " <Shift>Ins paste from system clipboard
 "
-" TODO List
-"
-" Better autocompletion
-" Better help system
-
-
 " == General & interface
 
 set nocompatible
@@ -135,7 +102,7 @@ Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 
 Bundle 'davidhalter/jedi-vim'
-let g:jedi#show_function_definition = 1
+let g:jedi#show_function_definition = 0
 let g:jedi#popup_on_dot = 0
 
 filetype plugin indent on

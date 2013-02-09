@@ -67,7 +67,7 @@ install_powerline_precmd
 PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
 # Workaround for bug #776499
-function gvim () { /usr/bin/gvim -f $* & }
+#function gvim () { /usr/bin/gvim -f $* & }
 
 alias ack="ack-grep"
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
