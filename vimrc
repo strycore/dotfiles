@@ -295,11 +295,15 @@ if filereadable('./manage.py')
     " Run unittest with whole project
     nmap <Leader>T :call DjangoMakeGreen(".")<CR>
 endif
+map <Leader>fd :set ft=htmldjango.html<CR>
+map <Leader>fj :set ft=javascript<CR>
+map <Leader>fh :set ft=html<CR>
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd BufRead *.js set makeprg=jshint\ %
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
 
 autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 autocmd BufRead *.coffee setfiletype coffee
