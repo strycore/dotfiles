@@ -61,6 +61,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'closetag.vim'
 Bundle 'vim-less'
 Bundle 'AutoComplPop'
 Bundle 'ervandew/supertab'
