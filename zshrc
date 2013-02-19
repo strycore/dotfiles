@@ -105,13 +105,18 @@ if [ -e "$(which ls++)" ]; then
 fi
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#
-# VirtualenvWrapper configuration
-virtualenv=$(which virtualenvwrapper.sh)
-if [ "$virtualenv" != "" ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    export PROJECT_HOME=$HOME/Projects
-    source $virtualenv
+
+
+ubuntu_venvwrapper="/etc/bash_completion.d/virtualenvwrapper"
+if [ -f $ubuntu_venvwrapper ]; then
+    source $ubuntu_venvwrapper
+else
+    virtualenv=$(which virtualenvwrapper.sh)
+    if [ "$virtualenv" != "" ]; then
+        export WORKON_HOME=$HOME/.virtualenvs
+        export PROJECT_HOME=$HOME/Projects
+        source $virtualenv
+    fi
 fi
 
 # RVM Configuration: Load RVM into a shell session *as a function*
