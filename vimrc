@@ -79,9 +79,8 @@ Bundle 'walm/jshint.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'reinh/vim-makegreen'
 Bundle 'strycore/django.vim'
-
 Bundle 'tomasr/molokai'
-
+Bundle 'tpope/vim-fugitive'
 Bundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 4
 
