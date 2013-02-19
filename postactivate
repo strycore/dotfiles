@@ -25,14 +25,12 @@ then
     bzr pull
 fi
 
-echo 'Building tags file'
-
-ctags -R --languages=python --python-kinds=-v $VIRTUAL_ENV/lib/python2.7
-if [ -e $VIRTUAL_ENV/src ]
-then
-    ctags -R -a --languages=python --python-kinds=-v $VIRTUAL_ENV/src
-fi
-ctags -R -a --languages=python --python-kinds=-v .
+#ctags -R --languages=python --python-kinds=-v $VIRTUAL_ENV/lib/python2.7
+#if [ -e $VIRTUAL_ENV/src ]
+#then
+#    ctags -R -a --languages=python --python-kinds=-v $VIRTUAL_ENV/src
+#fi
+#ctags -R -a --languages=python --python-kinds=-v .
 
 #echo -ne "Building pysmell catalogs."
 #
@@ -57,11 +55,11 @@ ctags -R -a --languages=python --python-kinds=-v .
 #fi
 #echo ' Done!'
 
-if [ -e manage.py ]
-then
-    django-vim
-    ./manage.py runserver
-else
-    gvim
-fi
+#if [ -e manage.py ]
+#then
+#    django-vim
+#    ./manage.py runserver
+#else
+#    gvim
+#fi
 
