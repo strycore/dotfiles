@@ -13,7 +13,7 @@
 
 [core]
     editor = vim
-	excludesfile = /home/mathieu/.gitignore_global
+	excludesfile = ~/.gitignore_global
 
 [alias]
     st = status -sb
@@ -21,4 +21,4 @@
     psh = push
     undo = reset --soft HEAD^
     who = shortlog -sn
-    gol = log --pretty=format:\"%h %an %ad %s\" --abbrev-commit --date=short 
+    gol = log --pretty=format:\"%h %an %ad %s\" --abbrev-commit --date=short

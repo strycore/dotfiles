@@ -1,3 +1,5 @@
 PYSMELLTAGS*
 .DS_Store
 *.pyc
+doc/tags
+doc/tags-ja
