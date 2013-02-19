@@ -231,6 +231,7 @@ py << EOF
 import os.path
 import sys
 import vim
+sys.path.insert(0, os.path.join(os.path.expanduser('~'), '.cache/fakegir/'))
 if 'VIRTUAL_ENV' in os.environ:
     project_base_dir = os.environ['VIRTUAL_ENV']
     sys.path.insert(0, project_base_dir)
