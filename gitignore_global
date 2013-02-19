@@ -3,3 +3,4 @@ PYSMELLTAGS*
 *.pyc
 doc/tags
 doc/tags-ja
+.netrwhist
