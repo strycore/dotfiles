@@ -61,6 +61,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'a.vim'
 Bundle 'closetag.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'vim-less'
