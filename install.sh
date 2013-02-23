@@ -39,3 +39,5 @@ else
     echo "[SKIP] oh-my-zsh is already installed"
 fi
 
+mkdir -p ~/.config/terminator
+ln -s $(pwd)/terminator/config ~/.config/terminator/config
