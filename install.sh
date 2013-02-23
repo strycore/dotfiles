@@ -38,34 +38,3 @@ else
     echo "[SKIP] oh-my-zsh is already installed"
 fi
 
-if [ ! -e $(which flake8) ]
-then
-   sudo pip install flake8
-else
-    echo "[SKIP] Flake8 is already installed"
-fi
-
-if [ ! -e $(which pysmell) ]
-then
-   sudo pip install pysmell
-else
-    echo "[SKIP] Pysmell is already installed"
-fi
-
-if [ -z $(which jshint) ]
-then
-    echo "[INST] Installing jshint"
-    sudo npm install jshint -g
-fi
-
-if [ -z $(which lessc) ]
-then
-    echo "[INST] Installing lesscss compiler"
-    sudo npm install less -g
-fi
-
-if [ -z $(which coffee) ]
-then
-    echo "[INST] Installing coffeescript compiler"
-    sudo npm install coffee-script -g
-fi
