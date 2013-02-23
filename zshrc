@@ -113,8 +113,6 @@ if [ -f $ubuntu_venvwrapper ]; then
 else
     virtualenv=$(which virtualenvwrapper.sh)
     if [ "$virtualenv" != "" ]; then
-        export WORKON_HOME=$HOME/.virtualenvs
-        export PROJECT_HOME=$HOME/Projects
         source $virtualenv
     fi
 fi
