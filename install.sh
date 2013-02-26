@@ -40,4 +40,6 @@ else
 fi
 
 mkdir -p ~/.config/terminator
-ln -s $(pwd)/terminator/config ~/.config/terminator/config
+if [ ! -e ~/.config/terminator/config ]; then
+    ln -s $(pwd)/terminator/config ~/.config/terminator/config
+fi
