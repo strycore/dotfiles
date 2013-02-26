@@ -351,9 +351,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
     " Possible fonts for GVim (copy the appropriate font in ~/.fonts)
-    "set guifont=Monaco\ for\ Powerline\ 9
-    "set guifont=Menlo\ for\ Powerline\ 10
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+    set guifont=Menlo\ for\ Powerline\ 9
     set background=dark
     colorscheme molokai
 endif
