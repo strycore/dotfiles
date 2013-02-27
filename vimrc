@@ -100,7 +100,8 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_jump=0
 
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'Lokaltog/vim-powerline'
+let g:Powerline_symbols = 'fancy'
 
 Bundle 'davidhalter/jedi-vim'
 let g:jedi#show_function_definition = 0
@@ -350,7 +351,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    " Possible fonts for GVim (copy the appropriate font in ~/.fonts)
     set guifont=Menlo\ for\ Powerline\ 9
     set background=dark
     colorscheme molokai
