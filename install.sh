@@ -30,6 +30,7 @@ link_file gitconfig
 link_file gitignore_global
 link_file hgrc
 link_file ackrc
+link_file tmux.conf
 
 if [ ! -e "$HOME/.oh-my-zsh" ]
 then
