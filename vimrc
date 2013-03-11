@@ -37,7 +37,7 @@
 " F6:  Next buffer
 " F7:  Toggle paste mode
 " F8:  Run Flake8
-" F9:  Reindent whole file
+" F9:  Toggle folds
 " F10: Run file (currently supported: python, bash, html)
 " F11: Reserved for fullscreen switching by WM or Terminal emulator
 " F12: Available
@@ -67,6 +67,8 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'vim-less'
 Bundle 'AutoComplPop'
 Bundle 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'mileszs/ack.vim'
@@ -108,24 +110,31 @@ let g:jedi#show_function_definition = 0
 let g:jedi#popup_on_dot = 0
 
 filetype plugin indent on
-
-set history=1000
-set undolevels=1000
-set clipboard+=unnamed
-
-set showcmd
-set showmode
-set viminfo='100,f1,:1000,/1000,%  " big viminfo :)
-set mouse=a
-set cmdheight=2     " Make command line 2 lines high
-set laststatus=2    " always show status line
-set scrolloff=3     " Keep 3 lines below and above the cursor
-set matchpairs+=<:> " Show matching <> as well
-set showmatch
-
 syntax on
 
-" Color scheme
+" == User Interface
+set history=1000                    " Keep 1000 lines of history
+set undolevels=1000
+set clipboard+=unnamed
+set ruler
+set hidden                          " Don't whine when trying to move away from an unsaved buffer
+set showcmd
+set showmode
+set showmatch                       " Show matching brackets
+set nowrap                          " Don't wrap long lines
+
+set matchpairs+=<:>                 " Show matching <> as well
+set title
+set novisualbell                    " No blinking
+set noerrorbells                    " No noise
+set cursorline                      " Highlight current line
+
+set mouse=a                         " Enable the mouse for everything
+set cmdheight=2                     " Make command line 2 lines high
+set laststatus=2                    " always show status line
+set scrolloff=3                     " Keep 3 lines below and above the cursor
+set autoread                        " Autoreload changed files
+
 set t_Co=256
 set background=dark
 colorscheme molokai
@@ -139,34 +148,31 @@ set shiftround
 set expandtab
 set backspace=indent,eol,start
 
-set ruler
-set hidden     "don't whine when trying to move away from an unsaved buffer
-
-" Searching
-set ignorecase "ignore case when searching
-set smartcase  " ignore case if search pattern is all lowercase,
-               " case-sensitive otherwise
-set hlsearch   " highlight search terms
+" == Searching
+set ignorecase                      " Ignore case when searching
+set smartcase                       " Ignore case if search pattern is all lowercase,
+                                    " Case-sensitive otherwise
+set hlsearch                        " Highlight search terms
 nmap <silent> ,/ :nohlsearch<CR>
 set incsearch
+set gdefault                        " Search all occurrences by default
 
-set foldmethod=marker foldopen=all,insert foldclose=all
-set foldlevelstart=99
-set nowrap
-set gdefault  " Search all occurrences by default
-" Enable enhanced command line completion.
+set foldmethod=indent               " Indentation based folding
+set foldlevelstart=99               " Start editing with no fold closed
+
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
 set wildmenu
 set wildmode=longest:full,list
-" Ignore these filenames during enhanced command line completion.
 set wildignore+=*.bak,*.class,*.aux,*.out,*.toc,*.jpg,*.bmp,*.gif,*.png,*.luac
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.pyc,*.spl,*.sw?
-set title
-set novisualbell  " No blinking
-set noerrorbells  " No noise
+
 set nobackup    " Backup files are sooo 90's
 set noswapfile  " Swap files are very annoying
 
-set cursorline
 set number
 set numberwidth=1
 set shortmess+=a
@@ -189,14 +195,6 @@ map <leader>y "+y
 " Paste from clipboard
 map <leader>p "+gP
 
-
-" Highlight long lines
-if exists('+colorcolumn')
-    set colorcolumn=80
-    highlight ColorColumn ctermbg=darkgray guibg=#4E4E4E
-else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
 
 " ,v brings up my .vimrc
 " ,V reloads it -- making all changes active (have to save first)
@@ -356,6 +354,15 @@ if has("gui_running")
     colorscheme molokai
 endif
 
+" Highlight long lines
+if exists('+colorcolumn')
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=darkgray guibg=#4E4E4E
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+highlight WhitespaceEOL ctermbg=red guibg=red
+
 " Invisible characters
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
 nmap <leader>l :set list!<CR>
@@ -385,10 +392,6 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
-
-" Remap autocompletion to Ctrl-Space
-"inoremap <Nul> <C-x><C-o>
-"imap <C-space> <C-x><C-o>
 
 " Tagbar configuration
 map <silent> <F4> :TagbarToggle<CR>

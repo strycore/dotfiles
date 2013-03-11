@@ -17,6 +17,7 @@
 
 [alias]
     st = status -sb
+    co = checkout
     pul = pull
     psh = push
     undo = reset --soft HEAD^
