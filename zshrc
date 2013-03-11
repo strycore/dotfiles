@@ -95,9 +95,9 @@ say() {
         local text="${*#$1}";
     else
         local lang=${LANG%_};
-        local text="$";
+        local text="${1}";
     fi;
-    mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ;
+    mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}"
 }
 
 if [ -e "$(which ls++)" ]; then
