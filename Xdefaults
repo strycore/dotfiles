@@ -1,9 +1,14 @@
 URxvt*depth: 32
 URxvt*background: rgba:2000/2000/2000/eeee
 URxvt*foreground: #DEDEDE
-URxvt*font: xft:monaco:size=12
-URxvt*boldFont: xft:monaco:bold:size=12
-URxvt*letterSpace: -5
+
+!! Monaco
+URxvt*font:             xft:Monaco for Powerline:regular:size=10
+URxvt*imFont:           xft:Monaco for Powerline:regular:size=10
+URxvt*boldFont:         xft:Monaco for Powerline:bold:size=10
+URxvt*italicFont:       xft:Monaco for Powerline:italic:size=10
+URxvt*boldItalicFont:   xft:Monaco for Powerline:bold:italic:size=10
+
 URxvt*saveLines: 12000
 URxvt*scrollBar: false
 URxvt*scrollstyle: rxvt
