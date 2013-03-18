@@ -1,6 +1,6 @@
 --type-add=ruby=haml
 --type-set=doc=.md,.mkd,.markdown,.rst,.txt
---type-add=css=.less
+--type-add=css=.less,.scss,.sass
 --type-add=js=.coffee
 --ignore-dir=node_modules
 --ignore-dir=migrations
