@@ -73,9 +73,9 @@ say() {
         local text="${*#$1}";
     else
         local lang=${LANG%_};
-        local text="$";
+        local text="${1}";
     fi;
-    mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ;
+    mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}"
 }
 
 if [ -e "$(which ls++)" ]; then
@@ -132,23 +132,3 @@ zstyle ':completion:*:*:rm:*:*' ignored-patterns
 
 bindkey '^i' complete-word              # tab to do menu
 bindkey "\e[Z" reverse-menu-complete    # shift-tab to reverse menu
-
-# Up/down arrow.
-# I want shared history for ^R, but I don't want another shell's activity to
-# mess with up/down.  This does that.
-down-line-or-local-history() {
-    zle set-local-history 1
-    zle down-line-or-history
-    zle set-local-history 0
-}
-zle -N down-line-or-local-history
-up-line-or-local-history() {
-    zle set-local-history 1
-    zle up-line-or-history
-    zle set-local-history 0
-}
-zle -N up-line-or-local-history
-
-
-bindkey "\e[A" up-line-or-local-history
-bindkey "\e[B" down-line-or-local-history]
