@@ -14,7 +14,7 @@
     use_system_font = False
     foreground_color = "#c3c7c4"
     font = Monaco for Powerline 10
-    background_color = "#27292c"
+    background_color = "#183e45"
 [layouts]
   [[default]]
     [[[child1]]]
