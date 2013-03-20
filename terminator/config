@@ -1,8 +1,8 @@
 [global_config]
   title_hide_sizetext = True
-  title_transmit_bg_color = "#f6f5f3"
+  title_transmit_bg_color = "#202020"
   title_inactive_fg_color = "#0078a0"
-  title_transmit_fg_color = "#122b54"
+  title_transmit_fg_color = "#00fff7"
   title_inactive_bg_color = "#27292c"
 [keybindings]
 [profiles]
