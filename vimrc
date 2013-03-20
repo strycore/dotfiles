@@ -318,14 +318,20 @@ autocmd FileType html nmap <F10> :!firefox %<CR>
 
 autocmd BufNewFile,BufRead *.rss setfiletype xml
 
+" CSS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType css set equalprg=csstidy
 autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 
+" LessCSS
 autocmd FileType less set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.less setfiletype less
 autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
-"autocmd BufWritePost *.less silent exe  '!lessc ' . shellescape(expand('<afile>')) . ' ' . shellescape(expand('<afile>:r')) . '.css'
+
+" SASS / SCSS
+autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
+autocmd BufNewFile,BufRead *.scss setfiletype scss
+autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType php set ft=php.html
