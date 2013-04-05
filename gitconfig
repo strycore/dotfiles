@@ -9,7 +9,7 @@
     ui = auto
 
 [push]
-    default = matching
+    default = current
 
 [core]
     editor = vim
