@@ -298,9 +298,6 @@ if filereadable('./manage.py')
     " Run unittest with whole project
     nmap <Leader>T :call DjangoMakeGreen(".")<CR>
 endif
-map <Leader>fd :set ft=htmldjango.html<CR>
-map <Leader>fj :set ft=javascript<CR>
-map <Leader>fh :set ft=html<CR>
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd BufRead *.js set makeprg=jshint\ %
@@ -373,8 +370,18 @@ highlight WhitespaceEOL ctermbg=red guibg=red
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
 nmap <leader>l :set list!<CR>
 
-" Detect filetype shortcut
-nmap <leader>f :filetype detect<CR>
+" Filetype switching 
+nmap <leader>fa :filetype detect<CR>                       
+nmap <Leader>fd :set ft=htmldjango.html<CR>
+nmap <Leader>fj :set ft=javascript<CR>
+nmap <Leader>fh :set ft=html<CR>
+
+" Python helpers
+" Dict to arguments
+map <Leader>az :s#\(\w\+\)=#'\1': #<CR>
+" And back again
+map <Leader>da :s#'\(\w\+\)'\: #\1=#<CR>
+
 
 " I think this part remove useless trailing spaces
 autocmd BufRead * silent! %s/[\r \t]\+$//
