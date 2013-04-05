@@ -370,15 +370,15 @@ highlight WhitespaceEOL ctermbg=red guibg=red
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
 nmap <leader>l :set list!<CR>
 
-" Filetype switching 
-nmap <leader>fa :filetype detect<CR>                       
+" Filetype switching
+nmap <leader>fa :filetype detect<CR>
 nmap <Leader>fd :set ft=htmldjango.html<CR>
 nmap <Leader>fj :set ft=javascript<CR>
 nmap <Leader>fh :set ft=html<CR>
 
 " Python helpers
 " Dict to arguments
-map <Leader>az :s#\(\w\+\)=#'\1': #<CR>
+map <Leader>ad :s#\(\w\+\)=#'\1': #<CR>
 " And back again
 map <Leader>da :s#'\(\w\+\)'\: #\1=#<CR>
 
