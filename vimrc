@@ -297,7 +297,12 @@ if filereadable('./manage.py')
     nmap <Leader>t :call DjangoMakeGreen("%")<CR>
     " Run unittest with whole project
     nmap <Leader>T :call DjangoMakeGreen(".")<CR>
+else
+    autocmd BufNewFile,BufRead *.py compiler pyunit
+    nmap <Leader>t :call MakeGreen("%")<CR>
+    nmap <Leader>T :call MakeGreen(".")<CR>
 endif
+
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd BufRead *.js set makeprg=jshint\ %
