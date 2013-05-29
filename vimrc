@@ -78,7 +78,6 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'honza/snipmate-snippets'
-Bundle 'nvie/vim-flake8'
 Bundle 'majutsushi/tagbar'
 Bundle 'walm/jshint.vim'
 Bundle 'kchmck/vim-coffee-script'
@@ -86,6 +85,10 @@ Bundle 'reinh/vim-makegreen'
 Bundle 'strycore/django.vim'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-fugitive'
+
+Bundle 'nvie/vim-flake8'
+let g:flake8_max_line_length=80
+
 Bundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 4
 
@@ -326,13 +329,13 @@ autocmd FileType css set equalprg=csstidy
 autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 
 " LessCSS
-autocmd FileType less set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.less setfiletype less
+autocmd FileType less set omnifunc=csscomplete#CompleteCSS
 autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
 
 " SASS / SCSS
-autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.scss setfiletype scss
+autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -364,10 +367,10 @@ endif
 
 " Highlight long lines
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set colorcolumn=81
     highlight ColorColumn ctermbg=darkgray guibg=#4E4E4E
 else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
 endif
 highlight WhitespaceEOL ctermbg=red guibg=red
 
