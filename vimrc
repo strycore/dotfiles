@@ -85,7 +85,7 @@ Bundle 'reinh/vim-makegreen'
 Bundle 'strycore/django.vim'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-fugitive'
-
+Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'nvie/vim-flake8'
 let g:flake8_max_line_length=80
 
@@ -334,8 +334,7 @@ autocmd FileType less set omnifunc=csscomplete#CompleteCSS
 autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
 
 " SASS / SCSS
-autocmd BufNewFile,BufRead *.scss setfiletype scss
-autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
+autocmd BufRead,BufNewFile *.scss set filetype=scss
 autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
