@@ -227,6 +227,10 @@ map :w<<CR> :w<CR>
 " Stuff to piss off vim purists
 inoremap <silent> <C-Backspace> <C-w>
 inoremap <silent> <C-z> <Esc>:undo<CR>i
+inoremap <C-s> <Esc>:w<CR>i
+inoremap <S-Left> <C-Left>
+inoremap <S-Right> <C-Right>
+
 
 filetype indent on
 "
