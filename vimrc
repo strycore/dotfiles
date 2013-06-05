@@ -64,7 +64,7 @@ Bundle 'gmarik/vundle'
 Bundle 'a.vim'
 Bundle 'closetag.vim'
 Bundle 'Raimondi/delimitMate'
-Bundle 'vim-less'
+"Bundle 'vim-less'
 Bundle 'AutoComplPop'
 Bundle 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
@@ -77,7 +77,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'honza/snipmate-snippets'
+Bundle 'honza/vim-snippets'
 Bundle 'majutsushi/tagbar'
 Bundle 'walm/jshint.vim'
 Bundle 'kchmck/vim-coffee-script'
@@ -329,9 +329,9 @@ autocmd FileType css set equalprg=csstidy
 autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 
 " LessCSS
-autocmd BufNewFile,BufRead *.less setfiletype less
-autocmd FileType less set omnifunc=csscomplete#CompleteCSS
-autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
+autocmd BufNewFile,BufRead *.less setfiletype css
+"autocmd FileType less set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
 
 " SASS / SCSS
 autocmd BufNewFile,BufRead *.scss setfiletype scss
