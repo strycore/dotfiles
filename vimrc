@@ -85,7 +85,7 @@ Bundle 'reinh/vim-makegreen'
 Bundle 'strycore/django.vim'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-fugitive'
-
+Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'nvie/vim-flake8'
 let g:flake8_max_line_length=80
 
@@ -227,6 +227,10 @@ map :w<<CR> :w<CR>
 " Stuff to piss off vim purists
 inoremap <silent> <C-Backspace> <C-w>
 inoremap <silent> <C-z> <Esc>:undo<CR>i
+inoremap <C-s> <Esc>:w<CR>i
+inoremap <S-Left> <C-Left>
+inoremap <S-Right> <C-Right>
+
 
 filetype indent on
 "
@@ -334,8 +338,7 @@ autocmd BufNewFile,BufRead *.less setfiletype css
 "autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
 
 " SASS / SCSS
-autocmd BufNewFile,BufRead *.scss setfiletype scss
-autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
+autocmd BufRead,BufNewFile *.scss set filetype=scss
 autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
