@@ -104,6 +104,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_jump=0
+let g:syntastic_python_checkers = ['flake8']
 
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
@@ -128,8 +129,7 @@ set nowrap                          " Don't wrap long lines
 
 set matchpairs+=<:>                 " Show matching <> as well
 set title
-set novisualbell                    " No blinking
-set noerrorbells                    " No noise
+set noerrorbells visualbell t_vb=   " No noise
 set cursorline                      " Highlight current line
 
 set mouse=a                         " Enable the mouse for everything
@@ -365,6 +365,7 @@ if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
     set guifont=Menlo\ for\ Powerline\ 9
     set background=dark
+    autocmd GUIEnter * set visualbell t_vb=
     colorscheme molokai
 endif
 
