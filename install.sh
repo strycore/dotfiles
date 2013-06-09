@@ -36,6 +36,9 @@ if [ ! -e "$HOME/.oh-my-zsh" ]
 then
     echo "[INST] Installing oh-my-zsh"
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+    mkdir -p ~/.oh-my-zsh/custom/plugins
+    cd  ~/.oh-my-zsh/custom/plugins
+    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 else
     echo "[SKIP] oh-my-zsh is already installed"
 fi
