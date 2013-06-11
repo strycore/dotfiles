@@ -20,7 +20,7 @@ ZSH_THEME="sorin"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python pip django command-not-found rails ruby git vundle zsh-syntax-highlighting fabric vundle)
+plugins=(git python pip django command-not-found rails ruby git vundle zsh-syntax-highlighting fabric yum)
 
 
 source $ZSH/oh-my-zsh.sh
@@ -47,7 +47,9 @@ install_powerline_precmd
 # Customize to your needs...
 PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
-alias ack="ack-grep"
+if [ -e /usr/bin/ack-grep ]; then
+    alias ack="ack-grep"
+fi
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} {} \;"
@@ -78,9 +80,6 @@ say() {
     mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}"
 }
 
-if [ -e "$(which ls++)" ]; then
-    alias ls=ls++
-fi
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 

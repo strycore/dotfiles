@@ -6,7 +6,9 @@
     diff = auto
     status = auto
     branch = auto
-    ui = auto
+    ui = true
+[color "diff"]
+    whitespace = red reverse
 
 [push]
     default = current
@@ -14,6 +16,7 @@
 [core]
     editor = vim
 	excludesfile = ~/.gitignore_global
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [alias]
     st = status -sb
@@ -23,3 +26,4 @@
     undo = reset --soft HEAD^
     who = shortlog -sn
     gol = log --pretty=format:\"%h %an %ad %s\" --abbrev-commit --date=short
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit

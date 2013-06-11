@@ -64,7 +64,7 @@ Bundle 'gmarik/vundle'
 Bundle 'a.vim'
 Bundle 'closetag.vim'
 Bundle 'Raimondi/delimitMate'
-Bundle 'vim-less'
+"Bundle 'vim-less'
 Bundle 'AutoComplPop'
 Bundle 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
@@ -77,7 +77,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'honza/snipmate-snippets'
+Bundle 'honza/vim-snippets'
 Bundle 'majutsushi/tagbar'
 Bundle 'walm/jshint.vim'
 Bundle 'kchmck/vim-coffee-script'
@@ -85,7 +85,7 @@ Bundle 'reinh/vim-makegreen'
 Bundle 'strycore/django.vim'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-fugitive'
-
+Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'nvie/vim-flake8'
 let g:flake8_max_line_length=80
 
@@ -104,6 +104,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_jump=0
+let g:syntastic_python_checkers = ['flake8']
 
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
@@ -128,8 +129,7 @@ set nowrap                          " Don't wrap long lines
 
 set matchpairs+=<:>                 " Show matching <> as well
 set title
-set novisualbell                    " No blinking
-set noerrorbells                    " No noise
+set noerrorbells visualbell t_vb=   " No noise
 set cursorline                      " Highlight current line
 
 set mouse=a                         " Enable the mouse for everything
@@ -227,6 +227,10 @@ map :w<<CR> :w<CR>
 " Stuff to piss off vim purists
 inoremap <silent> <C-Backspace> <C-w>
 inoremap <silent> <C-z> <Esc>:undo<CR>i
+inoremap <C-s> <Esc>:w<CR>i
+inoremap <S-Left> <C-Left>
+inoremap <S-Right> <C-Right>
+
 
 filetype indent on
 "
@@ -300,7 +304,12 @@ if filereadable('./manage.py')
     nmap <Leader>t :call DjangoMakeGreen("%")<CR>
     " Run unittest with whole project
     nmap <Leader>T :call DjangoMakeGreen(".")<CR>
+else
+    autocmd BufNewFile,BufRead *.py compiler pyunit
+    nmap <Leader>t :call MakeGreen("%")<CR>
+    nmap <Leader>T :call MakeGreen(".")<CR>
 endif
+
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd BufRead *.js set makeprg=jshint\ %
@@ -324,13 +333,12 @@ autocmd FileType css set equalprg=csstidy
 autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 
 " LessCSS
-autocmd BufNewFile,BufRead *.less setfiletype less
-autocmd FileType less set omnifunc=csscomplete#CompleteCSS
-autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
+autocmd BufNewFile,BufRead *.less setfiletype css
+"autocmd FileType less set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
 
 " SASS / SCSS
-autocmd BufNewFile,BufRead *.scss setfiletype scss
-autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
+autocmd BufRead,BufNewFile *.scss set filetype=scss
 autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -357,6 +365,7 @@ if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
     set guifont=Menlo\ for\ Powerline\ 9
     set background=dark
+    autocmd GUIEnter * set visualbell t_vb=
     colorscheme molokai
 endif
 
