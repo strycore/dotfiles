@@ -183,6 +183,7 @@ set report=0
 set confirm
 set encoding=utf8
 set showfulltag
+set lisp        " Autocomplete words separated with a dash
 
 " don't outdent hashes
 inoremap # #
