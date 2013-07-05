@@ -93,7 +93,10 @@ Bundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 4
 
 Bundle 'kien/ctrlp.vim'
+Bundle 'tacahiroy/ctrlp-funky'
 let g:ctrlp_working_path_mode = 2
+let g:ctrlp_extensions = ['funky']
+nnoremap <A-p> :CtrlPFunky<Cr>
 
 Bundle 'The-NERD-tree'
 let g:NERDTreeWinSize = 25
