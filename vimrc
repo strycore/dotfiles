@@ -116,6 +116,10 @@ Bundle 'davidhalter/jedi-vim'
 let g:jedi#show_function_definition = 0
 let g:jedi#popup_on_dot = 0
 
+Bundle 'klen/python-mode'
+let g:pymode_lint = 0
+
+
 filetype plugin indent on
 syntax on
 
@@ -234,6 +238,7 @@ inoremap <C-s> <Esc>:w<CR>i
 inoremap <S-Left> <C-Left>
 inoremap <S-Right> <C-Right>
 
+noremap <silent> <C-r> :RopeRename<CR>
 
 filetype indent on
 "
@@ -440,6 +445,8 @@ set pastetoggle=<F7>
 
 " Save file with sudo
 cmap w!! w !sudo tee % > /dev/null
+
+map <silent> <leader>r :RopeRename<CR>
 
 set path=$PWD/**
 
