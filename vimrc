@@ -412,8 +412,8 @@ map <silent> <A-Left> :tabprevious<CR>
 noremap <silent> <C-Left> <C-T>
 noremap <silent> <C-Right> <C-]>
 
-noremap <C-S-PageUp> gt
-noremap <C-S-pageDown> gT
+noremap <C-PageUp> gt
+noremap <C-pageDown> gT
 
 map <kPlus> <C-W>+
 map <kMinus> <C-W>-
