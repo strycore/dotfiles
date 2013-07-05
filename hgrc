@@ -1,2 +1,5 @@
 [ui]
 username = Mathieu Comandon <strider@strycore.com>
+
+[extensions]
+color = 
