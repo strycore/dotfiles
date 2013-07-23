@@ -242,6 +242,7 @@ inoremap <S-Right> <C-Right>
 noremap <silent> <C-r> :RopeRename<CR>
 
 filetype indent on
+set formatoptions=-t " Don't do automatic linebreaks
 "
 " Add the virtualenv's site-packages to vim path
 if has('python')
