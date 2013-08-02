@@ -329,6 +329,8 @@ autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
 
 autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 autocmd BufRead *.coffee setfiletype coffee
+autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
+autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html set equalprg=tidy\ -i\ -q

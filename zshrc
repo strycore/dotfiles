@@ -132,3 +132,29 @@ zstyle ':completion:*:*:rm:*:*' ignored-patterns
 
 bindkey '^i' complete-word              # tab to do menu
 bindkey "\e[Z" reverse-menu-complete    # shift-tab to reverse menu
+
+
+# Author: Julien Phalip
+# License: BSD
+# Description: Change the current directory to the path of the given Python package.
+
+function pcd {
+    cd `python -c "import pkgutil; print(pkgutil.get_loader('$1').filename)"`
+}
+
+function _top_level_packages {
+    python -c "import pkgutil; print('\n'.join([name for loader, name, ispkg in sorted(pkgutil.iter_modules()) if ispkg]))"
+}
+
+if [ -n "$BASH" ] ; then
+    _pcd_complete () {
+        local cur="${COMP_WORDS[COMP_CWORD]}"
+        COMPREPLY=( $(compgen -W "`_top_level_packages`" -- ${cur}) )
+    }
+    complete -o default -o nospace -F _goto_complete goto
+elif [ -n "$ZSH_VERSION" ] ; then
+    _pcd_complete () {
+        reply=( $(_top_level_packages) )
+    }
+    compctl -K _pcd_complete pcd
+fi
