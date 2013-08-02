@@ -54,6 +54,7 @@ alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} {} \;"
 alias epubcheck="java -jar /opt/epubcheck-3.0b5/epubcheck-3.0b5.jar"
+alias nuke='tr -dc " _" < /dev/urandom'
 
 deploy() {
     cwd=$(pwd)
