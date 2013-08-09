@@ -325,12 +325,11 @@ autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
 autocmd BufRead *.js set makeprg=jshint\ %
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
-autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 autocmd BufRead *.coffee setfiletype coffee
 autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
-autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html set equalprg=tidy\ -i\ -q
@@ -377,6 +376,7 @@ if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
     set guifont=Menlo\ for\ Powerline\ 9
     set background=dark
+    set lines=60 columns=99
     autocmd GUIEnter * set visualbell t_vb=
     colorscheme molokai
 endif
@@ -416,8 +416,8 @@ map <silent> <A-Left> :tabprevious<CR>
 noremap <silent> <C-Left> <C-T>
 noremap <silent> <C-Right> <C-]>
 
-noremap <C-PageUp> gt
-noremap <C-pageDown> gT
+noremap <C-PageUp> gT
+noremap <C-pageDown> gt
 
 map <kPlus> <C-W>+
 map <kMinus> <C-W>-
