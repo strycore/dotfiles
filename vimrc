@@ -144,6 +144,7 @@ set cmdheight=2                     " Make command line 2 lines high
 set laststatus=2                    " always show status line
 set scrolloff=3                     " Keep 3 lines below and above the cursor
 set autoread                        " Autoreload changed files
+set winwidth=85
 
 set t_Co=256
 set background=dark
