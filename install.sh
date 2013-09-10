@@ -39,6 +39,7 @@ then
     mkdir -p ~/.oh-my-zsh/custom/plugins
     cd  ~/.oh-my-zsh/custom/plugins
     git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+    git clone https://github.com/yonchu/grunt-zsh-completion.git grunt
 else
     echo "[SKIP] oh-my-zsh is already installed"
 fi
