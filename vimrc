@@ -77,6 +77,8 @@ Bundle 'mileszs/ack.vim'
 Bundle 'gg/python.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'garbas/vim-snipmate'
+imap <C-s> <esc>a<Plug>snipMateNextOrTrigger
+smap <C-s> <Plug>snipMateNextOrTrigger
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'honza/vim-snippets'
@@ -239,7 +241,6 @@ map :w<<CR> :w<CR>
 " Stuff to piss off vim purists
 inoremap <silent> <C-Backspace> <C-w>
 inoremap <silent> <C-z> <Esc>:undo<CR>i
-inoremap <C-s> <Esc>:w<CR>i
 inoremap <S-Left> <C-Left>
 inoremap <S-Right> <C-Right>
 
