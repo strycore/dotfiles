@@ -65,10 +65,12 @@ Bundle 'a.vim'
 Bundle 'closetag.vim'
 Bundle 'Raimondi/delimitMate'
 "Bundle 'vim-less'
-Bundle 'AutoComplPop'
-Bundle 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"Bundle 'AutoComplPop'
+"Bundle 'ervandew/supertab'
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'marijnh/tern_for_vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'mileszs/ack.vim'
@@ -114,7 +116,7 @@ Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 
 Bundle 'davidhalter/jedi-vim'
-let g:jedi#show_function_definition = 0
+let g:jedi#show_call_signatures = 1
 let g:jedi#popup_on_dot = 0
 
 Bundle 'klen/python-mode'
@@ -332,6 +334,7 @@ autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 autocmd BufRead *.coffee setfiletype coffee
 autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType coffee set omnifunc=javascriptcomplete#CompleteJS
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html set equalprg=tidy\ -i\ -q
