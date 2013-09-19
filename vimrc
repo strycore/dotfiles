@@ -71,7 +71,7 @@ Bundle 'Raimondi/delimitMate'
 
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'marijnh/tern_for_vim'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'mileszs/ack.vim'
 Bundle 'gg/python.vim'
