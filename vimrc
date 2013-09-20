@@ -124,6 +124,8 @@ let g:jedi#popup_on_dot = 0
 Bundle 'klen/python-mode'
 let g:pymode_lint = 0
 
+Bundle 'terryma/vim-multiple-cursors'
+
 
 filetype plugin indent on
 syntax on
