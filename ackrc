@@ -4,6 +4,7 @@
 --type-add=js=.coffee
 --ignore-dir=node_modules
 --ignore-dir=migrations
+--ignore-dir=media
 
 # Sort the list of files before searching; slower, but deterministic and human-friendly
 --sort-files

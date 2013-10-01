@@ -70,6 +70,8 @@ Bundle 'Raimondi/delimitMate'
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 Bundle 'Valloric/YouCompleteMe'
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
 Bundle 'marijnh/tern_for_vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
@@ -199,6 +201,7 @@ set confirm
 set encoding=utf8
 set showfulltag
 set lisp        " Autocomplete words separated with a dash
+set iskeyword+=-
 
 " don't outdent hashes
 inoremap # #
