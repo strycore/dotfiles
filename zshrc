@@ -134,6 +134,10 @@ bindkey '^i' complete-word              # tab to do menu
 bindkey "\e[Z" reverse-menu-complete    # shift-tab to reverse menu
 
 
+function dj {
+    PROJECT=$1 tmux -f $HOME/.tmux.django.conf attach
+}
+
 # Author: Julien Phalip
 # License: BSD
 # Description: Change the current directory to the path of the given Python package.
@@ -146,6 +150,7 @@ function _top_level_packages {
     python -c "import pkgutil; print('\n'.join([name for loader, name, ispkg in sorted(pkgutil.iter_modules()) if ispkg]))"
 }
 
+
 if [ -n "$BASH" ] ; then
     _pcd_complete () {
         local cur="${COMP_WORDS[COMP_CWORD]}"
@@ -157,4 +162,8 @@ elif [ -n "$ZSH_VERSION" ] ; then
         reply=( $(_top_level_packages) )
     }
     compctl -K _pcd_complete pcd
+    _dj_complete () {
+        reply=( $(workon) )
+    }
+    compctl -K _dj_complete dj
 fi
