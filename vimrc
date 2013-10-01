@@ -127,7 +127,7 @@ Bundle 'klen/python-mode'
 let g:pymode_lint = 0
 
 Bundle 'terryma/vim-multiple-cursors'
-
+Bundle 'digitaltoad/vim-jade'
 
 filetype plugin indent on
 syntax on
@@ -318,6 +318,7 @@ autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
 if filereadable('./manage.py')
     autocmd FileType python set ft=python.django " For SnipMate
     autocmd FileType html set ft=htmldjango.html " For SnipMate
+    autocmd FileType jade set ft=jade.htmldjango " For SnipMate
     " Use django unittest compiler
     autocmd BufNewFile,BufRead *.py compiler django
     " Run unittest with the current editing app
