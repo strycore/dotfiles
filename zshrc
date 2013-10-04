@@ -28,7 +28,6 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
 
-
 function powerline_precmd() {
     export PS1="$(~/.powerline-shell.py $? --shell zsh)"
 }
@@ -55,6 +54,7 @@ alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirm
 alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} {} \;"
 alias epubcheck="java -jar /opt/epubcheck-3.0b5/epubcheck-3.0b5.jar"
 alias nuke='tr -dc " _" < /dev/urandom'
+alias tmux='tmux -2'
 
 deploy() {
     cwd=$(pwd)
@@ -97,7 +97,6 @@ fi
 
 # RVM Configuration: Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 
 # Force a reload of completion system if nothing matched; this fixes installing
 # a program and then trying to tab-complete its name
