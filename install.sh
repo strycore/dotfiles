@@ -37,12 +37,23 @@ then
     echo "[INST] Installing oh-my-zsh"
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
     mkdir -p ~/.oh-my-zsh/custom/plugins
-    cd  ~/.oh-my-zsh/custom/plugins
-    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
-    git clone https://github.com/yonchu/grunt-zsh-completion.git grunt
 else
     echo "[SKIP] oh-my-zsh is already installed"
 fi
+
+if [ -e "~/.oh-my-zsh/custom/plugins/grunt" ]
+then
+    mkdir -p ~/.oh-my-zsh/custom/plugins
+    cd  ~/.oh-my-zsh/custom/plugins
+    git clone https://github.com/yonchu/grunt-zsh-completion.git grunt
+fi 
+
+if [ -e "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]
+then
+    mkdir -p ~/.oh-my-zsh/custom/plugins
+    cd  ~/.oh-my-zsh/custom/plugins
+    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+fi 
 
 mkdir -p ~/.config/terminator
 if [ ! -e ~/.config/terminator/config ]; then
