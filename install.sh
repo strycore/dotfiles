@@ -31,6 +31,7 @@ link_file gitignore_global
 link_file hgrc
 link_file ackrc
 link_file tmux.conf
+link_file tmux.django.conf
 
 if [ ! -e "$HOME/.oh-my-zsh" ]
 then
@@ -46,14 +47,14 @@ then
     mkdir -p ~/.oh-my-zsh/custom/plugins
     cd  ~/.oh-my-zsh/custom/plugins
     git clone https://github.com/yonchu/grunt-zsh-completion.git grunt
-fi 
+fi
 
 if [ -e "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]
 then
     mkdir -p ~/.oh-my-zsh/custom/plugins
     cd  ~/.oh-my-zsh/custom/plugins
     git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
-fi 
+fi
 
 mkdir -p ~/.config/terminator
 if [ ! -e ~/.config/terminator/config ]; then
