@@ -65,13 +65,18 @@ Bundle 'a.vim'
 Bundle 'closetag.vim'
 Bundle 'Raimondi/delimitMate'
 "Bundle 'vim-less'
-"Bundle 'AutoComplPop'
+Bundle 'AutoComplPop'
 "Bundle 'ervandew/supertab'
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 Bundle 'Valloric/YouCompleteMe'
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_filetype_blacklist = {
+    \ 'css': 1,
+    \ 'scss': 1,
+    \ 'html': 1,
+    \ 'htmldjango': 1
+\}
 Bundle 'marijnh/tern_for_vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
