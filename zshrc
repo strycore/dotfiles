@@ -132,6 +132,7 @@ zstyle ':completion:*:*:rm:*:*' ignored-patterns
 bindkey '^i' complete-word              # tab to do menu
 bindkey "\e[Z" reverse-menu-complete    # shift-tab to reverse menu
 
+unset -f work_in_progress
 
 function dj {
     PROJECT=$1 tmux -f $HOME/.tmux.django.conf attach
