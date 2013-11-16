@@ -42,7 +42,7 @@ else
     echo "[SKIP] oh-my-zsh is already installed"
 fi
 
-if [ -e "~/.oh-my-zsh/custom/plugins/grunt" ]
+if [ ! -e "~/.oh-my-zsh/custom/plugins/grunt" ]
 then
     mkdir -p ~/.oh-my-zsh/custom/plugins
     cd  ~/.oh-my-zsh/custom/plugins
