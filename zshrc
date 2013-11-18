@@ -1,6 +1,10 @@
 
 # == Default programs
-export EDITOR='vim'      # Default text editor
+if [ "$DISPLAY" ]; then
+    export EDITOR='gvim'      # Default text editor
+else
+    export EDITOR='vim'
+fi
 export BROWSER='firefox' # Default web browser
 
 # == Debian packaging variables
@@ -137,6 +141,24 @@ unset -f work_in_progress
 function dj {
     PROJECT=$1 tmux -f $HOME/.tmux.django.conf attach
 }
+
+
+# @description Edit given file with adequate rights (sudo/user)
+# @param    $@|$1  file(s) name
+e() {
+  f="$1"
+
+  owner="$(stat -c '%G:%U' "$f")" # file ownership's information
+  ownerUser="${owner%%:*}"
+  ownerGroup="${owner##*:}"
+
+  if [[ $ownerUser = 'root' || $ownerGroup = 'root' ]]; then
+    sudo $EDITOR "$f"
+  else
+    $EDITOR "$f"
+  fi
+}
+
 
 # Author: Julien Phalip
 # License: BSD
