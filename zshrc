@@ -142,7 +142,9 @@ function dj {
     PROJECT=$1 tmux -f $HOME/.tmux.django.conf attach
 }
 
-
+# Author: Édouard Lopez
+# License: MIT
+# URL: https://github.com/edouard-lopez/dotfiles
 # @description Edit given file with adequate rights (sudo/user)
 # @param    $@|$1  file(s) name
 e() {
@@ -153,7 +155,7 @@ e() {
   ownerGroup="${owner##*:}"
 
   if [[ $ownerUser = 'root' || $ownerGroup = 'root' ]]; then
-    sudo $EDITOR "$f"
+    sudo -e "$f"
   else
     $EDITOR "$f"
   fi
