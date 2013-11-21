@@ -148,17 +148,19 @@ function dj {
 # @description Edit given file with adequate rights (sudo/user)
 # @param    $@|$1  file(s) name
 e() {
-  f="$1"
+    filename="$1"
+    perm_check="$filename"
 
-  owner="$(stat -c '%G:%U' "$f")" # file ownership's information
-  ownerUser="${owner%%:*}"
-  ownerGroup="${owner##*:}"
+    if [[ ! -z "$filename" && ! -e "$filename" ]]; then
+        perm_check=$(dirname "$filename")
+    fi
 
-  if [[ $ownerUser = 'root' || $ownerGroup = 'root' ]]; then
-    sudo -e "$f"
-  else
-    $EDITOR "$f"
-  fi
+    if [[ -w "$perm_check" ]]; then
+        $EDITOR "$filename"
+    else
+        touch "$filename"
+        sudo -e "$filename"
+    fi
 }
 
 
