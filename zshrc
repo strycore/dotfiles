@@ -74,6 +74,12 @@ deploy() {
     unset $cwd
 }
 
+search () {
+    for i in "$@"; do
+        ( find -iname "*$i*" | grep -i "$i" --color=auto ) 2> /dev/null;
+    done
+}
+
 say() {
     if [[ "${1}" =~ -[a-z]{2} ]]; then
         local lang=${1#-};
