@@ -38,9 +38,6 @@ before homepage loads...
 see userChrome.css for background before clicked link page loads */
 @-moz-document  url(about:blank) {
 html { background-color: rgb(32,32,32) !important; }}
-/* added dickvls just because */
-@-moz-document url-prefix(about:blank) {
-* { background-color: rgb(32,32,32); }}
 
 /********************************** Start Page *******************************/
 
