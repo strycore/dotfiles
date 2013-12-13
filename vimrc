@@ -65,7 +65,7 @@ Bundle 'a.vim'
 Bundle 'closetag.vim'
 Bundle 'Raimondi/delimitMate'
 "Bundle 'vim-less'
-Bundle 'AutoComplPop'
+"Bundle 'AutoComplPop'
 "Bundle 'ervandew/supertab'
 
 Bundle 'Valloric/YouCompleteMe'
@@ -124,12 +124,12 @@ let g:syntastic_python_checkers = ['flake8']
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 
-Bundle 'davidhalter/jedi-vim'
-let g:jedi#show_call_signatures = 1
-let g:jedi#popup_on_dot = 0
+"Bundle 'davidhalter/jedi-vim'
+"let g:jedi#show_call_signatures = 1
+"let g:jedi#popup_on_dot = 0
 
-Bundle 'klen/python-mode'
-let g:pymode_lint = 0
+"Bundle 'klen/python-mode'
+"let g:pymode_lint = 0
 
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'digitaltoad/vim-jade'
