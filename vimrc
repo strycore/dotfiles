@@ -64,19 +64,18 @@ Bundle 'gmarik/vundle'
 Bundle 'a.vim'
 Bundle 'closetag.vim'
 Bundle 'Raimondi/delimitMate'
-"Bundle 'vim-less'
-"Bundle 'AutoComplPop'
-"Bundle 'ervandew/supertab'
+Bundle 'AutoComplPop'
+Bundle 'ervandew/supertab'
 
-Bundle 'Valloric/YouCompleteMe'
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_filetype_blacklist = {
-    \ 'css': 1,
-    \ 'scss': 1,
-    \ 'html': 1,
-    \ 'htmldjango': 1
-\}
+"Bundle 'Valloric/YouCompleteMe'
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_filetype_blacklist = {
+"    \ 'css': 1,
+"    \ 'scss': 1,
+"    \ 'html': 1,
+"    \ 'htmldjango': 1
+"\}
 Bundle 'marijnh/tern_for_vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
@@ -124,9 +123,9 @@ let g:syntastic_python_checkers = ['flake8']
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 
-"Bundle 'davidhalter/jedi-vim'
-"let g:jedi#show_call_signatures = 1
-"let g:jedi#popup_on_dot = 0
+Bundle 'davidhalter/jedi-vim'
+let g:jedi#show_call_signatures = 0
+let g:jedi#popup_on_dot = 1
 
 "Bundle 'klen/python-mode'
 "let g:pymode_lint = 0
