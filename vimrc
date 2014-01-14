@@ -76,7 +76,7 @@ Bundle 'ervandew/supertab'
 "    \ 'html': 1,
 "    \ 'htmldjango': 1
 "\}
-Bundle 'marijnh/tern_for_vim'
+Bundle "jelera/vim-javascript-syntax"
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'mileszs/ack.vim'
@@ -125,7 +125,7 @@ let g:Powerline_symbols = 'fancy'
 
 Bundle 'davidhalter/jedi-vim'
 let g:jedi#show_call_signatures = 0
-let g:jedi#popup_on_dot = 1
+let g:jedi#popup_on_dot = 0
 
 "Bundle 'klen/python-mode'
 "let g:pymode_lint = 0
