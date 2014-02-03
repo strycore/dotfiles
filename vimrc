@@ -78,7 +78,8 @@ Bundle 'ervandew/supertab'
 Bundle "jelera/vim-javascript-syntax"
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
-Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
+map <C-f> <esc>:Ag<space>
 Bundle 'gg/python.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'garbas/vim-snipmate'
