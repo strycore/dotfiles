@@ -11,7 +11,7 @@ function link_file {
             return
         else
             backup=$target.backup$(date +%s)
-            echo "[BCKP] Saving backup of exising file ${target} as ${backup}"
+            echo "[BACKUP] Saving backup of exising file ${target} as ${backup}"
             mv $target $backup
         fi
     fi
@@ -35,28 +35,34 @@ link_file tmux.django.conf
 
 if [ ! -e "$HOME/.oh-my-zsh" ]
 then
-    echo "[INST] Installing oh-my-zsh"
+    echo "[INSTALL] Installing oh-my-zsh"
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
     mkdir -p ~/.oh-my-zsh/custom/plugins
 else
     echo "[SKIP] oh-my-zsh is already installed"
 fi
 
-if [ ! -e "~/.oh-my-zsh/custom/plugins/grunt" ]
-then
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/grunt" ]; then
+    echo "[INSTALL] oh-my-zsh Grunt plugin"
     mkdir -p ~/.oh-my-zsh/custom/plugins
-    cd  ~/.oh-my-zsh/custom/plugins
-    git clone https://github.com/yonchu/grunt-zsh-completion.git grunt
+    git clone https://github.com/yonchu/grunt-zsh-completion.git ~/.oh-my-zsh/custom/plugins/grunt
 fi
 
-if [ -e "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]
-then
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then 
     mkdir -p ~/.oh-my-zsh/custom/plugins
-    cd  ~/.oh-my-zsh/custom/plugins
-    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
 fi
 
 mkdir -p ~/.config/terminator
 if [ ! -e ~/.config/terminator/config ]; then
     ln -s $(pwd)/terminator/config ~/.config/terminator/config
+fi
+
+if [ ! -e ~/.powerline-shell.py ]; then
+    rm -rf powerline-shell
+    git clone https://github.com/milkbikis/powerline-shell
+    cd powerline-shell
+    ./install.py
+    ln -s $(pwd)/powerline-shell.py ~/.powerline-shell.py
+    cd ..
 fi
