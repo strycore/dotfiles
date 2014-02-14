@@ -7,9 +7,12 @@ else
 fi
 export BROWSER='firefox' # Default web browser
 
+export EMAIL="strycore@gmail.com"
+export FULLNAME="Mathieu Comandon"
+
 # == Debian packaging variables
-export DEBEMAIL="strider@strycore.com"   #Change this to your email
-export DEBFULLNAME="Mathieu Comandon"
+export DEBEMAIL=$EMAIL
+export DEBFULLNAME=$FULLNAME
 
 
 # Path to your oh-my-zsh configuration.
