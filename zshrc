@@ -1,10 +1,8 @@
 
 # == Default programs
-if [ "$DISPLAY" ]; then
-    export EDITOR='gvim'      # Default text editor
-else
-    export EDITOR='vim'
-fi
+# I would normally use gvim if a display is available, but it seems to cause 
+# problem with dch.
+export EDITOR='vim'
 export BROWSER='firefox' # Default web browser
 
 export EMAIL="strycore@gmail.com"
