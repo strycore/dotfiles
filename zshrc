@@ -94,6 +94,11 @@ say() {
     mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}"
 }
 
+function fuck() {
+  if killall -9 "$2"; then
+    echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
+  fi
+}
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
