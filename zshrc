@@ -1,15 +1,16 @@
 
 # == Default programs
-if [ "$DISPLAY" ]; then
-    export EDITOR='gvim'      # Default text editor
-else
-    export EDITOR='vim'
-fi
+# I would normally use gvim if a display is available, but it seems to cause 
+# problem with dch.
+export EDITOR='vim'
 export BROWSER='firefox' # Default web browser
 
+export EMAIL="strycore@gmail.com"
+export FULLNAME="Mathieu Comandon"
+
 # == Debian packaging variables
-export DEBEMAIL="strider@strycore.com"   #Change this to your email
-export DEBFULLNAME="Mathieu Comandon"
+export DEBEMAIL=$EMAIL
+export DEBFULLNAME=$FULLNAME
 
 
 # Path to your oh-my-zsh configuration.
@@ -95,6 +96,11 @@ say() {
     mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}"
 }
 
+function fuck() {
+  if killall -9 "$2"; then
+    echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
+  fi
+}
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
