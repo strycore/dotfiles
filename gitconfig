@@ -25,5 +25,4 @@
     psh = push
     undo = reset --soft HEAD^
     who = shortlog -sn
-    gol = log --pretty=format:\"%h %an %ad %s\" --abbrev-commit --date=short
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
