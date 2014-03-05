@@ -1,6 +1,6 @@
 
 # == Default programs
-# I would normally use gvim if a display is available, but it seems to cause 
+# I would normally use gvim if a display is available, but it seems to cause
 # problem with dch.
 export EDITOR='vim'
 export BROWSER='firefox' # Default web browser
@@ -110,7 +110,7 @@ if [ -f $ubuntu_venvwrapper ]; then
     source $ubuntu_venvwrapper
 else
     virtualenv=$(which virtualenvwrapper.sh)
-    if [ "$virtualenv" != "" ]; then
+    if [ -f "$virtualenv" ]; then
         source $virtualenv
     fi
 fi
