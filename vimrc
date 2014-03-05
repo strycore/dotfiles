@@ -311,29 +311,52 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
-autocmd BufRead,BufNewFile *.wsgi setfiletype python
+augroup invisible_chars "{{{
+    au!
 
-" Remove trailing whitespace on save
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufRead *.py set errorformat=%f:%l:\ %m
-autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
-if filereadable('./manage.py')
-    autocmd FileType python set ft=python.django " For SnipMate
-    autocmd FileType html set ft=htmldjango.html " For SnipMate
-    autocmd FileType jade set ft=jade.htmldjango " For SnipMate
-    " Use django unittest compiler
-    autocmd BufNewFile,BufRead *.py compiler django
-    " Run unittest with the current editing app
-    nmap <Leader>t :call DjangoMakeGreen("%")<CR>
-    " Run unittest with whole project
-    nmap <Leader>T :call DjangoMakeGreen(".")<CR>
-else
-    autocmd BufNewFile,BufRead *.py compiler pyunit
-    nmap <Leader>t :call MakeGreen("%")<CR>
-    nmap <Leader>T :call MakeGreen(".")<CR>
-endif
+    " Show invisible characters in all of these files
+    autocmd filetype vim setlocal list
+    autocmd filetype python,rst setlocal list
+    autocmd filetype ruby setlocal list
+    autocmd filetype javascript,css setlocal list
+augroup end "}}}
+
+augroup vim_files "{{{
+    au!
+
+    " Bind <F1> to show the keyword under cursor
+    " general help can still be entered manually, with :h
+    autocmd filetype vim noremap <buffer> <F1> <Esc>:help <C-r><C-w><CR>
+    autocmd filetype vim noremap! <buffer> <F1> <Esc>:help <C-r><C-w><CR>
+augroup end "}}}
+
+augroup python_files
+    au!
+
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
+    autocmd BufRead,BufNewFile *.wsgi setfiletype python
+
+    " Remove trailing whitespace on save
+    autocmd BufWritePre *.py :%s/\s\+$//e
+    autocmd BufRead *.py set errorformat=%f:%l:\ %m
+    autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
+    if filereadable('./manage.py')
+        autocmd FileType python set ft=python.django " For SnipMate
+        autocmd FileType html set ft=htmldjango.html " For SnipMate
+        autocmd FileType jade set ft=jade.htmldjango " For SnipMate
+        " Use django unittest compiler
+        autocmd BufNewFile,BufRead *.py compiler django
+        " Run unittest with the current editing app
+        nmap <Leader>t :call DjangoMakeGreen("%")<CR>
+        " Run unittest with whole project
+        nmap <Leader>T :call DjangoMakeGreen(".")<CR>
+    else
+        autocmd BufNewFile,BufRead *.py compiler pyunit
+        nmap <Leader>t :call MakeGreen("%")<CR>
+        nmap <Leader>T :call MakeGreen(".")<CR>
+    endif
+augroup end
 
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
 
@@ -409,6 +432,15 @@ highlight WhitespaceEOL ctermbg=red guibg=red
 " Invisible characters
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
 nmap <leader>l :set list!<CR>
+
+" Creating underline/overline headings for markup languages
+" Inspired by http://sphinx.pocoo.org/rest.html#sections
+nnoremap <leader>1 yyPVr=jyypVr=
+nnoremap <leader>2 yyPVr*jyypVr*
+nnoremap <leader>3 yypVr=
+nnoremap <leader>4 yypVr-
+nnoremap <leader>5 yypVr^
+nnoremap <leader>6 yypVr"
 
 " Filetype switching
 nmap <leader>fa :filetype detect<CR>
