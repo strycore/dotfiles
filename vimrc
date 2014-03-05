@@ -358,6 +358,16 @@ augroup python_files
     endif
 augroup end
 
+
+augroup rst_files "{{{
+    au!
+
+    " Auto-wrap text around 74 chars
+    autocmd filetype rst setlocal textwidth=74
+    autocmd filetype rst setlocal formatoptions+=nqt
+    autocmd filetype rst match ErrorMsg '\%>74v.\+'
+augroup end " }}}
+
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd BufRead *.js set makeprg=jshint\ %
