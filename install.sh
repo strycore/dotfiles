@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+set -e
+
 function link_file {
     source="${PWD}/$1"
     target="${HOME}/.${1}"
@@ -33,24 +36,30 @@ link_file ackrc
 link_file tmux.conf
 link_file tmux.django.conf
 
-if [ ! -e "$HOME/.oh-my-zsh" ]
+if [ "$SHELL" != "/usr/bin/zsh" -a -f "$(which zsh)" ]; then
+	chsh -s /usr/bin/zsh
+fi
+
+if [ ! -d "$HOME/.oh-my-zsh" ]
 then
     echo "[INSTALL] Installing oh-my-zsh"
-    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | bash
     mkdir -p ~/.oh-my-zsh/custom/plugins
 else
     echo "[SKIP] oh-my-zsh is already installed"
 fi
 
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/grunt" ]; then
-    echo "[INSTALL] oh-my-zsh Grunt plugin"
-    mkdir -p ~/.oh-my-zsh/custom/plugins
-    git clone https://github.com/yonchu/grunt-zsh-completion.git ~/.oh-my-zsh/custom/plugins/grunt
-fi
+if [ -d $HOME/.oh-my-zsh/custom ]; then
+	if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/grunt" ]; then
+	    echo "[INSTALL] oh-my-zsh Grunt plugin"
+	    mkdir -p ~/.oh-my-zsh/custom/plugins
+	    git clone https://github.com/yonchu/grunt-zsh-completion.git ~/.oh-my-zsh/custom/plugins/grunt
+	fi
 
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
-    mkdir -p ~/.oh-my-zsh/custom/plugins
-    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+	if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+	    mkdir -p ~/.oh-my-zsh/custom/plugins
+	    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+	fi
 fi
 
 mkdir -p ~/.config/terminator
