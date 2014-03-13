@@ -36,8 +36,9 @@ link_file ackrc
 link_file tmux.conf
 link_file tmux.django.conf
 
-if [ "$SHELL" != "/usr/bin/zsh" -a -f "$(which zsh)" ]; then
-	chsh -s /usr/bin/zsh
+if [ basename "$SHELL" != "zsh" -a -f "$(which zsh)" ]; then
+    echo "Switching default shell to zsh, please enter your password:"
+    chsh -s $(which zsh)
 fi
 
 if [ ! -d "$HOME/.oh-my-zsh" ]
