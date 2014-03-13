@@ -154,8 +154,8 @@ finalize_user()
     mkdir -p $root_u_path
     public_key="$u_path/id_rsa.pub"
     private_key="$u_path/id_rsa"
-    scp strider@strycore.com:~/.ssh/id_rsa $root_u_path/id_rsa
-    scp strider@strycore.com:~/.ssh/id_rsa.pub $root_u_path/id_rsa.pub
+    #scp strider@strycore.com:~/.ssh/id_rsa $root_u_path/id_rsa
+    #scp strider@strycore.com:~/.ssh/id_rsa.pub $root_u_path/id_rsa.pub
     if [ -n "$auth_key" -a -f "$auth_key" ]; then
         cp $auth_key "$root_u_path/authorized_keys"
         echo "Inserted SSH public key from $auth_key into /home/${user}/.ssh/authorized_keys"
