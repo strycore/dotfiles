@@ -32,6 +32,7 @@ link_file hgrc
 link_file ackrc
 link_file tmux.conf
 link_file tmux.django.conf
+link_file dput.cf
 
 if [ ! -e "$HOME/.oh-my-zsh" ]
 then
