@@ -55,9 +55,6 @@ if [ ! "$SSH_AGENT_PID" ]; then
     eval $(ssh-agent)
 fi
 
-if [ -e /usr/bin/ack-grep ]; then
-    alias ack="ack-grep"
-fi
 alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
 alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} {} \;"
@@ -94,6 +91,15 @@ say() {
         local text="${1}";
     fi;
     mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}"
+}
+
+function ack() {
+    killall python
+    killall firefox
+    killall terminator
+    killall gvim
+    killall hexchat
+    echo "Hahaha, next time try 'ag'"
 }
 
 function fuck() {
