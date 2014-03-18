@@ -61,6 +61,30 @@ alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} 
 alias epubcheck="java -jar /opt/epubcheck-3.0b5/epubcheck-3.0b5.jar"
 alias nuke='tr -dc " _" < /dev/urandom'
 alias tmux='tmux -2'
+alias lxls='sudo lxc-ls --fancy'
+function lxcreate() {
+    sudo lxc-create -t ${2:-strycore} -n $1
+}
+function lxstart() {
+    sudo lxc-start -d -n $1
+}
+function lxedit() {
+    container=$1
+    if [ -z "$container" ]; then
+        echo "Missing container name"
+    else
+        sudo $EDITOR /var/lib/lxc/${container}/config
+    fi
+}
+function lxreboot() {
+    container=$1
+    if [ -z "$container" ]; then
+        echo "Missing container name"
+    else
+        sudo lxc-stop -n ${container}
+        sudo lxc-start -n ${container} -d
+    fi
+}
 
 deploy() {
     cwd=$(pwd)
