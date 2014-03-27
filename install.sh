@@ -37,7 +37,7 @@ link_file tmux.conf
 link_file tmux.django.conf
 link_file dput.cf
 
-if [ basename "$SHELL" != "zsh" -a -f "$(which zsh)" ]; then
+if [ "$(basename "$SHELL")" != "zsh" -a -f "$(which zsh)" ]; then
     echo "Switching default shell to zsh, please enter your password:"
     chsh -s $(which zsh)
 fi
