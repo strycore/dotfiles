@@ -48,8 +48,7 @@ function install_powerline_precmd() {
 
 install_powerline_precmd
 
-# Customize to your needs...
-PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH=$PATH:$HOME/bin
 
 if [ ! "$SSH_AGENT_PID" ]; then
     eval $(ssh-agent)
