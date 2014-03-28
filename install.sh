@@ -24,7 +24,6 @@ function link_file {
 
 link_file vim
 link_file vimrc
-link_file profile
 link_file bashrc
 link_file zshrc
 link_file screenrc
