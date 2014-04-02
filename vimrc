@@ -202,7 +202,7 @@ set iskeyword+=-
 " don't outdent hashes
 inoremap # #
 
-let mapleader=","
+let mapleader="<Space>"
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
 
