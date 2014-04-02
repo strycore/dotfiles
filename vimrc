@@ -464,6 +464,7 @@ map <Leader>ad :s#\(\w\+\)=#'\1': #<CR>
 " And back again
 map <Leader>da :s#'\(\w\+\)'\: #\1=#<CR>
 
+vmap <Leader>tr c{% trans "" %}<Esc>hhhhp
 
 " I think this part remove useless trailing spaces
 autocmd BufRead * silent! %s/[\r \t]\+$//
