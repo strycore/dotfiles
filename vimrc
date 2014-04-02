@@ -1,34 +1,27 @@
+" ****************
+" Strider's  vimrc
+" ****************
 "
-" Mathieu Comandon's vimrc
+" 2010-2014 Mathieu Comandon, WTFPL License (http://sam.zoy.org/wtfpl/)
 "
-" This file is under a WTFPL License :
-" http://sam.zoy.org/wtfpl/
+" More  vimrcs
+" ------------
 "
-" Inspirations:
-" How I boosted my Vim (nvie)
-" http://nvie.com/posts/how-i-boosted-my-vim/
-" http://github.com/nvie/vimrc/blob/master/vimrc
-"
-" Hacking Vim – The Ultimate Vimrc
-" http://www.jonlee.ca/hacking-vim-the-ultimate-vimrc/
-"
-" Python and vim: Make your own IDE
-" http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/
-"
-" Vim as a Python IDE
-" http://code.google.com/p/trespams-vim/
-"
-" Howto setup vim ide for php development from @hameedullah
-" http://hameedullah.com/howto-setup-vim-ide-for-php-development.html
-"
-" gmarik's vimrc
+" gmarik
 " https://github.com/gmarik/vimfiles/blob/master/vimrc
 "
-" Rick Harding (mitechie)
+" mitechie
 " https://github.com/mitechie/pyvim
 "
+" matsko
+" https://github.com/matsko/.vimrc/blob/master/.vimrc
 "
-" Function keys:
+" nvie
+" http://github.com/nvie/vimrc/blob/master/vimrc
+"
+" Funcion keys
+" ------------
+"
 " F1:  Help
 " F2:  Close buffer
 " F3:  Toggle NERDTree
@@ -42,17 +35,15 @@
 " F11: Reserved for fullscreen switching by WM or Terminal emulator
 " F12: Available
 
-" Other shortcuts:
+" Shortcuts
+" ---------
 "
-" ,/ Remove search highlight
-" ,l Toggle invisible characters
-" ,t open command-t filesearch
+" <Leader>/ Remove search highlight
+" <Leader>l Toggle invisible characters
+" <Leader>y  copy to system clipboard
+" <Leader>p  paste from system clipboard
 " :w!! save file with sudo
-" "+y  copy to system clipboard
-" <Shift>Ins paste from system clipboard
 "
-" == General & interface
-
 set nocompatible
 filetype off
 
