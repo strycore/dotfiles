@@ -65,17 +65,8 @@ Bundle 'a.vim'
 Bundle 'closetag.vim'
 Bundle 'AutoComplPop'
 Bundle 'ervandew/supertab'
-
-"Bundle 'Valloric/YouCompleteMe'
-"let g:ycm_collect_identifiers_from_comments_and_strings = 1
-"let g:ycm_collect_identifiers_from_tags_files = 1
-"let g:ycm_filetype_blacklist = {
-"    \ 'css': 1,
-"    \ 'scss': 1,
-"    \ 'html': 1,
-"    \ 'htmldjango': 1
-"\}
-Bundle "jelera/vim-javascript-syntax"
+Bundle 'othree/html5-syntax.vim'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'rking/ag.vim'
@@ -96,6 +87,7 @@ Bundle 'reinh/vim-makegreen'
 Bundle 'strycore/django.vim'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'nvie/vim-flake8'
 let g:flake8_max_line_length=80
