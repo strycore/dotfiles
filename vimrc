@@ -42,6 +42,9 @@
 " <Leader>l Toggle invisible characters
 " <Leader>y  copy to system clipboard
 " <Leader>p  paste from system clipboard
+" <Leader>tr Wrap selection in Django 'trans' templatetag
+" <Leader>%  Wrap selection in generic {%  %} templatetag
+" <Leader>{  Wrap selection in generic {{  }} templatetag
 " :w!! save file with sudo
 "
 set nocompatible
@@ -80,6 +83,9 @@ Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'digitaltoad/vim-jade'
+
 Bundle 'nvie/vim-flake8'
 let g:flake8_max_line_length=80
 
@@ -109,12 +115,6 @@ let g:Powerline_symbols = 'fancy'
 Bundle 'davidhalter/jedi-vim'
 let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0
-
-"Bundle 'klen/python-mode'
-"let g:pymode_lint = 0
-
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'digitaltoad/vim-jade'
 
 filetype plugin indent on
 syntax on
@@ -197,13 +197,11 @@ let mapleader=" "
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
 
-
 " Copy to clipboard
 map <leader>y "+y
 
 " Paste from clipboard
 map <leader>p "+gP
-
 
 " ,v brings up my .vimrc
 " ,V reloads it -- making all changes active (have to save first)
@@ -344,7 +342,6 @@ augroup end
 
 augroup rst_files "{{{
     au!
-
     " Auto-wrap text around 74 chars
     autocmd filetype rst setlocal textwidth=74
     autocmd filetype rst setlocal formatoptions+=nqt
@@ -441,13 +438,17 @@ nmap <Leader>fd :set ft=htmldjango.html<CR>
 nmap <Leader>fj :set ft=javascript<CR>
 nmap <Leader>fh :set ft=html<CR>
 
-" Python helpers
+" Python & Django helpers
+" -----------------------
+
 " Dict to arguments
 map <Leader>ad :s#\(\w\+\)=#'\1': #<CR>
 " And back again
 map <Leader>da :s#'\(\w\+\)'\: #\1=#<CR>
 
 vmap <Leader>tr c{% trans "" %}<Esc>hhhhp
+vmap <Leader>%  c{%  "" %}<Esc>hhhhpF"hi
+vmap <Leader>{  c{{  }}<Esc>hhhpi
 
 " I think this part remove useless trailing spaces
 autocmd BufRead * silent! %s/[\r \t]\+$//
