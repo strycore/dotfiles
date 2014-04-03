@@ -55,7 +55,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'a.vim'
 Bundle 'closetag.vim'
 Bundle 'AutoComplPop'
 Bundle 'ervandew/supertab'
@@ -199,9 +198,11 @@ let g:showmarks_enable = 1
 
 " Copy to clipboard
 map <leader>y "+y
+map <leader>c "+y
 
 " Paste from clipboard
 map <leader>p "+gP
+map <leader>v "+gP
 
 " ,v brings up my .vimrc
 " ,V reloads it -- making all changes active (have to save first)
