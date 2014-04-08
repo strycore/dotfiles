@@ -108,8 +108,8 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_jump=0
 let g:syntastic_python_checkers = ['flake8']
 
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'fancy'
+Bundle 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
 
 Bundle 'davidhalter/jedi-vim'
 let g:jedi#show_call_signatures = 0
@@ -404,7 +404,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=Menlo\ for\ Powerline\ 9
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
     set background=dark
     set lines=60 columns=99
     autocmd GUIEnter * set visualbell t_vb=
