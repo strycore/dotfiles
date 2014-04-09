@@ -40,8 +40,10 @@
 "
 " <Leader>/ Remove search highlight
 " <Leader>l Toggle invisible characters
-" <Leader>y  copy to system clipboard
-" <Leader>p  paste from system clipboard
+" <Leader>c  copy to system clipboard
+" <Leader>v  paste from system clipboard
+" <Leader>e  edit vimrc
+" <Leader>r  reload vim configuration
 " <Leader>tr Wrap selection in Django 'trans' templatetag
 " <Leader>%  Wrap selection in generic {%  %} templatetag
 " <Leader>{  Wrap selection in generic {{  }} templatetag
@@ -206,8 +208,8 @@ map <leader>v "+gP
 
 " ,v brings up my .vimrc
 " ,V reloads it -- making all changes active (have to save first)
-map <leader>v :sp ~/.vimrc<CR><C-W>_
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+map <leader>e :sp ~/.vimrc<CR><C-W>_
+map <silent> <leader>r :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 highlight BadWhitespace ctermbg=red guibg=red
 let python_highlight_builtin_funcs = 1
