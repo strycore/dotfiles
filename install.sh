@@ -44,7 +44,11 @@ fi
 if [ ! -d "$HOME/.oh-my-zsh" ]
 then
     echo "[INSTALL] Installing oh-my-zsh"
-    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | bash
+    if [ "$(which curl)" ]; then
+        curl -L http://install.ohmyz.sh | bash
+    elif [ "$(which wget)" ]; then
+        wget --no-check-certificate http://install.ohmyz.sh -O - | bash
+    fi
     mkdir -p ~/.oh-my-zsh/custom/plugins
 else
     echo "[SKIP] oh-my-zsh is already installed"
