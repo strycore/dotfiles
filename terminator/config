@@ -12,11 +12,13 @@
     palette = "#005a78:#bf5f4a:#cdca72:#c4a000:#7aa0b6:#75507b:#83b4b1:#d3d7cf:#96947c:#cc6863:#87a980:#fce94f:#7fa5bb:#ad7fa8:#66aab9:#eeeeec"
     background_image = None
     background_darkness = 0.92
+    scrollback_lines = 9999999
     background_type = transparent
     use_system_font = False
     foreground_color = "#c3c7c4"
     font = DejaVu Sans Mono for Powerline 10
     background_color = "#252525"
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
