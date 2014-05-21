@@ -206,10 +206,10 @@ map <leader>c "+y
 map <leader>p "+gP
 map <leader>v "+gP
 
-" ,v brings up my .vimrc
-" ,V reloads it -- making all changes active (have to save first)
+" <Leader>e brings up my .vimrc
+" <Leader>E reloads it -- making all changes active (have to save first)
 map <leader>e :sp ~/.vimrc<CR><C-W>_
-map <silent> <leader>r :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+map <silent> <leader>E :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 highlight BadWhitespace ctermbg=red guibg=red
 let python_highlight_builtin_funcs = 1
