@@ -161,7 +161,7 @@ set ignorecase                      " Ignore case when searching
 set smartcase                       " Ignore case if search pattern is all lowercase,
                                     " Case-sensitive otherwise
 set hlsearch                        " Highlight search terms
-nmap <silent> ,/ :nohlsearch<CR>
+nmap <silent> <Leader>/ :nohlsearch<CR>
 set incsearch
 set gdefault                        " Search all occurrences by default
 
