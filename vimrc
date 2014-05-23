@@ -58,8 +58,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'closetag.vim'
-Bundle 'AutoComplPop'
-Bundle 'ervandew/supertab'
+"Bundle 'AutoComplPop'
+"Bundle 'ervandew/supertab'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'othree/html5-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mattn/emmet-vim'
