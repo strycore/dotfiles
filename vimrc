@@ -453,7 +453,7 @@ vmap <Leader>tr c{% trans "" %}<Esc>hhhhp
 vmap <Leader>%  c{%  "" %}<Esc>hhhhpF"hi
 vmap <Leader>{  c{{  }}<Esc>hhhpi
 
-map <Leader>' ^i'<Esc>ea':<Esc>wi"<Esc>A".<Esc>
+map <Leader>' ^i'<Esc>ea':<Esc>wi"<Esc>A",<Esc>
 
 " I think this part remove useless trailing spaces
 autocmd BufRead * silent! %s/[\r \t]\+$//
