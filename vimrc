@@ -61,6 +61,7 @@ Bundle 'closetag.vim'
 "Bundle 'AutoComplPop'
 "Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 Bundle 'othree/html5-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mattn/emmet-vim'
@@ -214,6 +215,9 @@ map <leader>v "+gP
 map <leader>e :sp ~/.vimrc<CR><C-W>_
 map <silent> <leader>E :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
+map <leader>g :YcmCompleter GoToDefinition<CR>
+map <leader>G :YcmCompleter GoToDeclaration<CR>
+
 highlight BadWhitespace ctermbg=red guibg=red
 let python_highlight_builtin_funcs = 1
 let python_print_as_function = 1
@@ -295,6 +299,7 @@ autocmd FileType html setlocal indentkeys-=*<Return>
 autocmd FileType sh nmap <F10> :!. %<CR>
 
 autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd Filetype c nmap <F8> :YcmDiags<CR>
 
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
