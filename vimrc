@@ -87,6 +87,8 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'digitaltoad/vim-jade'
+Bundle 'marijnh/tern_for_vim'
+
 
 Bundle 'nvie/vim-flake8'
 let g:flake8_max_line_length=80
