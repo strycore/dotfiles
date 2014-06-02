@@ -62,6 +62,10 @@ Bundle 'closetag.vim'
 "Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_complete_in_comments = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+
 Bundle 'othree/html5-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mattn/emmet-vim'
