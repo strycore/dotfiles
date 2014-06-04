@@ -29,7 +29,7 @@
 " F5:  Previous buffer
 " F6:  Next buffer
 " F7:  Toggle paste mode
-" F8:  Run Flake8
+" F8:  Run Linter (Flake8, CoffeeLint, …)
 " F9:  Toggle folds
 " F10: Run file (currently supported: python, bash, html)
 " F11: Reserved for fullscreen switching by WM or Terminal emulator
@@ -38,15 +38,19 @@
 " Shortcuts
 " ---------
 "
+" <Control>f Search for occurences of a string using :Ag
 " <Leader>/ Remove search highlight
 " <Leader>l Toggle invisible characters
 " <Leader>c  copy to system clipboard
 " <Leader>v  paste from system clipboard
 " <Leader>e  edit vimrc
-" <Leader>r  reload vim configuration
+" <Leader>E  reload vim configuration
 " <Leader>tr Wrap selection in Django 'trans' templatetag
 " <Leader>%  Wrap selection in generic {%  %} templatetag
 " <Leader>{  Wrap selection in generic {{  }} templatetag
+" <Leader>'  Transform a 2-column text line to a dict like syntax
+" <Leader>ad Transform function arguments to dict syntax
+" <Leader>da Transform dict syntax to function argument syntax
 " :w!! save file with sudo
 "
 set nocompatible
@@ -457,7 +461,7 @@ nmap <Leader>fh :set ft=html<CR>
 " Python & Django helpers
 " -----------------------
 
-" Dict to arguments
+" Arguments to dict
 map <Leader>ad :s#\(\w\+\)=#'\1': #<CR>
 " And back again
 map <Leader>da :s#'\(\w\+\)'\: #\1=#<CR>
