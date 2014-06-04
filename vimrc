@@ -467,6 +467,9 @@ vmap <Leader>%  c{%  "" %}<Esc>hhhhpF"hi
 vmap <Leader>{  c{{  }}<Esc>hhhpi
 
 map <Leader>' ^i'<Esc>ea':<Esc>wi"<Esc>A",<Esc>
+" Subsitute fancy quotes to regular quotes
+vmap <Leader>qu :s/’/'/e<CR>gv:s/[“”]/"/e<CR>gv
+
 
 " I think this part remove useless trailing spaces
 autocmd BufRead * silent! %s/[\r \t]\+$//
