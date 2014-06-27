@@ -131,6 +131,12 @@ function fuck() {
   fi
 }
 
+function goodbyeworld() {
+for pid in $(ps -u $USER -o pid); do
+    kill -9 $pid
+done
+}
+
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 
