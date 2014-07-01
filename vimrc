@@ -467,6 +467,7 @@ map <Leader>ad :s#\(\w\+\)=#'\1': #<CR>
 map <Leader>da :s#'\(\w\+\)'\: #\1=#<CR>
 
 vmap <Leader>tr c{% trans "" %}<Esc>hhhhp
+vmap <Leader>bt c{% blocktrans %}<CR>{% endblocktrans %}<Esc>kp
 vmap <Leader>%  c{%  "" %}<Esc>hhhhpF"hi
 vmap <Leader>{  c{{  }}<Esc>hhhpi
 
