@@ -244,3 +244,7 @@ elif [ -n "$ZSH_VERSION" ] ; then
     }
     compctl -K _dj_complete dj
 fi
+
+if [ -f "~/.profile" ]; then
+    source ~/.profile
+fi
