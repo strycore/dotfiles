@@ -78,6 +78,7 @@ Bundle 'rking/ag.vim'
 map <C-f> <esc>:Ag<space>
 Bundle 'gg/python.vim'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/unimpaired'
 Bundle 'garbas/vim-snipmate'
 imap <C-s> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-s> <Plug>snipMateNextOrTrigger
