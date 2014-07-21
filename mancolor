@@ -1,15 +1,15 @@
 #Author: Malsententia <Malsententia@gmail.com>
 #Purpose: Colorized man pages, with random themes based upon the
-#         arguments passed to man. IE: man man will always have 
+#         arguments passed to man. IE: man man will always have
 #         the same color scheme, but man 7 man will have a
 #         different one.
-#Note: Colorization will differ between bash and zsh, since their 
+#Note: Colorization will differ between bash and zsh, since their
 #      RNGs are different
 #Requires: bash or zsh(may support others), and perl
 #Setup: Name it .mancolor.sh, source it in your bashrc/zshrc,
 #       and chmod +x it(it also gets run as a script)
 #       If you name it something else, change this:
-export MANCOLORPATH=$HOME/.mancolor.sh
+export MANCOLORPATH=$HOME/.mancolor
 #If you want it to use just the category(0-9) as the seed change this
 # to 1. Man page of the same category will have the same schemes.
 export USECATEGORY=0
