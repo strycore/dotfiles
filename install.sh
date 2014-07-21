@@ -35,6 +35,7 @@ link_file ackrc
 link_file tmux.conf
 link_file tmux.django.conf
 link_file dput.cf
+link_file mancolor
 
 if [ "$(basename "$SHELL")" != "zsh" -a -f "$(which zsh)" ]; then
     echo "Switching default shell to zsh, please enter your password:"

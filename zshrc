@@ -47,6 +47,10 @@ if [ ! "$SSH_AGENT_PID" ]; then
     eval $(ssh-agent)
 fi
 
+if [ -x "$HOME/.mancolor" ]; then
+    source $HOME/.mancolor
+fi
+
 if [ -e "$HOME/.profile" ]; then
     source $HOME/.profile
 fi
