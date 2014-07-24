@@ -98,6 +98,7 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'marijnh/tern_for_vim'
+Plugin 'jaxbot/semantic-highlight.vim'
 
 
 Bundle 'nvie/vim-flake8'
@@ -338,6 +339,7 @@ augroup python_files
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
+    autocmd BufRead,BufNewFile *.py SemanticHighlight
 
     " Remove trailing whitespace on save
     autocmd BufWritePre *.py :%s/\s\+$//e
@@ -444,6 +446,8 @@ highlight WhitespaceEOL ctermbg=red guibg=red
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
 nmap <leader>l :set list!<CR>
 
+map <Leader>s :SemanticHighlightToggle<CR>
+
 " Creating underline/overline headings for markup languages
 " Inspired by http://sphinx.pocoo.org/rest.html#sections
 nnoremap <leader>1 yyPVr=jyypVr=
@@ -475,7 +479,6 @@ vmap <Leader>{  c{{  }}<Esc>hhhpi
 map <Leader>' ^i'<Esc>ea':<Esc>wi"<Esc>A",<Esc>
 " Subsitute fancy quotes to regular quotes
 vmap <Leader>qu :s/’/'/e<CR>gv:s/[“”]/"/e<CR>gv
-
 
 " I think this part remove useless trailing spaces
 autocmd BufRead * silent! %s/[\r \t]\+$//
