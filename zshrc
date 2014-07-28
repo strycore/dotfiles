@@ -4,6 +4,7 @@
 # problem with dch.
 export EDITOR='vim'
 export BROWSER='firefox'
+export PYTHONIOENCODING=UTF-8
 
 export EMAIL="strycore@gmail.com"
 export FULLNAME="Mathieu Comandon"
