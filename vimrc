@@ -520,6 +520,9 @@ map <silent> <F6> :bnext<CR>
 " Toggle paste mode
 set pastetoggle=<F7>
 
+" Search with Zeal
+nnoremap gz :!zeal --query "<cword>"&<CR><CR> 
+
 " Save file with sudo
 cmap w!! w !sudo tee % > /dev/null
 
