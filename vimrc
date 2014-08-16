@@ -71,7 +71,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 Bundle 'othree/html5-syntax.vim'
-Bundle 'jelera/vim-javascript-syntax'
+Bundle 'pangloss/vim-javascript'
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'rking/ag.vim'
@@ -124,6 +124,7 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_jump=0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = "--max-line-length=80"
+let g:syntastic_javascript_checkers = ['jscs', 'jshint']
 
 Bundle 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
@@ -521,7 +522,7 @@ map <silent> <F6> :bnext<CR>
 set pastetoggle=<F7>
 
 " Search with Zeal
-nnoremap gz :!zeal --query "<cword>"&<CR><CR> 
+nnoremap gz :!zeal --query "<cword>"&<CR><CR>
 
 " Save file with sudo
 cmap w!! w !sudo tee % > /dev/null
