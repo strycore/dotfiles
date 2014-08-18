@@ -56,68 +56,70 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set rtp+=~/.vim/bundle/vundle/
+" call vundle#rc()
 
-Bundle 'gmarik/vundle'
+call plug#begin('~/.vim/plugged')
 
-Bundle 'closetag.vim'
-"Bundle 'AutoComplPop'
-"Bundle 'ervandew/supertab'
-Bundle 'Valloric/YouCompleteMe'
+Plug 'gmarik/vundle'
+
+Plug 'closetag.vim'
+"Plug 'AutoComplPop'
+"Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 
-Bundle 'othree/html5-syntax.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mattn/emmet-vim'
-Bundle 'tpope/vim-surround'
-Bundle 'rking/ag.vim'
+Plug 'othree/html5-syntax.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim'
 map <C-f> <esc>:Ag<space>
-Bundle 'gg/python.vim'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'garbas/vim-snipmate'
+Plug 'gg/python.vim'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-unimpaired'
+Plug 'garbas/vim-snipmate'
 imap <C-s> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-s> <Plug>snipMateNextOrTrigger
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'honza/vim-snippets'
-Bundle 'majutsushi/tagbar'
-Bundle 'walm/jshint.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'lukaszb/vim-web-indent'
-Bundle 'reinh/vim-makegreen'
-Bundle 'strycore/django.vim'
-Bundle 'tomasr/molokai'
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'marijnh/tern_for_vim'
-Plugin 'jaxbot/semantic-highlight.vim'
+Plug 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'honza/vim-snippets'
+Plug 'majutsushi/tagbar'
+Plug 'walm/jshint.vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'lukaszb/vim-web-indent'
+Plug 'reinh/vim-makegreen'
+Plug 'strycore/django.vim'
+Plug 'tomasr/molokai'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'digitaltoad/vim-jade'
+Plug 'marijnh/tern_for_vim'
+Plug 'jaxbot/semantic-highlight.vim'
 
 
-Bundle 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8'
 let g:flake8_max_line_length=80
 
-Bundle 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 4
 
-Bundle 'kien/ctrlp.vim'
-Bundle 'tacahiroy/ctrlp-funky'
+Plug 'kien/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_extensions = ['funky']
 nnoremap <A-p> :CtrlPFunky<Cr>
 
-Bundle 'The-NERD-tree'
+Plug 'The-NERD-tree'
 let g:NERDTreeWinSize = 25
 let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS']
 
-Bundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
@@ -126,12 +128,14 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = "--max-line-length=80"
 let g:syntastic_javascript_checkers = ['jscs', 'jshint']
 
-Bundle 'bling/vim-airline'
+Plug 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 
-Bundle 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0
+
+call plug#end()
 
 filetype plugin indent on
 syntax on

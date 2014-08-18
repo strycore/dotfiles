@@ -2,4 +2,5 @@
 *.log
 *~
 vim/.netrwhist
-vim/bundle/*
+vim/plugged
+vim/autoload/*

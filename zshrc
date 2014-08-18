@@ -245,3 +245,33 @@ bindkey '^i' complete-word              # tab to do menu
 bindkey "\e[Z" reverse-menu-complete    # shift-tab to reverse menu
 
 unset -f work_in_progress
+
+# This is pretty much a port of the OhMyZsh Vundle plugin for vim-plug
+function vim-plug-init () {
+  if [ ! -d ~/.vim/autoload/ ]
+  then
+    mkdir -p ~/.vim/autoload/
+  fi
+
+  if [ ! -f ~/.vim/autoload/plug.vim ]
+  then
+    curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
+    echo "\n\tRead about vim configuration for vim-plug at https://github.com/junegunn/vim-plug\n"
+  fi
+}
+
+function vim-plug () {
+  vim-plug-init
+  vim -c "execute \"PlugInstall\" | q | q"
+}
+
+function vim-plug-update () {
+  vim-plug-init
+  vim -c "execute \"PlugUpgrade\" | q | q"
+  vim -c "execute \"PlugUpdate\" | q | q"
+}
+
+function vim-plug-clean () {
+  vim-plug-init
+  vim -c "execute \"PlugClean!\" | q | q"
+}
