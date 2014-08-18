@@ -260,8 +260,6 @@ inoremap <silent> <C-z> <Esc>:undo<CR>i
 inoremap <S-Left> <C-Left>
 inoremap <S-Right> <C-Right>
 
-noremap <silent> <C-r> :RopeRename<CR>
-
 filetype indent on
 set formatoptions-=t " Don't do automatic linebreaks
 "
@@ -530,8 +528,6 @@ nnoremap gz :!zeal --query "<cword>"&<CR><CR>
 
 " Save file with sudo
 cmap w!! w !sudo tee % > /dev/null
-
-map <silent> <leader>r :RopeRename<CR>
 
 set path=$PWD/**
 
