@@ -101,7 +101,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'digitaltoad/vim-jade'
 Plug 'marijnh/tern_for_vim'
 Plug 'jaxbot/semantic-highlight.vim'
-
+Plug 'tkztmk/vim-vala'
 
 Plug 'nvie/vim-flake8'
 let g:flake8_max_line_length=80
@@ -418,11 +418,6 @@ autocmd FileType php inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
 autocmd FileType php nnoremap <C-D> :call PhpDocSingle()<CR>
 autocmd FileType php vnoremap <C-D> :call PhpDocRange()<CR>
 
-autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-autocmd BufRead,BufNewFile *.vala setfiletype vala
-autocmd BufRead,BufNewFile *.vapi setfiletype vala
-autocmd BufRead,BufNewFile *.twig setfiletype htmldjango.html
 " Closes the Omni-Completion tip window when a selection is made
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
