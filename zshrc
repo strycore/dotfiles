@@ -244,7 +244,10 @@ zstyle ':completion:*:*:rm:*:*' ignored-patterns
 bindkey '^i' complete-word              # tab to do menu
 bindkey "\e[Z" reverse-menu-complete    # shift-tab to reverse menu
 
-unset -f work_in_progress
+# Unset this function from the git plugin, collides with `workon` tab completion
+if [ "$(type work_in_progress)" ]; then
+    unset -f work_in_progress
+fi
 
 # This is pretty much a port of the OhMyZsh Vundle plugin for vim-plug
 function vim-plug-init () {
