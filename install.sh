@@ -50,7 +50,10 @@ then
     elif [ "$(which wget)" ]; then
         wget --no-check-certificate http://install.ohmyz.sh -O - | bash
     fi
-    mkdir -p ~/.oh-my-zsh/custom/plugins
+    # Check that OhMyZsh as been installed and create custom plugin dir
+    if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
+        mkdir -p ~/.oh-my-zsh/custom/plugins
+    fi
 else
     echo "[SKIP] oh-my-zsh is already installed"
 fi
