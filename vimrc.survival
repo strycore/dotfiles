@@ -1,0 +1,39 @@
+set nocompatible
+filetype plugin indent on
+syntax on
+set ruler
+set hidden
+set nowrap
+set cursorline
+set mouse=a
+set autoread
+set smartindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+set backspace=indent,eol,start
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set gdefault
+set wildmenu
+set wildmode=longest:full,list
+set nobackup
+set noswapfile
+set number
+set numberwidth=1
+set encoding=utf8
+set lisp
+set completeopt=menu,longest,preview
+set omnifunc=syntaxcomplete#Complete
+let mapleader=" "
+map <leader>y "+y
+map <leader>c "+y
+map <leader>p "+gP
+map <leader>v "+gP
+map <leader>e :sp ~/.vimrc<CR><C-W>_
+map Q <Nop>
+colorscheme elflord
