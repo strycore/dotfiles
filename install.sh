@@ -102,7 +102,7 @@ if [ $watches -lt 524288 ]; then
     echo "*****     PLEASE FIX THIS ASAP!! RUN AS ROOT:                   *****"
     echo "*****                                                           *****"
     echo "***** echo 524288 > /proc/sys/fs/inotify/max_user_watches       *****"
-    echo "***** cat fs.inotify.max_user_watches=524288 > /etc/sysctl.conf *****"
+    echo "***** cat fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf*****"
     echo "*****                                                           *****"
     echo "*****                                                           *****"
     echo "*********************************************************************"
