@@ -84,3 +84,29 @@ if [ ! -e ~/.powerline-shell.py ]; then
     ln -s $(pwd)/powerline-shell.py ~/.powerline-shell.py
     cd ..
 fi
+
+# Check that the running system has enough inotify watches
+
+watches=$(cat /proc/sys/fs/inotify/max_user_watches)
+if [ $watches -lt 524288 ]; then
+    echo "*********************************************************************"
+    echo "*********************************************************************"
+    echo "*********************************************************************"
+    echo "*********************************************************************"
+    echo "*****                                                           *****"
+    echo "*****                                                           *****"
+    echo "*****     YOUR NUMBER OF INOTIFY WATCHES IS DANGEROUSLY LOW.    *****"
+    echo "*****     SEVERAL TOOLS SUCH AS TAIL, LIVERELOAD AND DROPBOX    *****"
+    echo "*****     WON'T WORK PROPERLY.                                  *****"
+    echo "*****                                                           *****"
+    echo "*****     PLEASE FIX THIS ASAP!! RUN AS ROOT:                   *****"
+    echo "*****                                                           *****"
+    echo "*****   echo 524288 > /proc/sys/fs/inotify/max_user_watches     *****"
+    echo "*****                                                           *****"
+    echo "*****                                                           *****"
+    echo "*****                                                           *****"
+    echo "*********************************************************************"
+    echo "*********************************************************************"
+    echo "*********************************************************************"
+    echo "*********************************************************************"
+fi
