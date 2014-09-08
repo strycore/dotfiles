@@ -64,8 +64,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'gmarik/vundle'
 
 Plug 'closetag.vim'
-"Plug 'AutoComplPop'
-"Plug 'ervandew/supertab'
+Plug 'chazy/cscope_maps'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
