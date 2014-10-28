@@ -135,6 +135,13 @@ function say() {
     mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}"
 }
 
+function blitter() {
+    yes "$(seq 231 -1 16)" | while read i; do 
+        printf "\x1b[48;5;${i}m\n"; 
+        sleep .02; 
+    done
+}
+
 function ack() {
     killall python
     killall firefox
