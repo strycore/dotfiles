@@ -93,6 +93,7 @@ Plug 'lukaszb/vim-web-indent'
 Plug 'reinh/vim-makegreen'
 Plug 'strycore/django.vim'
 Plug 'tomasr/molokai'
+Plug 'freeo/vim-kalisi'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'cakebaker/scss-syntax.vim'
@@ -164,7 +165,7 @@ set winwidth=85
 
 set t_Co=256
 set background=dark
-colorscheme molokai
+colorscheme kalisi
 
 " == Identation and tabs
 set smartindent
@@ -427,7 +428,7 @@ if has("gui_running")
     set background=dark
     set lines=60 columns=99
     autocmd GUIEnter * set visualbell t_vb=
-    colorscheme molokai
+    colorscheme kalisi
 endif
 
 " Highlight long lines
