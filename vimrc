@@ -72,7 +72,8 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 Plug 'othree/html5-syntax.vim'
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
@@ -87,6 +88,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
+Plug 'elzr/vim-json'
 Plug 'walm/jshint.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'lukaszb/vim-web-indent'
@@ -325,6 +327,7 @@ augroup invisible_chars "{{{
     autocmd filetype python,rst setlocal list
     autocmd filetype ruby setlocal list
     autocmd filetype javascript,css setlocal list
+    autocmd BufRead,BufNewFile *.js SemanticHighlight
 augroup end "}}}
 
 augroup vim_files "{{{
