@@ -45,7 +45,7 @@ if [ -s $HOME/.rvm/bin ]; then
 fi
 
 if [ ! "$SSH_AGENT_PID" ]; then
-    eval $(ssh-agent)
+    #eval $(ssh-agent)
 fi
 
 if [ -x "$HOME/.mancolor" ]; then
