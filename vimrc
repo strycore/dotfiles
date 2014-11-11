@@ -435,6 +435,13 @@ if has("gui_running")
     set lines=60 columns=99
     autocmd GUIEnter * set visualbell t_vb=
     colorscheme kalisi
+    set guioptions-=T
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=m
+    set guioptions-=M
 endif
 
 " Highlight long lines
