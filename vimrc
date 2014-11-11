@@ -65,6 +65,8 @@ Plug 'gmarik/vundle'
 
 Plug 'closetag.vim'
 Plug 'chazy/cscope_maps'
+Plug 'Valloric/MatchTagAlways'
+
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
@@ -104,6 +106,7 @@ Plug 'digitaltoad/vim-jade'
 Plug 'marijnh/tern_for_vim'
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'tkztmk/vim-vala'
+Plug 'cohama/lexima.vim'
 
 Plug 'nvie/vim-flake8'
 let g:flake8_max_line_length=80
