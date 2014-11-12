@@ -44,8 +44,11 @@ if [ -s $HOME/.rvm/bin ]; then
     export PATH=$PATH:$HOME/.rvm/bin
 fi
 
-if [ ! "$SSH_AGENT_PID" ]; then
-    #eval $(ssh-agent)
+# Start Gnome Keyring daemon on other DE's than Gnome (or simply when it's
+# having a bad day)
+if [ -n "$DESKTOP_SESSION" -a -z "$SSH_AUTH_SOCK" ]; then
+    eval $(gnome-keyring-daemon --start --components=ssh)
+    export SSH_AUTH_SOCK
 fi
 
 if [ -x "$HOME/.mancolor" ]; then
@@ -136,9 +139,9 @@ function say() {
 }
 
 function blitter() {
-    yes "$(seq 231 -1 16)" | while read i; do 
-        printf "\x1b[48;5;${i}m\n"; 
-        sleep .02; 
+    yes "$(seq 231 -1 16)" | while read i; do
+        printf "\x1b[48;5;${i}m\n";
+        sleep .02;
     done
 }
 
