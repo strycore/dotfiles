@@ -497,8 +497,12 @@ autocmd BufEnter *.php :%s/[ \t\r]\+$//e
 
 map <silent> <A-Right> :tabnext<CR>
 map <silent> <A-Left> :tabprevious<CR>
-noremap <silent> <C-Left> <C-T>
-noremap <silent> <C-Right> <C-]>
+
+inoremap <C-Right> B
+inoremap <C-Left> W
+
+noremap <silent> <C-Down> <C-T>     " Jump to tag
+noremap <silent> <C-Up> <C-]>       " Jump back from tag
 
 noremap <C-PageUp> gT
 noremap <C-pageDown> gt
