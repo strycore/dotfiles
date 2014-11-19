@@ -72,7 +72,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
-
+let g:ycm_filetype_blacklist = {'python': 1}
 Plug 'othree/html5-syntax.vim'
 "Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
@@ -274,7 +274,7 @@ py << EOF
 import os.path
 import sys
 import vim
-sys.path.insert(0, os.path.join(os.path.expanduser('~'), '.cache/fakegir/'))
+sys.path.insert(0, os.path.expanduser('~/.cache/fakegir'))
 if 'VIRTUAL_ENV' in os.environ:
     project_base_dir = os.environ['VIRTUAL_ENV']
     sys.path.insert(0, project_base_dir)
@@ -430,7 +430,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
     set background=dark
     set lines=60 columns=99
     autocmd GUIEnter * set visualbell t_vb=
