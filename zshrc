@@ -155,7 +155,10 @@ function ack() {
 }
 
 function fuck() {
-  if killall -9 "$2"; then
+  if [ -z "$2" ]; then
+    kill -9 $(top -b -n1 -c  | awk '/PID *USER/{getline;print $1;getline;print $1}')
+    echo ; echo " ┻━┻ ︵ヽ(\`Д´)ﾉ︵ ┻━┻ "; echo
+  elif killall -9 "$2"; then
     echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
   fi
 }
