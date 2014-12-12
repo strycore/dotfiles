@@ -128,7 +128,7 @@ function search() {
 }
 
 function say() {
-    if [[ "${1}" =~ ^[a-z]{2}$ ]]; then
+    if [[ "${1}" =~ ^[a-zA-Z_]{2,5}$ ]]; then
         local lang=${1#-};
         local text="${*#$1}";
     else
