@@ -328,6 +328,7 @@ augroup invisible_chars "{{{
     " Show invisible characters in all of these files
     autocmd filetype vim setlocal list
     autocmd filetype python,rst setlocal list
+    autocmd filetype python setlocal textwidth=80
     autocmd filetype ruby setlocal list
     autocmd filetype javascript,css setlocal list
     autocmd BufRead,BufNewFile *.js SemanticHighlight
