@@ -1,0 +1,6 @@
+proj_root=$HOME/Projects/
+proj_name=$(basename $VIRTUAL_ENV)
+mkdir ${proj_root}${proj_name}
+add2virtualenv $HOME/projects/$proj_name
+cd $HOME/projects/$proj_name
+setvirtualenvproject
