@@ -1,0 +1,20 @@
+{
+  "ecmaFeatures": {
+    "modules": true,
+    "classes": true
+  },
+  "rules": {
+    "quotes": "simple",
+    "indent": [2, 2],
+    "eol-last": false,
+    "no-console": false,
+    "spaced-line-comment": ["always"],
+    "valid-jsdoc": [2, {
+      "requireReturn": false
+    }]
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  }
+}
