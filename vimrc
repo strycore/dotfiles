@@ -61,8 +61,6 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'gmarik/vundle'
-
 Plug 'closetag.vim'
 Plug 'chazy/cscope_maps'
 Plug 'Valloric/MatchTagAlways'
