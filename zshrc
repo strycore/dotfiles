@@ -60,7 +60,10 @@ if [ -e "$HOME/.profile" ]; then
 fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+   source "$NVM_DIR/nvm.sh"
+   nvm use default > /dev/null
+fi
 
 ubuntu_venvwrapper="/etc/bash_completion.d/virtualenvwrapper"
 if [ -f $ubuntu_venvwrapper ]; then
