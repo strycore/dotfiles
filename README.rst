@@ -54,6 +54,7 @@ This config ships with YouCompleteMe plugin which requires vim 7.4.
 YouCompleteMe should be compiled automatically by vim-plug, if that
 fails, you can compile it manually::
 
+    sudo apt-get install cmake
     cd ~/.vim/plugged/YouCompleteMe
     ./install.sh --clang-completer
 
@@ -74,3 +75,4 @@ be installed::
     npm install bower -g
     sudo pip install virtualenvwrapper
     sudo apt-get install silversearcher-ag
+    sudo apt-get install exubrant-ctags
