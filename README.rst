@@ -39,13 +39,22 @@ without running global node scripts as root).
     # Alias this version of node to default
     nvm alias default v0.12.2
 
+Installing python is done with pip. It is recommended not to install pip
+with your distribution's package manager to keep a fresh version of the
+program. One easy way to install the latest version of pip is with
+easy_install::
+    # easy_install is not installed on a base Ubuntu system
+    sudo apt-get install python-setuptools
+    # install pip
+    sudo easy_install pip
+
 This config ships with YouCompleteMe plugin which requires vim 7.4.
 (Should now be in current distributions).
 
 YouCompleteMe should be compiled automatically by vim-plug, if that
 fails, you can compile it manually::
 
-    cd ~/.vim/bundle/YouCompleteMe
+    cd ~/.vim/plugged/YouCompleteMe
     ./install.sh --clang-completer
 
 Additional programs are required for syntax checking:
@@ -58,3 +67,10 @@ Additional programs are required for syntax checking:
 
 - rstcheck, validate RestructuredText files::
     sudo pip install rstcheck
+
+Depending on the project being worked on, some additional software have to
+be installed::
+    npm install gulp -g
+    npm install bower -g
+    sudo pip install virtualenvwrapper
+    sudo apt-get install silversearcher-ag
