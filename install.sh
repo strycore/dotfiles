@@ -4,7 +4,11 @@ set -e
 
 function link_file {
     source="${PWD}/$1"
-    target="${HOME}/.${1}"
+    if [[ "${2}" ]]; then
+        target="${2}/${1}"
+    else
+        target="${HOME}/.${1}"
+    fi
 
     if [ -e "${target}" ]
     then
@@ -37,6 +41,7 @@ link_file tmux.conf
 link_file tmux.django.conf
 link_file dput.cf
 link_file mancolor
+link_file flake8 $HOME/.config
 
 if [ "$(basename "$SHELL")" != "zsh" -a -f "$(which zsh)" ]; then
     echo "Switching default shell to zsh, please enter your password:"

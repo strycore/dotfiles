@@ -106,8 +106,6 @@ Plug 'jaxbot/semantic-highlight.vim'
 Plug 'tkztmk/vim-vala'
 
 Plug 'nvie/vim-flake8'
-let g:flake8_max_line_length=80
-
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 4
 
