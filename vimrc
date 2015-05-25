@@ -353,8 +353,12 @@ augroup python_files
     autocmd BufWritePre *.py :%s/\s\+$//e
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
     autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
+    " Filetype was set to python.django only for django projects but files
+    " with the python filetype wouldn't get proper autocompletion. I'm
+    " suspecting a bug in YouCompleteMe. In the meantime, setting the
+    " filetype to python.django provide better results for every Python file.
+    autocmd FileType python set ft=python.django " For SnipMate
     if filereadable('./manage.py')
-        autocmd FileType python set ft=python.django " For SnipMate
         autocmd FileType html set ft=htmldjango.html " For SnipMate
         autocmd FileType jade set ft=jade.htmldjango " For SnipMate
         " Use django unittest compiler
