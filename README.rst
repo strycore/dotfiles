@@ -33,11 +33,11 @@ without running global node scripts as root).
     # Download and install nvm
     curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
     # Source nvm script to avoid restarting a shell
-    . ./~nvm/nvm.sh
-    # Install latest version of node (v0.12.2 as of this writing)
-    nvm install v0.12.2
+    . ~/.nvm/nvm.sh
+    # Install latest version of node (v0.12.4 as of this writing)
+    nvm install v0.12.4
     # Alias this version of node to default
-    nvm alias default v0.12.2
+    nvm alias default v0.12.4
 
 Installing python is done with pip. It is recommended not to install pip
 with your distribution's package manager to keep a fresh version of the
@@ -64,15 +64,15 @@ Additional programs are required for syntax checking:
     sudo pip install flake8
 
 - eslint, validates ecmascript code::
-    npm install eslint -g
+    npm install -g eslint
 
 - rstcheck, validate RestructuredText files::
     sudo pip install rstcheck
 
 Depending on the project being worked on, some additional software have to
 be installed::
-    npm install gulp -g
-    npm install bower -g
+    npm install -g gulp
+    npm install -g bower
     sudo pip install virtualenvwrapper
     sudo apt-get install silversearcher-ag
     sudo apt-get install exubrant-ctags
