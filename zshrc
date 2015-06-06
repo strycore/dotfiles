@@ -294,3 +294,7 @@ function vim-plug-clean () {
   vim-plug-init
   vim -c "execute \"PlugClean!\" | q | q"
 }
+
+# Autocompletion for npm and gulp
+eval "$(npm completion 2>/dev/null)"
+eval "$(gulp --completion=zsh)"
