@@ -134,6 +134,8 @@ Plug 'davidhalter/jedi-vim'
 let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0
 
+Plug 'junegunn/goyo.vim'
+
 call plug#end()
 
 filetype plugin indent on
