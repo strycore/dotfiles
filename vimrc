@@ -88,7 +88,6 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'elzr/vim-json'
-Plug 'walm/jshint.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'lukaszb/vim-web-indent'
 Plug 'reinh/vim-makegreen'
@@ -375,16 +374,14 @@ augroup end
 augroup rst_files "{{{
     au!
     " Auto-wrap text around 74 chars
-    autocmd filetype rst setlocal textwidth=74
     autocmd filetype rst setlocal formatoptions+=nqt
-    autocmd filetype rst match ErrorMsg '\%>74v.\+'
 augroup end " }}}
 
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
 
-autocmd BufRead *.js set makeprg=jshint\ %
+autocmd BufRead *.js set makeprg=eslint\ %
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
+"autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd BufNewFile,BufRead *.coffee setfiletype coffee
