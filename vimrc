@@ -72,7 +72,6 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_filetype_blacklist = {'python': 1}
 Plug 'othree/html5-syntax.vim'
-"Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
@@ -173,6 +172,7 @@ set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set textwidth=79
 set shiftround
 set expandtab
 set backspace=indent,eol,start
@@ -262,6 +262,7 @@ inoremap <S-Right> <C-Right>
 
 filetype indent on
 set formatoptions-=t " Don't do automatic linebreaks
+map <leader>w :set formatoptions+=t<CR>
 "
 " Add the virtualenv's site-packages to vim path
 if has('python')
@@ -323,7 +324,6 @@ augroup invisible_chars "{{{
     " Show invisible characters in all of these files
     autocmd filetype vim setlocal list
     autocmd filetype python,rst setlocal list
-    autocmd filetype python setlocal textwidth=80
     autocmd filetype ruby setlocal list
     autocmd filetype javascript,css setlocal list
     autocmd BufRead,BufNewFile *.js SemanticHighlight
