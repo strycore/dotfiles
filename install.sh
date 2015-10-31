@@ -66,14 +66,20 @@ fi
 
 if [ -d $HOME/.oh-my-zsh/custom ]; then
     if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/grunt" ]; then
-        echo "[INSTALL] oh-my-zsh Grunt plugin"
+        echo "[INSTALL] zsh Grunt plugin"
         mkdir -p ~/.oh-my-zsh/custom/plugins
         git clone https://github.com/yonchu/grunt-zsh-completion.git ~/.oh-my-zsh/custom/plugins/grunt
     fi
 
     if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+        echo "[INSTALL] zsh syntax highlighting"
         mkdir -p ~/.oh-my-zsh/custom/plugins
         git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+    fi
+
+    if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/git-flow-completion" ]; then
+        echo "[INSTALL] zsh git flow completion"
+        git clone https://github.com/bobthecow/git-flow-completion ~/.oh-my-zsh/custom/plugins/git-flow-completion
     fi
 fi
 

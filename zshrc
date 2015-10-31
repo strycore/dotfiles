@@ -17,7 +17,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="sorin"
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git python pip command-not-found ruby vundle zsh-syntax-highlighting fabric yum bower)
+plugins=(git python pip command-not-found ruby vundle zsh-syntax-highlighting fabric yum bower git-flow-completion)
 
 source $ZSH/oh-my-zsh.sh
 
