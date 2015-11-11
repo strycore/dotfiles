@@ -97,6 +97,11 @@ if [ ! -e ~/.powerline-shell.py ]; then
     cd ..
 fi
 
+if [ ! -e "$(which fzf)" ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --no-update-rc
+fi
+
 # Check that the running system has enough inotify watches
 
 watches=$(cat /proc/sys/fs/inotify/max_user_watches)
