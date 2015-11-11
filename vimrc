@@ -225,8 +225,8 @@ map <leader>y "+y
 map <leader>c "+y
 
 " Paste from clipboard
-map <leader>p "+gP
-map <leader>v "+gP
+map <leader>p "+gp
+map <leader>v "+gp
 
 " <Leader>e brings up my .vimrc
 " <Leader>E reloads it -- making all changes active (have to save first)
