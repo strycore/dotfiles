@@ -506,11 +506,6 @@ noremap <silent> <C-Up> <C-]>       " Jump back from tag
 noremap <C-PageUp> gT
 noremap <C-pageDown> gt
 
-map <kPlus> <C-W>+
-map <kMinus> <C-W>-
-map <kDivide> <c-w>>
-map <kMultiply> <c-w><
-
 " Allow moving in insert mode with home row keys
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
