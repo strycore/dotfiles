@@ -1,0 +1,43 @@
+" Plugins
+call plug#begin('~/.vim/plugged')
+    Plug 'freeo/vim-kalisi'                 " Colorscheme
+    Plug 'The-NERD-tree'                    " File explorer
+    Plug 'scrooloose/syntastic'             " Syntax checker
+    Plug 'kien/ctrlp.vim'                   " Quickly open files in project
+    Plug 'jaxbot/semantic-highlight.vim'    " Semantic hightlighting
+call plug#end()
+
+" Visual appearance
+set background=dark
+colorscheme kalisi
+highlight WhitespaceEOL ctermbg=red guibg=red
+" GUI Visual appearance
+if has("gui_running")
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+endif
+
+" Editor config
+set nobackup    " Don't create backup files
+set noswapfile  " Don't create swap files
+
+" Plugin configuration
+"   Syntastic
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_style_error_symbol='☢'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = "--max-line-length=90"
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_rst_checkers = ['rstcheck']
+
+" Keybindings
+"   Function keys
+map <silent> <F3> :NERDTreeToggle<CR>
+map <silent> <F5> :bprevious<CR>
+map <silent> <F6> :bnext<CR>
+set pastetoggle=<F7>
+"   Leader keys
+" Toggle Semantic hightlighting
+map <Leader>s :SemanticHighlightToggle<CR>
