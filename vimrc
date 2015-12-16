@@ -344,7 +344,7 @@ augroup python_files
     autocmd!
 
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
+    autocmd BufRead,BufNewFile *.py  set autoindent sw=4 sts=4 expandtab
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
     autocmd BufRead,BufNewFile *.py SemanticHighlight
 
@@ -521,7 +521,7 @@ map <silent> <F4> :TagbarToggle<CR>
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " Toggle NerdTree
-map <silent> <F2> :bd<CR>
+map <silent> <F2> :bdelete<CR>
 map <silent> <F3> :NERDTreeToggle<CR>
 
 " Move between buffers
