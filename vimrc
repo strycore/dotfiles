@@ -115,11 +115,12 @@ nnoremap <A-p> :CtrlPFunky<Cr>
 
 Plug 'The-NERD-tree'
 let g:NERDTreeWinSize = 25
-let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS']
+let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$']
 
 Plug 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='✗'
+let g:syntastic_style_error_symbol='☢'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_auto_jump=0
 let g:syntastic_python_checkers = ['flake8']
@@ -340,7 +341,7 @@ augroup vim_files "{{{
 augroup end "}}}
 
 augroup python_files
-    au!
+    autocmd!
 
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd BufRead,BufNewFile *.py  set ai sw=4 sts=4 et
@@ -374,7 +375,7 @@ augroup end
 
 
 augroup rst_files "{{{
-    au!
+    autocmd!
     " Auto-wrap text around 74 chars
     autocmd filetype rst setlocal formatoptions+=nqt
 augroup end " }}}
@@ -497,6 +498,7 @@ autocmd BufEnter *.php :%s/[ \t\r]\+$//e
 map <silent> <A-Right> :tabnext<CR>
 map <silent> <A-Left> :tabprevious<CR>
 
+" Jump to  prev/next word with Ctrl+right/left
 inoremap <C-Right> <C-o>B
 inoremap <C-Left> <C-o>W
 
