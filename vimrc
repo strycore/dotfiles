@@ -112,7 +112,7 @@ nnoremap <A-p> :CtrlPFunky<Cr>
 
 Plug 'The-NERD-tree'
 let g:NERDTreeWinSize = 25
-let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$']
+let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$', '__pycache__']
 
 Plug 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
