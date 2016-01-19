@@ -432,7 +432,6 @@ if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
     set background=dark
-    set lines=60 columns=99
     autocmd GUIEnter * set visualbell t_vb=
     colorscheme kalisi
     set guioptions-=T
