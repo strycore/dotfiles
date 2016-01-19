@@ -402,6 +402,7 @@ autocmd FileType css set equalprg=csstidy
 autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 autocmd BufWritePre *.css :%s/\s\+$//e
 autocmd BufWritePre *.less :%s/\s\+$//e
+autocmd BufWritePre *.html :%s/\s\+$//e
 
 " LessCSS
 autocmd BufNewFile,BufRead *.less setfiletype css
