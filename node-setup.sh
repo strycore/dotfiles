@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NODE_CURRENT="v5.1.0"
+NODE_CURRENT="v5.5.0"
 NVM_DIR="$HOME/.nvm"
 
 if [ ! -d "$NVM_DIR" ]; then
@@ -19,3 +19,4 @@ npm install gulp -g
 npm install browser-sync -g
 npm install eslint -g
 npm install bower -g
+npm install polylint -g
