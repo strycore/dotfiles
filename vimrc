@@ -251,7 +251,10 @@ map <silent> <S-F8> :w<CR>:make<CR>:cw<CR>
 """ Keybindings
 " Disable ex mode
 map Q <Nop>
-map :W<CR> :w<CR>
+command W w
+command Q q
+command WQ wq
+command Wq wq
 
 " Stuff to piss off vim purists
 inoremap <silent> <C-Backspace> <C-w>
