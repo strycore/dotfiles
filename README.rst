@@ -6,14 +6,11 @@ Installation
 
 Run ./install.sh
 
-If you're running the bundled oh-my-zsh config, run:
+To install vim plugins, run:
 
-    vundle-init
-    vundle-update
+    vim-plug-init
+    vim-plug-update
 
-Otherwise run inside vim:
-
-    :BundleInstall
 
 Requirements
 ------------
