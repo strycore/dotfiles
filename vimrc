@@ -133,6 +133,8 @@ let g:jedi#popup_on_dot = 0
 
 Plug 'junegunn/goyo.vim'
 
+Plug 'Raimondi/delimitMate'
+
 call plug#end()
 
 filetype plugin indent on
