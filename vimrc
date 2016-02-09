@@ -79,9 +79,8 @@ Plug 'rking/ag.vim'
 map <C-f> <esc>:Ag<space>
 "Plug 'gg/python.vim'
 Plug 'tpope/vim-unimpaired'
-Plug 'garbas/vim-snipmate'
-imap <C-s> <esc>a<Plug>snipMateNextOrTrigger
-smap <C-s> <Plug>snipMateNextOrTrigger
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<c-s>"
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'honza/vim-snippets'
