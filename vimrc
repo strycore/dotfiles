@@ -53,12 +53,6 @@
 " <Leader>da Transform dict syntax to function argument syntax
 " :w!! save file with sudo
 "
-set nocompatible
-filetype off
-
-" set rtp+=~/.vim/bundle/vundle/
-" call vundle#rc()
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'closetag.vim'
@@ -263,7 +257,6 @@ inoremap <silent> <C-z> <Esc>:undo<CR>i
 inoremap <S-Left> <C-Left>
 inoremap <S-Right> <C-Right>
 
-filetype indent on
 set formatoptions-=t " Don't do automatic linebreaks
 map <leader>w :set formatoptions+=t<CR>
 "
