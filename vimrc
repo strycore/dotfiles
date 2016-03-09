@@ -92,6 +92,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'marijnh/tern_for_vim'
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'bendavis78/vim-polymer'
 
 Plug 'nvie/vim-flake8'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -116,7 +117,6 @@ let g:syntastic_auto_jump=0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = "--max-line-length=90"
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_rst_checkers = ['rstcheck']
 
 Plug 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
@@ -386,6 +386,7 @@ autocmd BufRead *.coffee setfiletype coffee
 autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType coffee set omnifunc=javascriptcomplete#CompleteJS
 
+autocmd BufRead *.html set makeprg=polylint\ %
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html set equalprg=tidy\ -i\ -q
 
