@@ -41,6 +41,7 @@ link_file tmux.conf
 link_file tmux.django.conf
 link_file dput.cf
 link_file mancolor
+mkdir -p $HOME/.config
 link_file flake8 $HOME/.config
 
 if [ "$(basename "$SHELL")" != "zsh" -a -f "$(which zsh)" ]; then
