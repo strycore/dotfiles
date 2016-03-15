@@ -18,5 +18,6 @@ npm install grunt-cli -g
 npm install gulp -g
 npm install browser-sync -g
 npm install eslint -g
+npm install jshint -g
 npm install bower -g
 npm install polylint -g
