@@ -82,6 +82,7 @@ alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} 
 alias nuke='tr -dc " _" < /dev/urandom'
 alias tmux='tmux -2'
 alias lxls='sudo lxc-ls --fancy'
+alias sockette='ssh -D 1337 -f -C -q -N strider@strycore.com'
 
 function lxcreate() {
     sudo lxc-create -t ${2:-strycore} -n $1
