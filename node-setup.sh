@@ -14,10 +14,14 @@ nvm install $NODE_CURRENT
 nvm alias default $NODE_CURRENT
 nvm use default
 
-npm install grunt-cli -g
-npm install gulp -g
+npm install bower -g
 npm install browser-sync -g
 npm install eslint -g
+npm install generator-polymer -g
+npm install grunt-cli -g
+npm install gulp -g
 npm install jshint -g
-npm install bower -g
 npm install polylint -g
+npm install polyserve -g
+npm install redis-commander -g
+npm install yo -g
