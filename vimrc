@@ -68,11 +68,15 @@ let g:ycm_filetype_blacklist = {'python': 1}
 Plug 'othree/html5-syntax.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
 map <C-f> <esc>:Ag<space>
-"Plug 'gg/python.vim'
+
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
+
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-s>"
 Plug 'tomtom/tlib_vim'
@@ -85,7 +89,6 @@ Plug 'reinh/vim-makegreen'
 Plug 'strycore/django.vim'
 Plug 'tomasr/molokai'
 Plug 'freeo/vim-kalisi'
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'terryma/vim-multiple-cursors'
