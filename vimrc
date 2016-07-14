@@ -158,7 +158,8 @@ set laststatus=2                    " always show status line
 set scrolloff=3                     " Keep 3 lines below and above the cursor
 set autoread                        " Autoreload changed files
 set winwidth=85
-
+set exrc                            " Enable project specific vimrc files
+set secure                          " Disable dangerous commands in project specific vimrc
 set t_Co=256
 set background=dark
 colorscheme kalisi
