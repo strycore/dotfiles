@@ -193,7 +193,7 @@ vnoremap <F9> zf
 
 set wildmenu
 set wildmode=longest:full,list
-set wildignore+=*.bak,*.class,*.aux,*.out,*.toc,*.jpg,*.bmp,*.gif,*.png,*.luac
+set wildignore+=*/tmp/*,*.bak,*.class,*.aux,*.out,*.toc,*.jpg,*.bmp,*.gif,*.png,*.luac
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.pyc,*.spl,*.sw?
 
 set nobackup    " Backup files are sooo 90's
