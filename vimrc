@@ -119,6 +119,7 @@ let g:syntastic_auto_jump=0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = "--max-line-length=90"
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_ruby_checkers = ['rubocop']  " , 'rubylint']  Ruby-Lint does not seem to be Rails friendly
 
 Plug 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
