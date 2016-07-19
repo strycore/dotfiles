@@ -328,6 +328,11 @@ augroup invisible_chars "{{{
     autocmd BufRead,BufNewFile *.js SemanticHighlight
 augroup end "}}}
 
+augroup ruby_files
+    autocmd!
+    autocmd BufWritePre *.rb :%s/\s\+$//e " Remove trailing whitespace on save
+augroup end
+
 augroup vim_files "{{{
     au!
 
@@ -345,8 +350,7 @@ augroup python_files
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
     autocmd BufRead,BufNewFile *.py SemanticHighlight
 
-    " Remove trailing whitespace on save
-    autocmd BufWritePre *.py :%s/\s\+$//e
+    autocmd BufWritePre *.py :%s/\s\+$//e " Remove trailing whitespace on save
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
     autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
     " Filetype was set to python.django only for django projects but files
