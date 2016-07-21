@@ -332,6 +332,7 @@ augroup end "}}}
 augroup ruby_files
     autocmd!
     autocmd BufWritePre *.rb :%s/\s\+$//e " Remove trailing whitespace on save
+    autocmd BufRead,BufNewFile *.rb SemanticHighlight
 augroup end
 
 augroup vim_files "{{{
