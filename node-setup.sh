@@ -23,5 +23,6 @@ npm install gulp -g
 npm install jshint -g
 npm install polylint -g
 npm install polyserve -g
+npm install -g poymer-cli
 npm install redis-commander -g
 npm install yo -g
