@@ -298,6 +298,6 @@ function vim-plug-clean () {
 
 # Autocompletion for npm and gulp
 eval "$(npm completion 2>/dev/null)"
-eval "$(gulp --completion=zsh)"
+eval "$(gulp --completion=zsh 2>/dev/null)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
