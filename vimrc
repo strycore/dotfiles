@@ -318,8 +318,17 @@ autocmd Filetype c nmap <F8> :YcmDiags<CR>
 
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
+augroup polymer
+    autocmd!
+    if filereadable('./polymer.json')
+        autocmd FileType html set makeprg=polymer\ lint\ %
+        map <silent> <F8> :w<CR>:make<CR>:cw<CR>
+    endif
+
+augroup end
+
 augroup invisible_chars "{{{
-    au!
+    autocmd!
 
     " Show invisible characters in all of these files
     autocmd filetype vim setlocal list
@@ -395,7 +404,6 @@ autocmd BufRead *.coffee setfiletype coffee
 autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType coffee set omnifunc=javascriptcomplete#CompleteJS
 
-autocmd BufRead *.html set makeprg=polylint\ %
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html set equalprg=tidy\ -i\ -q
 
