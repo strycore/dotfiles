@@ -16,5 +16,7 @@ function irc_log() {
     today=$(date "+%Y-%m-%d")
     hostname="irc.strycore.com"
     logpath="/home/strider/.znc/moddata/log/strider/default/"
-    scp "$hostname:$logpath#$channel/$today.log" "#${channel}-${today}.log"
+    destfile="${channel}-${today}.log"
+    scp "$hostname:$logpath#$channel/$today.log" $destfile
+    $EDITOR $destfile
 }
