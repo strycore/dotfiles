@@ -99,8 +99,8 @@ if [ ! -e ~/.powerline-shell.py ]; then
     cd ..
 fi
 
-if [ ! -e "$(which fzf)" ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+if [ ! -d "$HOME/.fzf" ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     ~/.fzf/install --no-update-rc
 fi
 
