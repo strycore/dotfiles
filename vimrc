@@ -422,7 +422,7 @@ autocmd BufWritePre *.html :%s/\s\+$//e
 " LessCSS
 autocmd BufNewFile,BufRead *.less setfiletype css
 "autocmd FileType less set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType less setlocal ts=2 sts=2 sw=2 expandtab
 
 " SASS / SCSS
 autocmd BufRead,BufNewFile *.scss set filetype=scss
