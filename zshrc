@@ -131,17 +131,6 @@ function search() {
     done
 }
 
-function say() {
-    if [[ "${1}" =~ ^[a-zA-Z_]{2,5}$ ]]; then
-        local lang=${1#-};
-        local text="${*#$1}";
-    else
-        local lang=$(echo ${LANG%_} | cut -c1-2);
-        local text="${1}";
-    fi;
-    mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}"
-}
-
 function blitter() {
     yes "$(seq 231 -1 16)" | while read i; do
         printf "\x1b[48;5;${i}m\n";
