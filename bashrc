@@ -101,9 +101,6 @@ alias alert_helper='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/;\s*alert
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "[0] "'
 # Start urxvt and do whatever is needed to open the screen session named "main"
 alias scrux="screen -ls | grep main && urxvt -name screen -e screen -x main || urxvt -name screen -e screen -R -S main"
-# Symfony aliases
-alias sfba="./symfony doctrine:build --all --and-load --no-confirmation"
-alias sfbt="./symfony doctrine:build --all --and-load=test/fixtures --no-confirmation --env=test"
 alias ohshit="find ~/.mozilla/firefox/*.default/*.sqlite -exec sqlite3 {} 'VACUUM;' \;"
 alias djrep="grep -r --exclude=tags --exclude=PYSMELLTAGS"
 
