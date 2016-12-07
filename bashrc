@@ -103,6 +103,9 @@ alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png
 alias scrux="screen -ls | grep main && urxvt -name screen -e screen -x main || urxvt -name screen -e screen -R -S main"
 alias ohshit="find ~/.mozilla/firefox/*.default/*.sqlite -exec sqlite3 {} 'VACUUM;' \;"
 alias djrep="grep -r --exclude=tags --exclude=PYSMELLTAGS"
+alias g="git"
+alias gl="git pull"
+alias gp="git push"
 
 function search ()
 {
