@@ -88,7 +88,8 @@ function _top_level_packages {
     python -c "import pkgutil; print('\n'.join([name for loader, name, ispkg in sorted(pkgutil.iter_modules()) if ispkg]))"
 }
 
-source ./shell_functions.sh
+_root_dir="$(dirname $(readlink -f ~/.zshrc))"
+source $_root_dir/shell_functions.sh
 
 
 if [ -n "$BASH" ] ; then
