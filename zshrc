@@ -24,21 +24,6 @@ source $ZSH/oh-my-zsh.sh
 # Disable autocorrect
 unsetopt correct_all
 
-function powerline_precmd() {
-    export PS1="$(~/.powerline-shell.py $? --shell zsh)"
-}
-
-function install_powerline_precmd() {
-    for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-        return
-    fi
-    done
-    precmd_functions+=(powerline_precmd)
-}
-
-install_powerline_precmd
-
 export PATH=$PATH:$HOME/bin
 if [ -s $HOME/.rvm/bin ]; then
     export PATH=$PATH:$HOME/.rvm/bin

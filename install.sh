@@ -83,20 +83,18 @@ if [ -d $HOME/.oh-my-zsh/custom ]; then
         echo "[INSTALL] zsh git flow completion"
         git clone https://github.com/bobthecow/git-flow-completion ~/.oh-my-zsh/custom/plugins/git-flow-completion
     fi
+
+    if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel9k" ]; then
+        echo "[INSTALL] powerlevel9k theme"
+        mkdir -p ~/.oh-my-zsh/custom/themes/
+        git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+    fi
+
 fi
 
 mkdir -p ~/.config/terminator
 if [ ! -e ~/.config/terminator/config ]; then
     ln -s $(pwd)/terminator/config ~/.config/terminator/config
-fi
-
-if [ ! -e ~/.powerline-shell.py ]; then
-    rm -rf powerline-shell
-    git clone https://github.com/milkbikis/powerline-shell
-    cd powerline-shell
-    ./install.py
-    ln -s $(pwd)/powerline-shell.py ~/.powerline-shell.py
-    cd ..
 fi
 
 if [ ! -d "$HOME/.fzf" ]; then
