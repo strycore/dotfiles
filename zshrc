@@ -13,8 +13,29 @@ export FULLNAME="Mathieu Comandon"
 export DEBEMAIL=$EMAIL
 export DEBFULLNAME=$FULLNAME
 
+export LANG="en_US.UTF-8"
+
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="sorin"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_STATUS_VERBOSE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time background_jobs load virtualenv)
+POWERLEVEL9K_MODE='awesome-patched'
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+
+POWERLEVEL9K_OS_ICON_BACKGROUND="white"
+POWERLEVEL9K_OS_ICON_FOREGROUND="black"
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND="white"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
+
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="magenta"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
+
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="red"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="yellow"
+
+export DEFAULT_USER="$USER"
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git python pip command-not-found ruby rails bundler gem zsh-syntax-highlighting fabric bower)
