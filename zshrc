@@ -189,3 +189,7 @@ eval "$(npm completion 2>/dev/null)"
 eval "$(gulp --completion=zsh 2>/dev/null)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [[ $TERMINIX_ID ]]; then
+    source /etc/profile.d/vte.sh
+fi
