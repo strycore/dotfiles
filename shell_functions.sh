@@ -129,5 +129,5 @@ function e() {
 # License: BSD
 # Change the current directory to the path of the given Python package.
 function pcd {
-    cd `python -c "import pkgutil; print(pkgutil.get_loader('$1').filename)"`
+    cd $(dirname $(python -c "import pkgutil; print(pkgutil.get_loader('$1').get_filename())"))
 }
