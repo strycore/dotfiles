@@ -108,7 +108,7 @@ nnoremap <A-p> :CtrlPFunky<Cr>
 
 Plug 'The-NERD-tree'
 let g:NERDTreeWinSize = 25
-let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$', '__pycache__']
+let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$', '__pycache__', 'htmlcov', '.*\.egg-info']
 
 Plug 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
@@ -195,7 +195,7 @@ vnoremap <F9> zf
 set wildmenu
 set wildmode=longest:full,list
 set wildignore+=*/tmp/*,*.bak,*.class,*.aux,*.out,*.toc,*.jpg,*.bmp,*.gif,*.png,*.luac
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.pyc,*.spl,*.sw?
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.pyc,*.spl,*.sw?,*/htmlcov/*,*/build/*
 
 set nobackup    " Backup files are sooo 90's
 set noswapfile  " Swap files are very annoying
