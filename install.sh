@@ -102,8 +102,13 @@ if [ ! -d "$HOME/.fzf" ]; then
     ~/.fzf/install --no-update-rc
 fi
 
-# Check that the running system has enough inotify watches
+# Fix broken multi-monitor window positioning in Gnome Shell
+# "When true, the new windows will always be put in the center of the active screen of the monitor."
+if [ "$(which gsettings)" ]; then
+    gsettings set org.gnome.mutter center-new-windows true
+fi
 
+# Check that the running system has enough inotify watches
 watches=$(cat /proc/sys/fs/inotify/max_user_watches)
 if [ $watches -lt 524288 ]; then
     echo "*********************************************************************"
