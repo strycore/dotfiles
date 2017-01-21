@@ -94,6 +94,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'marijnh/tern_for_vim'
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'mitsuhiko/vim-jinja'
 
 Plug 'nvie/vim-flake8'
 Plug 'nathanaelkane/vim-indent-guides'
