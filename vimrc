@@ -259,14 +259,18 @@ inoremap <S-Right> <C-Right>
 
 set formatoptions-=t " Don't do automatic linebreaks
 map <leader>w :set formatoptions+=t<CR>
-"
+
+" Add support for fakegir (https://github.com/strycore/fakegir/)
+if filereadable(expand("~/.cache/fakegir/gi/__init__.py"))
+    let $PYTHONPATH = expand("~/.cache/fakegir/")
+endif
+
 " Add the virtualenv's site-packages to vim path
 if has('python')
 py << EOF
 import os.path
 import sys
 import vim
-sys.path.insert(0, os.path.expanduser('~/.cache/fakegir'))
 if 'VIRTUAL_ENV' in os.environ:
     project_base_dir = os.environ['VIRTUAL_ENV']
     sys.path.insert(0, project_base_dir)
