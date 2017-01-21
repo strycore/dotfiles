@@ -124,10 +124,6 @@ let g:syntastic_ruby_checkers = ['rubocop']  " , 'rubylint']  Ruby-Lint does not
 Plug 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 
-Plug 'davidhalter/jedi-vim'
-let g:jedi#show_call_signatures = 0
-let g:jedi#popup_on_dot = 1
-
 Plug 'junegunn/goyo.vim'
 
 Plug 'Raimondi/delimitMate'
