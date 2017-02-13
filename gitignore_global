@@ -7,3 +7,4 @@ doc/tags-ja
 .idea
 *egg-info
 .ycm_extra_conf.py
+.agignore
