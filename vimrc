@@ -451,7 +451,7 @@ if has("gui_running")
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
     set background=dark
     autocmd GUIEnter * set visualbell t_vb=
-    colorscheme kalisi
+    colorscheme vimtom
     set guioptions-=T
     set guioptions-=l
     set guioptions-=L
