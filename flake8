@@ -2,4 +2,4 @@
 max-line-length = 120
 max-complexity = 10
 exclude = .tox,migrations,doc/*,local_settings*
-ignore=T003
+ignore=T003,E402
