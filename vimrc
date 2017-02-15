@@ -377,8 +377,6 @@ augroup python_files
     autocmd FileType python set ft=python.django " For SnipMate
     if filereadable('./manage.py')
         autocmd FileType html set ft=htmldjango.html " For SnipMate
-        " Use django unittest compiler
-        autocmd BufNewFile,BufRead *.py compiler django
     else
         autocmd BufNewFile,BufRead *.py compiler pyunit
         nmap <Leader>t :call MakeGreen("%")<CR>
