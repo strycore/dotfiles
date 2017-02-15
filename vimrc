@@ -74,7 +74,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'JulesWang/css.vim'
 Plug 'genoma/vim-less'
-Plug 'strycore/django.vim'
 Plug 'kchmck/vim-coffee-script'
 
 Plug 'mattn/emmet-vim'
@@ -379,13 +378,8 @@ augroup python_files
     autocmd FileType python set ft=python.django " For SnipMate
     if filereadable('./manage.py')
         autocmd FileType html set ft=htmldjango.html " For SnipMate
-        autocmd FileType jade set ft=jade.htmldjango " For SnipMate
         " Use django unittest compiler
         autocmd BufNewFile,BufRead *.py compiler django
-        " Run unittest with the current editing app
-        nmap <Leader>t :call DjangoMakeGreen("%")<CR>
-        " Run unittest with whole project
-        nmap <Leader>T :call DjangoMakeGreen(".")<CR>
     else
         autocmd BufNewFile,BufRead *.py compiler pyunit
         nmap <Leader>t :call MakeGreen("%")<CR>
