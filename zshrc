@@ -39,7 +39,7 @@ POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="yellow"
 export DEFAULT_USER="$USER"
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git python pip command-not-found ruby rails bundler gem zsh-syntax-highlighting fabric bower)
+plugins=(git python pip command-not-found ruby rails bundler gem zsh-syntax-highlighting fabric bower aws)
 
 source $ZSH/oh-my-zsh.sh
 
