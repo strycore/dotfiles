@@ -26,6 +26,27 @@ function link_file {
     ln -sf ${source} ${target}
 }
 
+function install_powerline_fonts {
+    mkdir -p ~/.fonts
+    git clone https://github.com/powerline/fonts.git powerline-fonts
+    cd powerline-fonts
+    ./install.sh
+    cd ..
+    rm -rf powerline-fonts
+}
+
+
+function install_awesome_fonts {
+    mkdir -p ~/.fonts
+    git clone https://github.com/gabrielelana/awesome-terminal-fonts.git
+    cd awesome-terminal-fonts
+    git checkout patching-strategy
+    cd patched
+    cp *.ttf ~/.fonts
+    cd ../..
+    rm -rf awesome-terminal-fonts
+}
+
 link_file vim
 link_file vimrc
 link_file bashrc
@@ -100,6 +121,10 @@ fi
 if [ ! -d "$HOME/.fzf" ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     ~/.fzf/install --no-update-rc
+fi
+
+if [ ! -f "$HOME/.fonts/Droid+Sans+Mono+Awesome.ttf" ]; then
+    install_awesome_fonts
 fi
 
 # Fix broken multi-monitor window positioning in Gnome Shell
