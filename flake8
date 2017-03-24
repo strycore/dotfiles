@@ -1,5 +1,4 @@
 [flake8]
-max-line-length = 120
-max-complexity = 10
+max-line-length = 90
 exclude = .tox,migrations,doc/*,local_settings*
-ignore=T003,E402
+ignore=E402
