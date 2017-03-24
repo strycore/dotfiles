@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NODE_CURRENT="v7.4.0"
+NODE_CURRENT="v7.7.4"
 NVM_DIR="$HOME/.nvm"
 
 if [ ! -d "$NVM_DIR" ]; then
