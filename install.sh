@@ -35,6 +35,7 @@ function install_powerline_fonts {
     rm -rf powerline-fonts
 }
 
+install_powerline_fonts
 
 function install_awesome_fonts {
     mkdir -p ~/.fonts
