@@ -23,9 +23,9 @@
   [[default]]
     background_color = "#252525"
     background_darkness = 0.9
-    background_image = None
     background_type = transparent
-    font = DejaVu Sans Mono for Powerline 10
+    cursor_color = "#c3c7c4"
+    font = "SourceCodePro+Powerline+Awesome Regular, 10"
     foreground_color = "#c3c7c4"
     palette = "#005a78:#bf5f4a:#cdca72:#c4a000:#7aa0b6:#75507b:#83b4b1:#d3d7cf:#96947c:#cc6863:#87a980:#fce94f:#7fa5bb:#ad7fa8:#66aab9:#eeeeec"
     scrollback_infinite = True
