@@ -55,7 +55,7 @@
 "
 call plug#begin('~/.vim/plugged')
 
-Plug 'closetag.vim'
+Plug 'alvan/vim-closetag'
 Plug 'chazy/cscope_maps'
 Plug 'Valloric/MatchTagAlways'
 
@@ -113,7 +113,7 @@ let g:ctrlp_working_path_mode = 2
 let g:ctrlp_extensions = ['funky']
 nnoremap <A-p> :CtrlPFunky<Cr>
 
-Plug 'The-NERD-tree'
+Plug 'scrooloose/nerdtree'
 let g:NERDTreeWinSize = 25
 let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$', '__pycache__', 'htmlcov', '.*\.egg-info']
 
