@@ -69,7 +69,6 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 Plug 'sheerun/vim-polyglot'
 Plug 'othree/html5.vim'
 Plug 'larsbs/vim-xmll'
-Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'JulesWang/css.vim'
