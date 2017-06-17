@@ -67,8 +67,10 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 
 " Syntax plugins
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['javascript']
 Plug 'othree/html5.vim'
 Plug 'larsbs/vim-xmll'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'JulesWang/css.vim'
@@ -341,6 +343,7 @@ augroup invisible_chars "{{{
     autocmd filetype python,rst setlocal list
     autocmd filetype ruby setlocal list
     autocmd filetype javascript,css setlocal list
+    autocmd FileType javascript setlocal iskeyword+=$
     autocmd BufRead,BufNewFile *.js SemanticHighlight
 augroup end "}}}
 
@@ -375,7 +378,8 @@ augroup python_files
     " filetype to python.django provide better results for every Python file.
     autocmd FileType python set ft=python.django " For SnipMate
     if filereadable('./manage.py')
-        autocmd FileType html set ft=htmldjango.html " For SnipMate
+        autocmd FileType html set ft=javascript.htmldjango.html " For SnipMate
+        autocmd BufRead,BufNewFile *.html SemanticHighlight
     else
         autocmd BufNewFile,BufRead *.py compiler pyunit
         nmap <Leader>t :call MakeGreen("%")<CR>
@@ -403,7 +407,7 @@ autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType coffee set omnifunc=javascriptcomplete#CompleteJS
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType html set equalprg=tidy\ -i\ -q
+autocmd FileType html set equalprg=tidy\ -config\ ~/.tidy.conf\ -indent\ -quiet
 
 autocmd FileType html nmap <F10> :!firefox %<CR>
 
