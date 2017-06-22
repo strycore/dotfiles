@@ -70,14 +70,9 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then
    nvm use default > /dev/null
 fi
 
-ubuntu_venvwrapper="/etc/bash_completion.d/virtualenvwrapper"
-if [ -f $ubuntu_venvwrapper ]; then
-    source $ubuntu_venvwrapper
-else
-    virtualenv=$(which virtualenvwrapper.sh)
-    if [ -f "$virtualenv" ]; then
-        source $virtualenv
-    fi
+virtualenv=$(which virtualenvwrapper.sh)
+if [ -f "$virtualenv" ]; then
+    source $virtualenv
 fi
 
 # RVM Configuration: Load RVM into a shell session *as a function*
