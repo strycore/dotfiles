@@ -73,6 +73,7 @@ Plug 'larsbs/vim-xmll'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'heavenshell/vim-jsdoc'
 Plug 'JulesWang/css.vim'
 Plug 'genoma/vim-less'
 Plug 'kchmck/vim-coffee-script'
@@ -342,9 +343,6 @@ augroup invisible_chars "{{{
     autocmd filetype vim setlocal list
     autocmd filetype python,rst setlocal list
     autocmd filetype ruby setlocal list
-    autocmd filetype javascript,css setlocal list
-    autocmd FileType javascript setlocal iskeyword+=$
-    autocmd BufRead,BufNewFile *.js SemanticHighlight
 augroup end "}}}
 
 augroup ruby_files
@@ -394,12 +392,18 @@ augroup rst_files "{{{
     autocmd filetype rst setlocal formatoptions+=nqt
 augroup end " }}}
 
-autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
+augroup javascript_files
+    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    "autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
+    autocmd FileType javascript nmap <silent> <leader-j> ?function<cr>:noh<cr>:JsDoc<cr>
+    autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd BufRead *.js set makeprg=eslint\ %
+    autocmd filetype javascript,css setlocal list
+    autocmd FileType javascript setlocal iskeyword+=$
+    autocmd BufRead,BufNewFile *.js SemanticHighlight
+augroup end
 
-autocmd BufRead *.js set makeprg=eslint\ %
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd BufNewFile,BufRead *.coffee setfiletype coffee
 autocmd BufRead *.coffee setfiletype coffee
