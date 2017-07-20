@@ -7,8 +7,18 @@
     status = auto
     branch = auto
     ui = true
+
 [color "diff"]
     whitespace = red reverse
+
+[merge]
+    tool = meld
+
+[mergetool]
+    prompt = false
+
+[mergetool "meld"]
+    cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
 
 [push]
     default = current
