@@ -103,6 +103,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'marijnh/tern_for_vim'
 Plug 'jaxbot/semantic-highlight.vim'
+let g:semanticPersistCache=1
 Plug 'junegunn/goyo.vim'
 Plug 'Raimondi/delimitMate'
 
