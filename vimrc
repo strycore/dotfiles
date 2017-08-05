@@ -25,7 +25,7 @@
 " F1:  Help
 " F2:  Close buffer
 " F3:  Toggle NERDTree
-" F4:  Toggle Tagbar
+" F4:  Available
 " F5:  Previous buffer
 " F6:  Next buffer
 " F7:  Toggle paste mode
@@ -93,7 +93,6 @@ let g:UltiSnipsExpandTrigger="<c-s>"
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'honza/vim-snippets'
-Plug 'majutsushi/tagbar'
 Plug 'reinh/vim-makegreen'
 
 Plug 'larsbs/vimtom'
@@ -522,9 +521,6 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
-
-" Tagbar configuration
-map <silent> <F4> :TagbarToggle<CR>
 
 " json formating
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
