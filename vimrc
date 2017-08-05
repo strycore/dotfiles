@@ -354,7 +354,7 @@ augroup end "}}}
 augroup ruby_files
     autocmd!
     autocmd BufWritePre *.rb :%s/\s\+$//e " Remove trailing whitespace on save
-    " autocmd BufRead,BufNewFile *.rb SemanticHighlight
+    autocmd BufRead,BufNewFile *.rb SemanticHighlight
 augroup end
 
 augroup vim_files "{{{
@@ -371,7 +371,7 @@ augroup python_files
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd BufRead,BufNewFile *.py  set autoindent sw=4 sts=4 expandtab
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
-    " autocmd BufRead,BufNewFile *.py SemanticHighlight
+    autocmd BufRead *.py SemanticHighlightToggle
 
     autocmd BufWritePre *.py :%s/\s\+$//e " Remove trailing whitespace on save
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
@@ -383,7 +383,7 @@ augroup python_files
     autocmd FileType python set ft=python.django " For SnipMate
     if filereadable('./manage.py')
         autocmd FileType html set ft=javascript.htmldjango.html " For SnipMate
-        " autocmd BufRead,BufNewFile *.html SemanticHighlight
+        autocmd BufRead,BufNewFile *.html SemanticHighlight
     else
         autocmd BufNewFile,BufRead *.py compiler pyunit
         nmap <Leader>t :call MakeGreen("%")<CR>
@@ -406,7 +406,7 @@ augroup javascript_files
     autocmd BufRead *.js set makeprg=eslint\ %
     autocmd filetype javascript,css setlocal list
     autocmd FileType javascript setlocal iskeyword+=$
-    " autocmd BufRead,BufNewFile *.js SemanticHighlight
+    autocmd BufRead,BufNewFile *.js SemanticHighlight
 augroup end
 
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
