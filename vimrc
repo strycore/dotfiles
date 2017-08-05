@@ -111,7 +111,7 @@ Plug 'nvie/vim-flake8'
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 4
 
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_extensions = ['funky']
