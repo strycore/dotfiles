@@ -132,8 +132,21 @@ let g:syntastic_python_flake8_args = "--max-line-length=120"
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop']  " , 'rubylint']  Ruby-Lint does not seem to be Rails friendly
 
-" Plug 'bling/vim-airline'
-" let g:airline_powerline_fonts = 1
+Plug 'vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
+
+Plug 'ryanoasis/vim-devicons'
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_airline = 1
+let g:webdevicons_enable_ctrlp = 1
+let g:WebDevIconsUnicodeDecorateFileNodes = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeHighlightFolders = 1
 
 call plug#end()
 
