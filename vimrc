@@ -30,7 +30,7 @@
 " F6:  Next buffer
 " F7:  Toggle paste mode
 " F8:  Run Linter (Flake8, CoffeeLint, …)
-" F9:  Toggle folds
+" F9:  Toggle semantic highlighting
 " F10: Run file (currently supported: python, bash, html)
 " F11: Reserved for fullscreen switching by WM or Terminal emulator
 " F12: Available
@@ -104,6 +104,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'marijnh/tern_for_vim'
 Plug 'jaxbot/semantic-highlight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'Raimondi/delimitMate'
 
 Plug 'nvie/vim-flake8'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -120,7 +122,7 @@ let g:NERDTreeWinSize = 25
 let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$', '__pycache__', 'htmlcov', '.*\.egg-info']
 
 Plug 'scrooloose/syntastic'
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open=0
 let g:syntastic_error_symbol='✗'
 let g:syntastic_style_error_symbol='☢'
 let g:syntastic_warning_symbol='⚠'
@@ -130,12 +132,8 @@ let g:syntastic_python_flake8_args = "--max-line-length=120"
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop']  " , 'rubylint']  Ruby-Lint does not seem to be Rails friendly
 
-Plug 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
-
-Plug 'junegunn/goyo.vim'
-
-Plug 'Raimondi/delimitMate'
+" Plug 'bling/vim-airline'
+" let g:airline_powerline_fonts = 1
 
 call plug#end()
 
@@ -191,11 +189,6 @@ set gdefault                        " Search all occurrences by default
 
 set foldmethod=indent               " Indentation based folding
 set foldlevelstart=99               " Start editing with no fold closed
-
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
 
 set wildmenu
 set wildmode=longest:full,list
@@ -348,7 +341,7 @@ augroup end "}}}
 augroup ruby_files
     autocmd!
     autocmd BufWritePre *.rb :%s/\s\+$//e " Remove trailing whitespace on save
-    autocmd BufRead,BufNewFile *.rb SemanticHighlight
+    " autocmd BufRead,BufNewFile *.rb SemanticHighlight
 augroup end
 
 augroup vim_files "{{{
@@ -365,7 +358,7 @@ augroup python_files
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd BufRead,BufNewFile *.py  set autoindent sw=4 sts=4 expandtab
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
-    autocmd BufRead,BufNewFile *.py SemanticHighlight
+    " autocmd BufRead,BufNewFile *.py SemanticHighlight
 
     autocmd BufWritePre *.py :%s/\s\+$//e " Remove trailing whitespace on save
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
@@ -377,7 +370,7 @@ augroup python_files
     autocmd FileType python set ft=python.django " For SnipMate
     if filereadable('./manage.py')
         autocmd FileType html set ft=javascript.htmldjango.html " For SnipMate
-        autocmd BufRead,BufNewFile *.html SemanticHighlight
+        " autocmd BufRead,BufNewFile *.html SemanticHighlight
     else
         autocmd BufNewFile,BufRead *.py compiler pyunit
         nmap <Leader>t :call MakeGreen("%")<CR>
@@ -400,7 +393,7 @@ augroup javascript_files
     autocmd BufRead *.js set makeprg=eslint\ %
     autocmd filetype javascript,css setlocal list
     autocmd FileType javascript setlocal iskeyword+=$
-    autocmd BufRead,BufNewFile *.js SemanticHighlight
+    " autocmd BufRead,BufNewFile *.js SemanticHighlight
 augroup end
 
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
@@ -473,6 +466,7 @@ set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
 nmap <leader>l :set list!<CR>
 
 map <Leader>s :SemanticHighlightToggle<CR>
+map <F9> :SemanticHighlightToggle<CR>
 
 " Creating underline/overline headings for markup languages
 " Inspired by http://sphinx.pocoo.org/rest.html#sections
