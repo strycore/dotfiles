@@ -474,6 +474,9 @@ else
 endif
 highlight WhitespaceEOL ctermbg=red guibg=red
 
+" Makes a nice vertical separator
+set fillchars+=vert:▕
+
 " Invisible characters
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
 nmap <leader>l :set list!<CR>
