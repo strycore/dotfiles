@@ -143,9 +143,6 @@ let g:WebDevIconsUnicodeDecorateFileNodes = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeHighlightFolders = 1
 
 call plug#end()
