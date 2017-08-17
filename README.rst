@@ -73,3 +73,15 @@ be installed::
     sudo pip install virtualenvwrapper
     sudo apt-get install silversearcher-ag
     sudo apt-get install exubrant-ctags
+
+
+Tilix configuration
+-------------------
+
+Tilix's configuration is saved in dconf, to save the config::
+
+    dconf dump /com/gexperts/Tilix/ > tilix.dconf
+
+and to restore::
+
+    dconf load /com/gexperts/Tilix/ < tilix.dconf
