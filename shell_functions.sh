@@ -76,15 +76,6 @@ function blitter() {
     done
 }
 
-function ack() {
-    killall python
-    killall firefox
-    killall terminator
-    killall gvim
-    killall hexchat
-    echo "Hahaha, next time try 'ag'"
-}
-
 function fuck() {
   if [ -z "$2" ]; then
     kill -9 $(top -b -n1 -c  | awk '/PID *USER/{getline;print $1;getline;print $1}')
