@@ -122,3 +122,14 @@ function e() {
 function pcd {
     cd $(dirname $(python -c "import pkgutil; print(pkgutil.get_loader('$1').get_filename())"))
 }
+
+function greball {
+    git for-each-ref 'refs/heads/*' | \
+    while read rev type ref; do
+        branch=$(expr "$ref" : 'refs/heads/\(.*\)' )
+        revs=$(git rev-list $rev..master)
+        if [ -n "$revs" ]; then
+        git checkout $branch; git rebase --strategy=ours master; g rebase
+        fi
+    done
+}
