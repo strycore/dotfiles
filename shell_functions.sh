@@ -133,3 +133,9 @@ function greball {
         fi
     done
 }
+
+function gfetall {
+    git checkout master
+    git fetch --all
+    git rebase upstream/master
+}
