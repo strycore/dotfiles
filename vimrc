@@ -479,7 +479,7 @@ highlight WhitespaceEOL ctermbg=red guibg=red
 set fillchars+=vert:▕
 
 " Invisible characters
-set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,eol:¬
+set listchars=tab:→\ ,trail:␣,extends:…,eol:⏎
 nmap <leader>l :set list!<CR>
 
 map <Leader>s :SemanticHighlightToggle<CR>
