@@ -4,11 +4,11 @@
     "classes": true
   },
   "rules": {
-    "quotes": "simple",
+    "quotes": ["error", "single"],
     "indent": [2, 2],
-    "eol-last": false,
-    "no-console": false,
-    "spaced-line-comment": ["always"],
+    "eol-last": 2,
+    "no-console": 2,
+    "spaced-comment": ["error", "always"],
     "valid-jsdoc": [2, {
       "requireReturn": false
     }]
