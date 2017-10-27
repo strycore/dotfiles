@@ -63,6 +63,7 @@ link_file tmux.conf
 link_file tmux.django.conf
 link_file dput.cf
 link_file mancolor
+link_file xbindkeysrc
 link_file shell_functions.sh
 mkdir -p $HOME/.config
 link_file flake8 $HOME/.config
