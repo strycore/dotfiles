@@ -119,6 +119,9 @@ let g:ctrlp_working_path_mode = 2
 let g:ctrlp_extensions = ['funky']
 nnoremap <A-p> :CtrlPFunky<Cr>
 
+Plug 'majutsushi/tagbar'
+nmap <F4> :TagbarToggle<CR>
+
 Plug 'scrooloose/nerdtree'
 let g:NERDTreeWinSize = 25
 let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$', '__pycache__', 'htmlcov', '.*\.egg-info']
