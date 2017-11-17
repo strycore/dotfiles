@@ -320,6 +320,7 @@ if filereadable($VIRTUAL_ENV . '/.vimrc')
     source $VIRTUAL_ENV/.vimrc
 endif
 
+set complete-=i  " Testing this setting, if not the desired behavior, make this exclusive to FASTVIM
 set completeopt=menu,longest,preview
 set omnifunc=syntaxcomplete#Complete
 
