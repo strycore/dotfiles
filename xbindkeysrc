@@ -1,8 +1,5 @@
 "xdotool key Super_L"
 release + b:8
 
-"xdotool key Super_L"
-release + b:9
-
 "true"
 Insert
