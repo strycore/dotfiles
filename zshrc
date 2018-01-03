@@ -1,8 +1,6 @@
 
 # == Default programs
-# I would normally use gvim if a display is available, but it seems to cause
-# problem with dch.
-export EDITOR='vim'
+export EDITOR='gvim'
 export BROWSER='firefox'
 export PYTHONIOENCODING=UTF-8
 
