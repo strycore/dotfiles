@@ -37,5 +37,10 @@
     undo = reset --soft HEAD^
     who = shortlog -sn
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+	g = grep --break --heading --line-number
+
 [rerere]
 	enabled = true
+
+[grep]
+	lineNumber = true
