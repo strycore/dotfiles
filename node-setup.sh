@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NODE_CURRENT="v6.10.2"
+NODE_CURRENT="v9.4.0"
 NVM_DIR="$HOME/.nvm"
 
 if [ ! -d "$NVM_DIR" ]; then
@@ -25,3 +25,5 @@ npm install polylint -g
 npm install polyserve -g
 npm install polymer-cli -g
 npm install redis-commander -g
+npm install tern -g
+npm install castnow -g
