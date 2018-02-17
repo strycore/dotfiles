@@ -14,16 +14,17 @@ nvm install $NODE_CURRENT
 nvm alias default $NODE_CURRENT
 nvm use default
 
-npm install bower -g
-npm install browser-sync -g
-npm install eslint -g
-npm install generator-polymer -g
-npm install grunt-cli -g
-npm install gulp -g
-npm install jshint -g
-npm install polylint -g
-npm install polyserve -g
-npm install polymer-cli -g
-npm install redis-commander -g
-npm install tern -g
-npm install castnow -g
+npm install -g bower
+npm install -g browser-sync
+npm install -g eslint
+npm install -g generator-polymer
+npm install -g grunt-cli
+npm install -g gulp
+npm install -g jshint
+npm install -g polylint
+npm install -g polyserve
+npm install -g polymer-cli
+npm install -g redis-commander
+npm install -g tern
+npm install -g castnow
+npm install -g @angular/cli
