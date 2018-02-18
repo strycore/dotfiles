@@ -28,3 +28,4 @@ npm install -g redis-commander
 npm install -g tern
 npm install -g castnow
 npm install -g @angular/cli
+npm install -g tslint

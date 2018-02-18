@@ -70,15 +70,21 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 " Syntax plugins
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['javascript']
-Plug 'othree/html5.vim'
-Plug 'larsbs/vim-xmll'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'JulesWang/css.vim'
-Plug 'genoma/vim-less'
-Plug 'kchmck/vim-coffee-script'
+
+" Lenguage support
+Plug 'othree/html5.vim'  " HTML 5
+Plug 'nvie/vim-flake8'  " Python
+Plug 'larsbs/vim-xmll'  " XML
+Plug 'jelera/vim-javascript-syntax'  " JavaScript
+Plug 'pangloss/vim-javascript' " JavaScript
+Plug 'marijnh/tern_for_vim'  " JavaScript
+Plug 'cakebaker/scss-syntax.vim'  " SASS
+Plug 'heavenshell/vim-jsdoc'  " JSDoc
+Plug 'JulesWang/css.vim'  " CSS
+Plug 'genoma/vim-less'  " LessCSS
+Plug 'kchmck/vim-coffee-script' " CoffeeScript
+Plug 'Quramy/tsuquyomi'  " TypeScript
+Plug 'tpope/vim-rails'  " Ruby on rails
 
 Plug 'mattn/emmet-vim'
 Plug 'rking/ag.vim'
@@ -87,7 +93,6 @@ map <C-f> <esc>:Ag<space>
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler'
 
 Plug 'SirVer/ultisnips'
@@ -103,13 +108,11 @@ Plug 'freeo/vim-kalisi'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'marijnh/tern_for_vim'
 Plug 'jaxbot/semantic-highlight.vim'
 let g:semanticPersistCache=1
 Plug 'junegunn/goyo.vim'
 Plug 'Raimondi/delimitMate'
 
-Plug 'nvie/vim-flake8'
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 4
 
