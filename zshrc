@@ -65,12 +65,19 @@ if [ -e "$HOME/.profile" ]; then
     source $HOME/.profile
 fi
 
+# NVM support
 export NVM_DIR="$HOME/.nvm"
 if [ -s "$NVM_DIR/nvm.sh" ]; then
    source "$NVM_DIR/nvm.sh"
    nvm use default > /dev/null
 fi
 
+# Angular autocompletion
+if [ -f "$(which ng)" ]; then
+    . <(ng completion --zsh)
+fi
+
+# Virtualenvwrapper
 virtualenv=$(which virtualenvwrapper.sh)
 if [ -f "$virtualenv" ]; then
     source $virtualenv
