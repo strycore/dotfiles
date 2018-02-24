@@ -120,6 +120,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_extensions = ['funky']
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/]node_modules$'
+  \ }
 nnoremap <A-p> :CtrlPFunky<Cr>
 
 Plug 'majutsushi/tagbar'
