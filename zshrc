@@ -80,6 +80,7 @@ fi
 # Virtualenvwrapper
 virtualenv=$(which virtualenvwrapper.sh)
 if [ -f "$virtualenv" ]; then
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
     source $virtualenv
 fi
 
