@@ -53,8 +53,6 @@
 " <Leader>da Transform dict syntax to function argument syntax
 " :w!! save file with sudo
 "
-let fastvim=$FASTVIM
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'alvan/vim-closetag'
@@ -132,18 +130,7 @@ Plug 'scrooloose/nerdtree'
 let g:NERDTreeWinSize = 25
 let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$', '__pycache__', 'htmlcov', '.*\.egg-info']
 
-if $FASTVIM != '1'
-    Plug 'scrooloose/syntastic'
-    let g:syntastic_check_on_open=0
-    let g:syntastic_error_symbol='✗'
-    let g:syntastic_style_error_symbol='☢'
-    let g:syntastic_warning_symbol='⚠'
-    let g:syntastic_auto_jump=0
-    let g:syntastic_python_checkers = ['flake8']
-    let g:syntastic_python_flake8_args = "--max-line-length=120"
-    let g:syntastic_javascript_checkers = ['eslint']
-    let g:syntastic_ruby_checkers = ['rubocop']  " , 'rubylint']  Ruby-Lint does not seem to be Rails friendly
-endif
+Plug 'w0rp/ale'
 
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
