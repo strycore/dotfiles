@@ -8,7 +8,7 @@ include-ids=yes
 
 [FORMAT]
 indent-string='    '
-max-line-length=80
+max-line-length=100
 
 [TYPECHECK]
 generated-members="pack_start"
