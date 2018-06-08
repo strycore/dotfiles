@@ -131,9 +131,16 @@ let g:NERDTreeWinSize = 25
 let g:NERDTreeIgnore = ['^tags$', '^PYSMELLTAGS', '\.pyc$', '__pycache__', 'htmlcov', '.*\.egg-info']
 
 Plug 'w0rp/ale'
+let g:ale_sign_error = '💥'
+let g:ale_sign_warning = '🚫'
+highlight clear ALEErrorSign
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 
 Plug 'ryanoasis/vim-devicons'
 let g:webdevicons_enable_nerdtree = 1
@@ -532,12 +539,6 @@ noremap <silent> <C-Up> <C-]>       " Jump back from tag
 
 noremap <C-PageUp> gT
 noremap <C-pageDown> gt
-
-" Allow moving in insert mode with home row keys
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
 
 " json formating
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
