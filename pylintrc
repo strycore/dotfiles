@@ -1,6 +1,5 @@
 [MESSAGES CONTROL]
-#I0011 : Locally disabling {rule}
-disable=I0011
+disable=inconsistent-return-statements
 
 [REPORTS]
 output-format=colorized
