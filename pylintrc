@@ -10,4 +10,4 @@ indent-string='    '
 max-line-length=100
 
 [TYPECHECK]
-generated-members="pack_start"
+generated-members="pack_start,objects"
