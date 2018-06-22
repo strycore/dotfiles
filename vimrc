@@ -152,10 +152,16 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 let g:NERDTreeHighlightFolders = 1
 
+Plug 'Quramy/vim-js-pretty-template'
+
 call plug#end()
 
 filetype plugin indent on
 syntax on
+
+call jspretmpl#register_tag('html', 'html')
+autocmd FileType javascript JsPreTmpl html
+autocmd FileType javascript.jsx JsPreTmpl html
 
 " == User Interface
 set history=1000                    " Keep 1000 lines of history
