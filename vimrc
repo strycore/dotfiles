@@ -465,7 +465,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=mononoki\ Regular\ 14
+    set guifont=mononoki\ Nerd\ Font\ Regular\ 14
     set background=dark
     autocmd GUIEnter * set visualbell t_vb=
     colorscheme vimtom
@@ -477,6 +477,11 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=M
 endif
+
+if has("gui_macvim")
+    set guifont=mononoki\ Nerd\ Font:h16
+endif
+
 
 " Highlight long lines
 if exists('+colorcolumn')
