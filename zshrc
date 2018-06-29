@@ -80,7 +80,12 @@ fi
 # Virtualenvwrapper
 virtualenv=$(which virtualenvwrapper.sh)
 if [ -f "$virtualenv" ]; then
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    if [[ -f "/usr/bin/python3" ]]; then
+        export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
+    elif [[ -f "/usr/local/bin/python3" ]]; then
+        export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
+    fi
+
     source $virtualenv
 fi
 
