@@ -102,7 +102,7 @@ function _top_level_packages {
     python -c "import pkgutil; print('\n'.join([name for loader, name, ispkg in sorted(pkgutil.iter_modules()) if ispkg]))"
 }
 
-_root_dir="$(dirname $(readlink -f ~/.zshrc))"
+_root_dir="$(dirname $(readlink ~/.zshrc))"
 source $_root_dir/shell_functions.sh
 
 
