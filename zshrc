@@ -72,11 +72,6 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then
    nvm use default > /dev/null
 fi
 
-# Angular autocompletion
-if [ -f "$(which ng)" ]; then
-    . <(ng completion --zsh)
-fi
-
 # Virtualenvwrapper
 virtualenv=$(which virtualenvwrapper.sh)
 if [ -f "$virtualenv" ]; then
