@@ -1,10 +1,10 @@
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
-foreground-color='#F8F8F2'
+foreground-color='#FEFEF1F1FFFF'
 cjk-utf8-ambiguous-width='narrow'
 rewrap-on-resize=true
 dim-color-set=false
 login-shell=true
-palette=['#272822', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F8F8F2', '#75715E', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F9F8F5']
+palette=['#0F0F00001919', '#F3F339393939', '#EEEE93933636', '#FEFEFFFF0C0C', '#0909D7D71111', '#28283838DADA', '#8C8C03039E9E', '#FFFFBEBEF9F9', '#212100002727', '#FFFF3E3E3E3E', '#BBBB91914141', '#FEFEFFFF0C0C', '#3B3BBEBE0000', '#12120E0E9797', '#6F6F00008686', '#F4F4DEDEFFFF']
 badge-color-set=false
 default-size-columns=120
 default-size-rows=30
@@ -13,12 +13,12 @@ cursor-colors-set=false
 highlight-colors-set=false
 use-theme-colors=false
 bold-color-set=false
-font='mononoki Nerd Font 11'
+font='mononoki Nerd Font 13'
 allow-bold=true
 scrollback-unlimited=true
 visible-name='Default'
 terminal-bell='icon'
-background-color='#070700000B0B'
+background-color='#313100001919'
 background-transparency-percent=3
 dim-transparency-percent=0
 
