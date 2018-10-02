@@ -7,6 +7,9 @@ if [ ! -e /etc/profile.d/vte.sh ]; then
 	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 fi
 
+# Add Pop!_OS PPA
+sudo add-apt-repository --yes --no-update --enable-source ppa:system76/pop
+
 # Add KeepassXC PPA
 sudo add-apt-repository --yes --no-update --enable-source ppa:phoerious/keepassxc
 
@@ -44,18 +47,23 @@ sudo apt --yes install git keepassxc apt-file pavucontrol htop gimp chrome-gnome
     nmap ncdu docker-ce exuberant-ctags postgresql gnash libvulkan-dev libpng-dev libwayland-dev libxcb1-dev \
     meson ninja-build w3m devscripts git-buildpackage libgirepository1.0-dev debhelper mono-complete \
     neofetch jstest-gtk sc-controller mesa-utils mesa-vulkan-drivers linux-tools-common linux-tools-generic \
-    winehq-staging gimp inkscape lutris virtualbox-5.2 tilix zsh cmake \
-    gconf-service gconf-service-backend gconf2-common libappindicator1 libc++1 libc++abi1 libgconf-2-4 libindicator7
+    winehq-staging gimp inkscape lutris virtualbox-5.2 tilix zsh cmake dconf-editor gnome-tweaks \
+    gconf-service gconf-service-backend gconf2-common libappindicator1 libc++1 libc++abi1 libgconf-2-4 libindicator7 \
+    gnome-shell-extension-pop-suspend-button pop-fonts pop-gnome-shell-theme pop-gtk-theme pop-icon-theme 
 
-# Install Chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
+if [ ! -e /opt/google/chrome ]; then
+    # Install Chrome
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+    rm google-chrome-stable_current_amd64.deb
+fi
 
-# Install Discord
-wget https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
-sudo dpkg -i discord-0.0.5.deb
-rm discord-0.0.5.deb
+if [ ! -e /usr/bin/discord ]; then 
+    # Install Discord
+    wget https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
+    sudo dpkg -i discord-0.0.5.deb
+    rm discord-0.0.5.deb
+fi
 
 sudo pip3 install flake8
 sudo pip3 install pylint
