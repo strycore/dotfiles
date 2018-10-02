@@ -49,7 +49,8 @@ sudo apt --yes install git keepassxc apt-file pavucontrol htop gimp chrome-gnome
     neofetch jstest-gtk sc-controller mesa-utils mesa-vulkan-drivers linux-tools-common linux-tools-generic \
     winehq-staging gimp inkscape lutris virtualbox-5.2 tilix zsh cmake dconf-editor gnome-tweaks \
     gconf-service gconf-service-backend gconf2-common libappindicator1 libc++1 libc++abi1 libgconf-2-4 libindicator7 \
-    gnome-shell-extension-pop-suspend-button pop-fonts pop-gnome-shell-theme pop-gtk-theme pop-icon-theme 
+    gnome-shell-extension-pop-suspend-button pop-fonts pop-gnome-shell-theme pop-gtk-theme pop-icon-theme python-apt \
+    libsystemd-dev
 
 if [ ! -e /opt/google/chrome ]; then
     # Install Chrome
@@ -58,11 +59,27 @@ if [ ! -e /opt/google/chrome ]; then
     rm google-chrome-stable_current_amd64.deb
 fi
 
-if [ ! -e /usr/bin/discord ]; then 
+if [ ! -e /usr/bin/discord ]; then
     # Install Discord
     wget https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
     sudo dpkg -i discord-0.0.5.deb
     rm discord-0.0.5.deb
+fi
+
+if [ ! -e /usr/bin/steam ]; then
+    wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+    sudo dpkg -i steam.deb
+    rm steam.deb
+fi
+
+if [ ! -e /usr/bin/gamemoded ]; then
+    cd /tmp
+    git clone https://github.com/FeralInteractive/gamemode.git
+    cd gamemode
+    git checkout 1.2
+    ./bootstrap.sh
+    cd /tmp
+    rm -rf gamemode
 fi
 
 sudo pip3 install flake8
