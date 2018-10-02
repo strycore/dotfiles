@@ -19,7 +19,7 @@ sudo add-apt-repository --yes --no-update --enable-source ppa:cdemu/ppa
 # Add Docker repository
 sudo apt install --yes curl
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository --yes --no-update --enable-source "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo add-apt-repository --yes --no-update "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
 # Add SC-Controller repository
 wget -nv https://download.opensuse.org/repositories/home:kozec/xUbuntu_18.04/Release.key -O - | sudo apt-key add -
@@ -27,12 +27,12 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/kozec/xUbu
 
 # Add WineHQ repository
 wget -nc https://dl.winehq.org/wine-builds/Release.key -O - | sudo apt-key add -
-sudo apt-add-repository --yes --no-update --enable-source "https://dl.winehq.org/wine-builds/ubuntu/"
+sudo apt-add-repository --yes --no-update "https://dl.winehq.org/wine-builds/ubuntu/"
 
 # Add VirtualBox repository
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-sudo apt-add-repository --yes --no-update --enable-source "deb https://download.virtualbox.org/virtualbox/debian bionic contrib"
+sudo apt-add-repository --yes --no-update "deb https://download.virtualbox.org/virtualbox/debian bionic contrib"
 
 # Add Lutris repository
 ver=$(lsb_release -sr); if [ $ver != "18.04" -a $ver != "16.04" ]; then ver=18.04; fi
@@ -50,7 +50,7 @@ sudo apt --yes install git keepassxc apt-file pavucontrol htop gimp chrome-gnome
     winehq-staging gimp inkscape lutris virtualbox-5.2 tilix zsh cmake dconf-editor gnome-tweaks \
     gconf-service gconf-service-backend gconf2-common libappindicator1 libc++1 libc++abi1 libgconf-2-4 libindicator7 \
     gnome-shell-extension-pop-suspend-button pop-fonts pop-gnome-shell-theme pop-gtk-theme pop-icon-theme python-apt \
-    libsystemd-dev
+    libsystemd-dev vulkan-utils
 
 if [ ! -e /opt/google/chrome ]; then
     # Install Chrome
