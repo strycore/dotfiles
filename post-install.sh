@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Consider this to be Strycore Linux
+# This script is why everything always works for me.
+# Only run this on Ubuntu 18.04 based systems.
+
 set -e
 
 # Fix terminal for Tilix
