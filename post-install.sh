@@ -50,7 +50,7 @@ sudo apt --yes install git keepassxc apt-file pavucontrol htop gimp chrome-gnome
     winehq-staging gimp inkscape lutris virtualbox-5.2 tilix zsh cmake dconf-editor gnome-tweaks \
     gconf-service gconf-service-backend gconf2-common libappindicator1 libc++1 libc++abi1 libgconf-2-4 libindicator7 \
     gnome-shell-extension-pop-suspend-button pop-fonts pop-gnome-shell-theme pop-gtk-theme pop-icon-theme python-apt \
-    libsystemd-dev vulkan-utils chromium-browser
+    libsystemd-dev vulkan-utils chromium-browser picard
 
 if [ ! -e /opt/google/chrome ]; then
     # Install Chrome
