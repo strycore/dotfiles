@@ -87,9 +87,11 @@ if [ ! -e /usr/bin/gamemoded ]; then
     rm -rf gamemode
 fi
 
-sudo pip3 install flake8
-sudo pip3 install pylint
-sudo pip3 install virtualenvwrapper
+# TODO Add Google Music Manager: https://dl.google.com/linux/direct/google-musicmanager-beta_current_amd64.deb
+
+sudo -H pip3 install flake8
+sudo -H pip3 install pylint
+sudo -H pip3 install virtualenvwrapper
 
 sudo lxd init
 newgrp lxd
