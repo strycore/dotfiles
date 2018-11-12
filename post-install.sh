@@ -55,7 +55,7 @@ sudo apt --yes install git keepassxc apt-file pavucontrol htop gimp chrome-gnome
     gconf-service gconf-service-backend gconf2-common libappindicator1 libc++1 libc++abi1 libgconf-2-4 libindicator7 \
     gnome-shell-extension-pop-suspend-button pop-fonts pop-gnome-shell-theme pop-gtk-theme pop-icon-theme python-apt \
     libsystemd-dev vulkan-utils chromium-browser picard gnome-mpv audacious gstreamer1.0-plugins-bad gstreamer1.0-plugins-good \
-    gstreamer1.0-plugins-ugly
+    gstreamer1.0-plugins-ugly exfat-utils
 
 if [ ! -e /opt/google/chrome ]; then
     # Install Chrome
