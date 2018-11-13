@@ -45,6 +45,7 @@
 " <Leader>v  paste from system clipboard
 " <Leader>e  edit vimrc
 " <Leader>E  reload vim configuration
+" <Leader>f  format the current file with ALEFix
 " <Leader>tr Wrap selection in Django 'trans' templatetag
 " <Leader>%  Wrap selection in generic {%  %} templatetag
 " <Leader>{  Wrap selection in generic {{  }} templatetag
@@ -139,8 +140,9 @@ let g:ale_fixers = {
 \   'vue': ['prettier'],
 \   'javascript': ['prettier'],
 \   'css': ['prettier'],
+\   'html': ['prettier'],
 \}
-let g:ale_fix_on_save = 1
+nmap <silent> <Leader>f :ALEFix<CR>
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -420,7 +422,7 @@ augroup end " }}}
 augroup javascript_files
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     "autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
-    autocmd FileType javascript nmap <silent> <leader-j> ?function<cr>:noh<cr>:JsDoc<cr>
+    autocmd FileType javascript nmap <silent> <leader>j ?function<cr>:noh<cr>:JsDoc<cr>
     autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
     autocmd BufRead *.js set makeprg=eslint\ %
