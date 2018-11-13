@@ -142,7 +142,6 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \   'html': ['prettier'],
 \}
-nmap <silent> <Leader>f :ALEFix<CR>
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -262,6 +261,9 @@ map <silent> <leader>E :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 
 map <leader>g :YcmCompleter GoToDefinition<CR>
 map <leader>G :YcmCompleter GoToDeclaration<CR>
+
+" Format file with Prettier
+nmap <Leader>f :ALEFix<CR>
 
 highlight BadWhitespace ctermbg=red guibg=red
 let python_highlight_builtin_funcs = 1
