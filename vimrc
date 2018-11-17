@@ -431,6 +431,7 @@ augroup javascript_files
     autocmd filetype javascript,css setlocal list
     autocmd FileType javascript setlocal iskeyword+=$
     autocmd BufRead,BufNewFile *.js SemanticHighlight
+    autocmd BufRead,BufNewFile *.vue SemanticHighlight
 augroup end
 
 autocmd FileType htmldjango setlocal ts=2 sts=2 sw=2 expandtab
