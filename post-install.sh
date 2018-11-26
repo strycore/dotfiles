@@ -55,7 +55,7 @@ sudo apt --yes install git keepassxc apt-file pavucontrol htop gimp chrome-gnome
     gconf-service gconf-service-backend gconf2-common libappindicator1 libc++1 libc++abi1 libgconf-2-4 libindicator7 \
     gnome-shell-extension-pop-suspend-button pop-fonts pop-gnome-shell-theme pop-gtk-theme pop-icon-theme python-apt \
     libsystemd-dev vulkan-utils chromium-browser picard gnome-mpv audacious gstreamer1.0-plugins-bad gstreamer1.0-plugins-good \
-    gstreamer1.0-plugins-ugly exfat-utils xbindkeys
+    gstreamer1.0-plugins-ugly exfat-utils xbindkeys libgcc-8-dev:i386 libc6-dev:i386
 
 if [ ! -e /opt/google/chrome ]; then
     # Install Chrome
@@ -83,8 +83,20 @@ if [ ! -e /usr/bin/gamemoded ]; then
     cd gamemode
     git checkout 1.2
     ./bootstrap.sh
+    rm -rf build
+
+    export CFLAGS=-m32
+    export CXXFLAGS=-m32
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    meson --prefix=/usr build -Dwith-daemon=false -Dwith-examples=false -Dwith-systemd=false --libdir='/usr/lib/i386-linux-gnu'
+    ninja -C build
+    ninja -C build install
+
     cd /tmp
     rm -rf gamemode
+    unset CFLAGS
+    unset CXXFLAGS
+    unset PKG_CONFIG_PATH
 fi
 
 # TODO Add Google Music Manager: https://dl.google.com/linux/direct/google-musicmanager-beta_current_amd64.deb
