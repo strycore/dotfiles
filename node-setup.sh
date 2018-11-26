@@ -20,7 +20,6 @@ npm install -g eslint
 npm install -g generator-polymer
 npm install -g grunt-cli
 npm install -g gulp
-npm install -g jshint
 npm install -g polylint
 npm install -g polyserve
 npm install -g polymer-cli

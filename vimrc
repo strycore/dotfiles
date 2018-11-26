@@ -423,7 +423,6 @@ augroup end " }}}
 
 augroup javascript_files
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    "autocmd FileType javascript map <buffer> <F8> :w<CR>:JSHint<CR>
     autocmd FileType javascript nmap <silent> <leader>j ?function<cr>:noh<cr>:JsDoc<cr>
     autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
