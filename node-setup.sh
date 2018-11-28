@@ -5,10 +5,11 @@ NVM_DIR="$HOME/.nvm"
 
 if [ ! -d "$NVM_DIR" ]; then
     echo "Installing NVM"
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+    mkdir $NVM_DIR
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 fi
-
-source $NVM_DIR/nvm.sh
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# source $NVM_DIR/nvm.sh
 
 nvm install $NODE_CURRENT
 nvm alias default $NODE_CURRENT
