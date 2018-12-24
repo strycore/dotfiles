@@ -2,7 +2,7 @@
 
 set -e
 
-FONTS_DIR="~/.local/share/fonts"
+FONTS_DIR="$HOME/.local/share/fonts"
 
 function link_file {
     source="${PWD}/$1"
@@ -50,7 +50,6 @@ function install_awesome_fonts {
 }
 
 function install_nerd_fonts {
-    mkdir -p $FONTS_DIR
     cd $FONTS_DIR
     wget "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Mononoki/Regular/complete/mononoki-Regular%20Nerd%20Font%20Complete%20Mono.ttf"
 }
@@ -136,12 +135,11 @@ if [ ! -d "$HOME/.fzf" ]; then
 fi
 
 # Install Fonts compatible with PowerLevel 9k
-if [ ! -d $FONTS_DIR ]; then
-    # install_powerline_fonts
-    # install_awesome_fonts
-    install_nerd_fonts
-    fc-cache -f -v
-fi
+mkdir -p $FONTS_DIR
+# install_powerline_fonts
+# install_awesome_fonts
+install_nerd_fonts
+fc-cache -f -v
 
 # Fix broken multi-monitor window positioning in Gnome Shell
 # "When true, the new windows will always be put in the center of the active screen of the monitor."
