@@ -2,6 +2,8 @@
 
 set -e
 
+FONTS_DIR="~/.local/share/fonts"
+
 function link_file {
     source="${PWD}/$1"
     if [[ "${2}" ]]; then
@@ -27,7 +29,7 @@ function link_file {
 }
 
 function install_powerline_fonts {
-    mkdir -p ~/.fonts
+    mkdir -p $FONTS_DIR
     git clone https://github.com/powerline/fonts.git powerline-fonts
     cd powerline-fonts
     ./install.sh
@@ -35,17 +37,22 @@ function install_powerline_fonts {
     rm -rf powerline-fonts
 }
 
-install_powerline_fonts
 
 function install_awesome_fonts {
-    mkdir -p ~/.fonts
+    mkdir -p $FONTS_DIR
     git clone https://github.com/gabrielelana/awesome-terminal-fonts.git
     cd awesome-terminal-fonts
     git checkout patching-strategy
     cd patched
-    cp *.ttf ~/.fonts
+    cp *.ttf $FONTS_DIR
     cd ../..
     rm -rf awesome-terminal-fonts
+}
+
+function install_nerd_fonts {
+    mkdir -p $FONTS_DIR
+    cd $FONTS_DIR
+    wget "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Mononoki/Regular/complete/mononoki-Regular%20Nerd%20Font%20Complete%20Mono.ttf"
 }
 
 link_file vim
@@ -66,6 +73,7 @@ link_file mancolor
 link_file xbindkeysrc
 link_file shell_functions.sh
 link_file isort.cfg
+
 
 mkdir -p $HOME/.config
 link_file flake8 $HOME/.config
@@ -127,8 +135,12 @@ if [ ! -d "$HOME/.fzf" ]; then
     ~/.fzf/install --no-update-rc
 fi
 
-if [ ! -f "$HOME/.fonts/Droid+Sans+Mono+Awesome.ttf" ]; then
-    install_awesome_fonts
+# Install Fonts compatible with PowerLevel 9k
+if [ ! -d $FONTS_DIR ]; then
+    # install_powerline_fonts
+    # install_awesome_fonts
+    install_nerd_fonts
+    fc-cache -f -v
 fi
 
 # Fix broken multi-monitor window positioning in Gnome Shell
