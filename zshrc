@@ -194,5 +194,5 @@ eval "$(gulp --completion=zsh 2>/dev/null)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
+        source /etc/profile.d/vte*.sh
 fi
