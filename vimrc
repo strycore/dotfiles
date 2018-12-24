@@ -476,7 +476,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-    set guifont=mononoki\ Nerd\ Font\ Regular\ 14
+    set guifont=mononoki\ Nerd\ Font\ Mono\ Regular\ 14
     set background=dark
     autocmd GUIEnter * set visualbell t_vb=
     colorscheme vimtom
