@@ -139,3 +139,11 @@ function gfetall {
     git fetch --all
     git rebase upstream/master
 }
+
+function df {
+    /bin/df "$@" | grep -v "^/dev/loop\|^tmpfs"
+}
+
+function mount {
+    /bin/mount "$@" | grep -v "^cgroup\|^tmpfs\|^/var/lib/snapd\|^nsfs"
+}
