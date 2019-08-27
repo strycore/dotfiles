@@ -73,15 +73,18 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then
 fi
 
 # Virtualenvwrapper
-virtualenv=$(which virtualenvwrapper.sh)
-if [ -f "$virtualenv" ]; then
+if [ -f "/usr/share/virtualenvwrapper/virtualenvwrapper.sh" ]; then
+    virtualenvwrapper="/usr/share/virtualenvwrapper/virtualenvwrapper.sh"
+else
+    virtualenvwrapper=$(which virtualenvwrapper.sh)
     if [[ -f "/usr/bin/python3" ]]; then
         export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
     elif [[ -f "/usr/local/bin/python3" ]]; then
         export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
     fi
-
-    source $virtualenv
+fi
+if [ -f "$virtualenvwrapper" ]; then
+    source $virtualenvwrapper
 fi
 
 # RVM Configuration: Load RVM into a shell session *as a function*
