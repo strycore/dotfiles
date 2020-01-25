@@ -7,6 +7,58 @@ set -e
 
 FONTS_DIR="$HOME/.local/share/fonts"
 
+function switch_to_zsh {
+    if [ "$(basename "$SHELL")" != "zsh" -a -f "$(which zsh)" ]; then
+        echo "Switching default shell to zsh, please enter your password:"
+        chsh -s $(which zsh)
+    fi
+}
+
+function install_ohmyzsh {
+    if [ ! -d "$HOME/.oh-my-zsh" ]
+    then
+        echo "[INSTALL] Installing oh-my-zsh"
+        if [ "$(which curl)" ]; then
+            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        elif [ "$(which wget)" ]; then
+            sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+        fi
+        # Check that OhMyZsh as been installed and create custom plugin dir
+        if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
+            mkdir -p ~/.oh-my-zsh/custom/plugins
+        fi
+    else
+        echo "[SKIP] oh-my-zsh is already installed"
+    fi
+}
+
+function install_ohmyzsh_plugins {
+    if [ -d $HOME/.oh-my-zsh/custom ]; then
+        if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/grunt" ]; then
+            echo "[INSTALL] zsh Grunt plugin"
+            mkdir -p ~/.oh-my-zsh/custom/plugins
+            git clone https://github.com/yonchu/grunt-zsh-completion.git ~/.oh-my-zsh/custom/plugins/grunt
+        fi
+
+        if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+            echo "[INSTALL] zsh syntax highlighting"
+            mkdir -p ~/.oh-my-zsh/custom/plugins
+            git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+        fi
+
+        if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/git-flow-completion" ]; then
+            echo "[INSTALL] zsh git flow completion"
+            git clone https://github.com/bobthecow/git-flow-completion ~/.oh-my-zsh/custom/plugins/git-flow-completion
+        fi
+
+        if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel9k" ]; then
+            echo "[INSTALL] powerlevel9k theme"
+            mkdir -p ~/.oh-my-zsh/custom/themes/
+            git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+        fi
+    fi
+}
+
 function link_file {
     source="${PWD}/$1"
     if [[ "${2}" ]]; then
@@ -108,6 +160,8 @@ function install_fzf() {
     fi
 }
 
+mkdir -p $HOME/.config
+
 link_file vim
 link_file vimrc
 link_file bashrc
@@ -126,58 +180,10 @@ link_file mancolor
 link_file xbindkeysrc
 link_file shell_functions.sh
 link_file isort.cfg
-
-
-mkdir -p $HOME/.config
 link_file flake8 $HOME/.config
-
-if [ "$(basename "$SHELL")" != "zsh" -a -f "$(which zsh)" ]; then
-    echo "Switching default shell to zsh, please enter your password:"
-    chsh -s $(which zsh)
-fi
-
-if [ ! -d "$HOME/.oh-my-zsh" ]
-then
-    echo "[INSTALL] Installing oh-my-zsh"
-    if [ "$(which curl)" ]; then
-        curl -L http://install.ohmyz.sh | bash
-    elif [ "$(which wget)" ]; then
-        wget --no-check-certificate http://install.ohmyz.sh -O - | bash
-    fi
-    # Check that OhMyZsh as been installed and create custom plugin dir
-    if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
-        mkdir -p ~/.oh-my-zsh/custom/plugins
-    fi
-else
-    echo "[SKIP] oh-my-zsh is already installed"
-fi
-
-if [ -d $HOME/.oh-my-zsh/custom ]; then
-    if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/grunt" ]; then
-        echo "[INSTALL] zsh Grunt plugin"
-        mkdir -p ~/.oh-my-zsh/custom/plugins
-        git clone https://github.com/yonchu/grunt-zsh-completion.git ~/.oh-my-zsh/custom/plugins/grunt
-    fi
-
-    if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
-        echo "[INSTALL] zsh syntax highlighting"
-        mkdir -p ~/.oh-my-zsh/custom/plugins
-        git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
-    fi
-
-    if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/git-flow-completion" ]; then
-        echo "[INSTALL] zsh git flow completion"
-        git clone https://github.com/bobthecow/git-flow-completion ~/.oh-my-zsh/custom/plugins/git-flow-completion
-    fi
-
-    if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel9k" ]; then
-        echo "[INSTALL] powerlevel9k theme"
-        mkdir -p ~/.oh-my-zsh/custom/themes/
-        git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-    fi
-
-fi
-
+switch_to_zsh
+install_ohmyzsh
+install_ohmyzsh_plugins
 install_fzf
 install_font
 fix_gnome_shell_multimonitor_windows
