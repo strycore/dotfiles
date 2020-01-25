@@ -160,8 +160,6 @@ function install_fzf() {
     fi
 }
 
-mkdir -p $HOME/.config
-
 link_file vim
 link_file vimrc
 link_file bashrc
@@ -172,15 +170,11 @@ link_file eslintrc
 link_file gitconfig
 link_file gitignore_global
 link_file hgrc
-link_file ackrc
 link_file tmux.conf
-link_file tmux.django.conf
 link_file dput.cf
 link_file mancolor
 link_file xbindkeysrc
 link_file shell_functions.sh
-link_file isort.cfg
-link_file flake8 $HOME/.config
 switch_to_zsh
 install_ohmyzsh
 install_ohmyzsh_plugins
