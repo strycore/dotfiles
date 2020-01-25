@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Setup script for dotfiles, this will install all necessary components
+# for a complete terminal setup.
+# This setup is based on Oh-My-Zsh, Powerlevel 9k and the Mononoki font
 
 set -e
 
@@ -28,6 +31,33 @@ function link_file {
     ln -sf ${source} ${target}
 }
 
+function check_inotify_watches {
+    # Check that the running system has enough inotify watches
+    watches=$(cat /proc/sys/fs/inotify/max_user_watches)
+    if [ $watches -lt 524288 ]; then
+        echo "*********************************************************************"
+        echo "*********************************************************************"
+        echo "*********************************************************************"
+        echo "*********************************************************************"
+        echo "*****                                                           *****"
+        echo "*****                                                           *****"
+        echo "*****     YOUR NUMBER OF INOTIFY WATCHES IS DANGEROUSLY LOW.    *****"
+        echo "*****     SEVERAL TOOLS SUCH AS TAIL, LIVERELOAD AND DROPBOX    *****"
+        echo "*****     WON'T WORK PROPERLY.                                  *****"
+        echo "*****                                                           *****"
+        echo "*****     PLEASE FIX THIS ASAP!! RUN AS ROOT:                   *****"
+        echo "*****                                                           *****"
+        echo "***** echo 1048576 > /proc/sys/fs/inotify/max_user_watches       *****"
+        echo "*****echo fs.inotify.max_user_watches=1048576 >> /etc/sysctl.conf*****"
+        echo "*****                                                           *****"
+        echo "*****                                                           *****"
+        echo "*********************************************************************"
+        echo "*********************************************************************"
+        echo "*********************************************************************"
+        echo "*********************************************************************"
+    fi
+}
+
 function install_powerline_fonts {
     mkdir -p $FONTS_DIR
     git clone https://github.com/powerline/fonts.git powerline-fonts
@@ -52,6 +82,30 @@ function install_awesome_fonts {
 function install_nerd_fonts {
     cd $FONTS_DIR
     wget "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Mononoki/Regular/complete/mononoki-Regular%20Nerd%20Font%20Complete%20Mono.ttf"
+}
+
+function install_font() {
+    # Install a font compatible with PowerLevel 9k
+    mkdir -p $FONTS_DIR
+    # install_powerline_fonts
+    # install_awesome_fonts
+    install_nerd_fonts
+    fc-cache -f -v
+}
+
+fix_gnome_shell_multimonitor_windows() {
+    # Fix broken multi-monitor window positioning in Gnome Shell
+    # "When true, the new windows will always be put in the center of the active screen of the monitor."
+    if [ "$(which gsettings)" ]; then
+        gsettings set org.gnome.mutter center-new-windows true
+    fi
+}
+
+function install_fzf() {
+    if [ ! -d "$HOME/.fzf" ]; then
+        git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+        ~/.fzf/install --no-update-rc
+    fi
 }
 
 link_file vim
@@ -129,45 +183,8 @@ if [ ! -e ~/.config/terminator/config ]; then
     ln -s $(pwd)/terminator/config ~/.config/terminator/config
 fi
 
-if [ ! -d "$HOME/.fzf" ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-    ~/.fzf/install --no-update-rc
-fi
+install_fzf
+install_font
+fix_gnome_shell_multimonitor_windows
+check_inotify_watches
 
-# Install Fonts compatible with PowerLevel 9k
-mkdir -p $FONTS_DIR
-# install_powerline_fonts
-# install_awesome_fonts
-install_nerd_fonts
-fc-cache -f -v
-
-# Fix broken multi-monitor window positioning in Gnome Shell
-# "When true, the new windows will always be put in the center of the active screen of the monitor."
-if [ "$(which gsettings)" ]; then
-    gsettings set org.gnome.mutter center-new-windows true
-fi
-
-# Check that the running system has enough inotify watches
-watches=$(cat /proc/sys/fs/inotify/max_user_watches)
-if [ $watches -lt 524288 ]; then
-    echo "*********************************************************************"
-    echo "*********************************************************************"
-    echo "*********************************************************************"
-    echo "*********************************************************************"
-    echo "*****                                                           *****"
-    echo "*****                                                           *****"
-    echo "*****     YOUR NUMBER OF INOTIFY WATCHES IS DANGEROUSLY LOW.    *****"
-    echo "*****     SEVERAL TOOLS SUCH AS TAIL, LIVERELOAD AND DROPBOX    *****"
-    echo "*****     WON'T WORK PROPERLY.                                  *****"
-    echo "*****                                                           *****"
-    echo "*****     PLEASE FIX THIS ASAP!! RUN AS ROOT:                   *****"
-    echo "*****                                                           *****"
-    echo "***** echo 1048576 > /proc/sys/fs/inotify/max_user_watches       *****"
-    echo "*****echo fs.inotify.max_user_watches=1048576 >> /etc/sysctl.conf*****"
-    echo "*****                                                           *****"
-    echo "*****                                                           *****"
-    echo "*********************************************************************"
-    echo "*********************************************************************"
-    echo "*********************************************************************"
-    echo "*********************************************************************"
-fi
