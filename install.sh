@@ -178,11 +178,6 @@ if [ -d $HOME/.oh-my-zsh/custom ]; then
 
 fi
 
-mkdir -p ~/.config/terminator
-if [ ! -e ~/.config/terminator/config ]; then
-    ln -s $(pwd)/terminator/config ~/.config/terminator/config
-fi
-
 install_fzf
 install_font
 fix_gnome_shell_multimonitor_windows
