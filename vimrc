@@ -143,6 +143,7 @@ let g:ale_fixers = {
 \   'html': ['prettier'],
 \   'python': ['pylint'],
 \}
+let g:ale_linters = {'python': ['pylint']}
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -396,7 +397,6 @@ augroup python_files
     autocmd BufRead,BufNewFile *.py  set autoindent sw=4 sts=4 expandtab
     autocmd BufRead,BufNewFile *.wsgi setfiletype python
     autocmd BufRead *.py SemanticHighlightToggle
-    let b:ale_linters = ['pylint']
 
     autocmd BufWritePre *.py :%s/\s\+$//e " Remove trailing whitespace on save
     autocmd BufRead *.py set errorformat=%f:%l:\ %m
