@@ -427,6 +427,7 @@ augroup javascript_files
     autocmd FileType javascript nmap <silent> <leader>j ?function<cr>:noh<cr>:JsDoc<cr>
     autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType vue setlocal ts=2 sts=2 sw=2 expandtab
     autocmd BufRead *.js set makeprg=eslint\ %
     autocmd filetype javascript,css setlocal list
     autocmd FileType javascript setlocal iskeyword+=$
