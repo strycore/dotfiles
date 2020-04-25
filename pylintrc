@@ -1,6 +1,3 @@
-[MESSAGES CONTROL]
-disable=inconsistent-return-statements
-
 [REPORTS]
 output-format=colorized
 include-ids=yes
