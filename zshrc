@@ -39,7 +39,7 @@ if [ "$USER" != "root" ]; then
 fi
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git python pip command-not-found zsh-syntax-highlighting fabric bower aws)
+plugins=(git command-not-found zsh-syntax-highlighting fabric bower aws)
 source $ZSH/oh-my-zsh.sh
 
 # Disable autocorrect
