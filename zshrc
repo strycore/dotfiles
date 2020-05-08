@@ -45,7 +45,7 @@ source $ZSH/oh-my-zsh.sh
 # Disable autocorrect
 unsetopt correct_all
 
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.local/bin/
 if [ -s $HOME/.rvm/bin ]; then
     export PATH=$PATH:$HOME/.rvm/bin
 fi
