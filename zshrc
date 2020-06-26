@@ -1,10 +1,17 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 
 # == Default programs
 export EDITOR='gvim'
 export BROWSER='firefox'
 export PYTHONIOENCODING=UTF-8
 
-export EMAIL="strycore@gmail.com"
+export EMAIL="strider@strycore.com"
 export FULLNAME="Mathieu Comandon"
 
 # == Debian packaging variables
@@ -15,28 +22,8 @@ export LANG="en_US.UTF-8"
 export TERM="xterm-256color"
 
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_UPDATE_PROMPT=true
-
-# POWERLEVEL9K_MODE='awesome-patched'
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0C6'
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0C7'
-POWERLEVEL9K_STATUS_VERBOSE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs root_indicator)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time background_jobs load virtualenv)
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_OS_ICON_BACKGROUND="red"
-POWERLEVEL9K_OS_ICON_FOREGROUND="white"
-POWERLEVEL9K_DIR_HOME_BACKGROUND="red"
-POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="green"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="yellow"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
-if [ "$USER" != "root" ]; then
-    export DEFAULT_USER="$USER"
-fi
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git command-not-found zsh-syntax-highlighting fabric bower aws)
@@ -199,3 +186,6 @@ eval "$(gulp --completion=zsh 2>/dev/null)"
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte*.sh
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
