@@ -77,11 +77,15 @@ fi
 # RVM Configuration: Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+SALTMASTER="oceanside"
+
 alias image_reduce="find . -size +2M -name '*.jpg' -exec convert -resize 33% {} {} \;"
 alias nuke='tr -dc " _" < /dev/urandom'
 alias tmux='tmux -2'
 alias lxls='sudo lxc-ls --fancy'
 alias sockette='ssh -D 1337 -f -C -q -N strider@strycore.com'
+alias saltup="ssh $SALTMASTER 'cd salt; git pull'"
+alias gethigh="ssh -t $SALTMASTER sudo /usr/bin/salt \"\*\" state.highstate"
 
 function _top_level_packages {
     python -c "import pkgutil; print('\n'.join([name for loader, name, ispkg in sorted(pkgutil.iter_modules()) if ispkg]))"
