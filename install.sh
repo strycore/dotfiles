@@ -56,6 +56,10 @@ function install_ohmyzsh_plugins {
             mkdir -p ~/.oh-my-zsh/custom/themes/
             git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
         fi
+        if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
+            echo "[INSTALL] powerlevel10k theme"
+            git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+        fi
     fi
 }
 
