@@ -44,3 +44,5 @@
 
 [grep]
 	lineNumber = true
+[pull]
+	rebase = true
