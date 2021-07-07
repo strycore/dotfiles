@@ -86,7 +86,8 @@ alias lxls='sudo lxc-ls --fancy'
 alias sockette='ssh -D 1337 -f -C -q -N strider@strycore.com'
 alias saltup="ssh $SALTMASTER 'cd salt; git pull'"
 alias gethigh="ssh -t $SALTMASTER sudo /usr/bin/salt \"\*\" state.highstate"
-
+# Fixes flatpak permissions (aka I want my software to see my data)
+alias unfuck_flatpak='for i in $(flatpak list | cut -f 2); do flatpak override --user --filesystem=host $i; done'
 # Some dumbass at MS removed code from $PATH
 alias code=/usr/share/code/bin/code
 
