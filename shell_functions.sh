@@ -145,5 +145,5 @@ function df {
 }
 
 function mount {
-    /bin/mount "$@" | grep -v "^cgroup\|^tmpfs\|^/var/lib/snapd\|^nsfs"
+    /bin/mount "$@" | grep -v "^cgroup\|^tmpfs\|^/var/lib/snapd\|^nsfs|^overlay"
 }
