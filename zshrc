@@ -198,3 +198,15 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [[ "$USER" == "deck" ]]; then
+    alias lutris="flatpak run net.lutris.Lutris"
+    alias code="flatpak run com.visualstudio.code"
+    alias docker=podman
+
+    sync_lutris() {
+	    rsync -avz /home/deck/lutris/lutris/ /home/deck/.local/share/flatpak/app/net.lutris.Lutris/current/active/files/lib/python3.9/site-packages/lutris
+    }
+    export sync_lutris
+fi
+
