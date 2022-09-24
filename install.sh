@@ -43,7 +43,7 @@ function install_ohmyzsh_plugins {
         if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
             echo "[INSTALL] zsh syntax highlighting"
             mkdir -p ~/.oh-my-zsh/custom/plugins
-            git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
         fi
 
         if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/git-flow-completion" ]; then
@@ -179,11 +179,10 @@ link_file dput.cf
 link_file mancolor
 link_file xbindkeysrc
 link_file shell_functions.sh
-switch_to_zsh
 install_ohmyzsh
 install_ohmyzsh_plugins
 install_fzf
 install_font
 fix_gnome_shell_multimonitor_windows
 check_inotify_watches
-
+switch_to_zsh
