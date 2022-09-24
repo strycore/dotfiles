@@ -39,10 +39,10 @@ fi
 
 # Start Gnome Keyring daemon on other DE's than Gnome (or simply when it's
 # having a bad day)
-if [ -n "$DESKTOP_SESSION" -a -z "$SSH_AUTH_SOCK" ]; then
-    eval $(gnome-keyring-daemon --start --components=ssh)
-    export SSH_AUTH_SOCK
-fi
+# if [ -n "$DESKTOP_SESSION" -a -z "$SSH_AUTH_SOCK" ]; then
+#     eval $(gnome-keyring-daemon --start --components=ssh)
+#     export SSH_AUTH_SOCK
+# fi
 
 if [ -x "$HOME/.mancolor" ]; then
     source $HOME/.mancolor
