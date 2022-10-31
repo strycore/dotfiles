@@ -169,7 +169,6 @@ link_file vimrc
 link_file bashrc
 link_file zshrc
 link_file screenrc
-link_file pylintrc
 link_file gitconfig
 link_file gitignore_global
 link_file hgrc
