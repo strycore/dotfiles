@@ -137,7 +137,7 @@ function install_awesome_fonts {
 
 function install_nerd_fonts {
     cd $FONTS_DIR
-    wget "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Mononoki/Regular/complete/mononoki-Regular%20Nerd%20Font%20Complete%20Mono.ttf"
+    wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Mononoki/Regular/complete/Mononoki%20Nerd%20Font%20Complete%20Mono%20Regular.ttf"
 }
 
 function install_font() {
