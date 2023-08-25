@@ -63,12 +63,13 @@ fi
 if [ -f "/usr/share/virtualenvwrapper/virtualenvwrapper.sh" ]; then
     virtualenvwrapper="/usr/share/virtualenvwrapper/virtualenvwrapper.sh"
 else
-    virtualenvwrapper=$(which virtualenvwrapper.sh)
-    if [[ -f "/usr/bin/python3" ]]; then
-        export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
-    elif [[ -f "/usr/local/bin/python3" ]]; then
-        export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
-    fi
+    virtualenvwrapper=$(which virtualenvwrapper.sh) 2>/dev/null
+
+fi
+if [[ -f "/usr/bin/python3" ]]; then
+    export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
+elif [[ -f "/usr/local/bin/python3" ]]; then
+    export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
 fi
 if [ -f "$virtualenvwrapper" ]; then
     source $virtualenvwrapper
