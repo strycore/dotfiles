@@ -11,7 +11,7 @@ export EDITOR='gvim'
 export BROWSER='firefox'
 export PYTHONIOENCODING=UTF-8
 
-export EMAIL="strider@strycore.com"
+export EMAIL="mathieucomandon@gmail.com"
 export FULLNAME="Mathieu Comandon"
 
 # == Debian packaging variables
@@ -37,12 +37,6 @@ if [ -s $HOME/.rvm/bin ]; then
     export PATH=$PATH:$HOME/.rvm/bin
 fi
 
-# Start Gnome Keyring daemon on other DE's than Gnome (or simply when it's
-# having a bad day)
-# if [ -n "$DESKTOP_SESSION" -a -z "$SSH_AUTH_SOCK" ]; then
-#     eval $(gnome-keyring-daemon --start --components=ssh)
-#     export SSH_AUTH_SOCK
-# fi
 
 if [ -x "$HOME/.mancolor" ]; then
     source $HOME/.mancolor
@@ -94,7 +88,7 @@ alias unfuck_flatpak='for i in $(flatpak list | cut -f 2); do flatpak override -
 [[ -e /usr/share/code/bin/code ]] && alias code=/usr/share/code/bin/code
 
 function _top_level_packages {
-    python -c "import pkgutil; print('\n'.join([name for loader, name, ispkg in sorted(pkgutil.iter_modules()) if ispkg]))"
+    python -c "import pkgutil; print('\n'.join([name for loader, name, ispkg in pkgutil.iter_modules() if ispkg]))" | sort
 }
 
 _root_dir="$(dirname $(readlink ~/.zshrc))"
