@@ -157,6 +157,28 @@ fix_gnome_shell_multimonitor_windows() {
     fi
 }
 
+install_kde_config() {
+    # Install KDE config if running KDE/Plasma
+    if [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$KDE_FULL_SESSION" = "true" ]; then
+        echo "[INSTALL] Installing KDE configuration"
+        mkdir -p "$HOME/.config"
+        if [ -f "$HOME/.config/kdeglobals" ]; then
+            # Merge settings using kwriteconfig6 if available
+            if [ "$(which kwriteconfig6)" ]; then
+                kwriteconfig6 --file kdeglobals --group KDE --key SingleClick true
+                echo "[ OK ] KDE SingleClick enabled via kwriteconfig6"
+            else
+                echo "[SKIP] kwriteconfig6 not found, skipping KDE config"
+            fi
+        else
+            ln -sf "${PWD}/kde/kdeglobals" "$HOME/.config/kdeglobals"
+            echo "[ OK ] Linked kdeglobals"
+        fi
+    else
+        echo "[SKIP] KDE not detected, skipping KDE config"
+    fi
+}
+
 function install_fzf() {
     if [ ! -d "$HOME/.fzf" ]; then
         git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
@@ -182,5 +204,6 @@ install_ohmyzsh_plugins
 install_fzf
 install_font
 fix_gnome_shell_multimonitor_windows
+install_kde_config
 check_inotify_watches
 switch_to_zsh
