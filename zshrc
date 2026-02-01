@@ -37,6 +37,10 @@ if [ -s $HOME/.rvm/bin ]; then
     export PATH=$PATH:$HOME/.rvm/bin
 fi
 
+# Go
+export GOPATH=$HOME/Software/go
+export PATH=$PATH:$GOPATH/bin
+
 
 if [ -x "$HOME/.mancolor" ]; then
     source $HOME/.mancolor
