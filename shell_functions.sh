@@ -152,3 +152,7 @@ function surface6lodpi {
     xrandr --newmode "1368x912"  103.00  1368 1448 1592 1816  912 915 925 947 -hsync +vsync
     xrandr --addmode eDP-1 1368x912
 }
+
+function killwine {
+    kill -9 $(ps -ef | grep -E -i '(wine|processid|\.exe)' | awk '{print $2}')
+}
