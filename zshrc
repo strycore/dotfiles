@@ -1,32 +1,25 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-
-# == Default programs
-export EDITOR='gvim'
+export EDITOR='vim'
 export BROWSER='firefox'
 export PYTHONIOENCODING=UTF-8
-
-export EMAIL="mathieucomandon@gmail.com"
-export FULLNAME="Mathieu Comandon"
-
-# == Debian packaging variables
-export DEBEMAIL=$EMAIL
-export DEBFULLNAME=$FULLNAME
-
+export DEBEMAIL="mathieucomandon@gmail.com"
+export DEBFULLNAME="Mathieu Comandon"
 export LANG="en_US.UTF-8"
-export TERM="xterm-256color"
+[[ -z "$KITTY_WINDOW_ID" ]] && export TERM="xterm-256color"
 
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_UPDATE_PROMPT=true
 
+
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git command-not-found zsh-syntax-highlighting fabric bower aws)
+plugins=(git command-not-found zsh-syntax-highlighting poetry)
 source $ZSH/oh-my-zsh.sh
 
 # Disable autocorrect
@@ -56,7 +49,6 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then
    source "$NVM_DIR/nvm.sh"
    nvm use default > /dev/null
 fi
-
 # Virtualenvwrapper
 if [ -f "/usr/share/virtualenvwrapper/virtualenvwrapper.sh" ]; then
     virtualenvwrapper="/usr/share/virtualenvwrapper/virtualenvwrapper.sh"
@@ -87,6 +79,7 @@ alias saltup="ssh $SALTMASTER 'cd salt; git pull'"
 alias gethigh="ssh -t $SALTMASTER sudo /usr/bin/salt \"\*\" state.highstate"
 # Fixes flatpak permissions (aka I want my software to see my data)
 alias unfuck_flatpak='for i in $(flatpak list | cut -f 2); do flatpak override --user --filesystem=host $i; done'
+alias swagger-codegen=java -jar /usr/bin/swagger-codegen-cli.jar
 
 # Some dumbass at MS removed code from $PATH
 [[ -e /usr/share/code/bin/code ]] && alias code=/usr/share/code/bin/code
@@ -122,6 +115,7 @@ _force_rehash() {
     (( CURRENT == 1 )) && rehash
     return 1    # Because we didn't really complete anything
 }
+
 # Always use menu completion, and make the colors pretty!
 zstyle ':completion:*' menu select yes
 zstyle ':completion:*:default' list-colors ''
@@ -185,9 +179,10 @@ function vim-plug-clean () {
   vim -c "execute \"PlugClean!\" | q | q"
 }
 
+
 # Autocompletion for npm and gulp
 eval "$(npm completion 2>/dev/null)"
-eval "$(gulp --completion=zsh 2>/dev/null)"
+# eval "$(gulp --completion=zsh 2>/dev/null)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -214,3 +209,58 @@ if [ -d "$PYENV_ROOT" ]; then
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 fi
+
+# bun completions
+[ -s "/home/strider/.bun/_bun" ] && source "/home/strider/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# Flutter
+export FLUTTER_INSTALL="$HOME/Software/Flutter/flutter"
+export PATH="$FLUTTER_INSTALL/bin:$PATH"
+
+# FVM
+export PATH="/home/strider/.fvm_flutter/bin:$PATH"
+
+export PATH="/home/strider/.mozbuild/git-cinnabar:$PATH"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/strider/.dart-cli-completion/zsh-config.zsh ]] && . /home/strider/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+
+. "$HOME/.local/bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/strider/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+
+# opencode
+export PATH=/home/strider/.opencode/bin:$PATH
+
+# pnpm
+export PNPM_HOME="/home/strider/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# OpenClaw Completion (cached for speed)
+_oc_comp="$HOME/.cache/openclaw-completion.zsh"
+if [[ ! -f "$_oc_comp" ]] || [[ $(find "$_oc_comp" -mtime +7 2>/dev/null) ]]; then
+  openclaw completion --shell zsh > "$_oc_comp" 2>/dev/null
+fi
+[[ -f "$_oc_comp" ]] && source "$_oc_comp"
+
+# Android SDK
+export ANDROID_HOME="$HOME/development/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
