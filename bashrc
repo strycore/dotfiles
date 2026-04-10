@@ -168,3 +168,13 @@ function vim-plug-clean () {
   vim-plug-init
   vim -c "execute \"PlugClean!\" | q | q"
 }
+. "$HOME/.cargo/env"
+export PATH="$PATH:${HOME}/development/flutter/bin"
+
+. "$HOME/.local/bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/strider/.lmstudio/bin"
+# End of LM Studio CLI section
+
+export PATH="$HOME/.npm-global/bin:$PATH"
