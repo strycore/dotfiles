@@ -233,14 +233,14 @@ export PATH="/home/strider/.mozbuild/git-cinnabar:$PATH"
 ## [/Completion]
 
 
-. "$HOME/.local/bin/env"
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/strider/.lmstudio/bin"
 # End of LM Studio CLI section
 
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
 # opencode
 export PATH=/home/strider/.opencode/bin:$PATH
@@ -264,3 +264,6 @@ fi
 # Android SDK
 export ANDROID_HOME="$HOME/development/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
+
+# FVM (Flutter Version Management) — relocated from the default ~/fvm
+export FVM_CACHE_PATH="$HOME/Software/fvm"
