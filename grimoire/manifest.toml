@@ -1,0 +1,29 @@
+spells = [
+  # Communication
+  "discord",
+  "google-chrome",
+
+  # Development
+  "docker",
+  "vim",
+  "ripgrep",
+
+  # Terminal / shell tooling
+  "tilix",
+  "btop",
+  "fastfetch",
+  "nmap",
+
+  # Security
+  "keepassxc",
+
+  # Media / creative
+  "gimp",
+  "inkscape",
+  "audacious",
+  "picard",
+
+  # Gaming
+  "lutris",
+  "steam",
+]
