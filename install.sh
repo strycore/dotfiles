@@ -149,14 +149,6 @@ function install_font() {
     fc-cache -f -v
 }
 
-fix_gnome_shell_multimonitor_windows() {
-    # Fix broken multi-monitor window positioning in Gnome Shell
-    # "When true, the new windows will always be put in the center of the active screen of the monitor."
-    if [ "$(which gsettings)" ]; then
-        gsettings set org.gnome.mutter center-new-windows true
-    fi
-}
-
 install_kde_config() {
     # Install KDE config if running KDE/Plasma
     if [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$KDE_FULL_SESSION" = "true" ]; then
@@ -203,7 +195,6 @@ install_ohmyzsh
 install_ohmyzsh_plugins
 install_fzf
 install_font
-fix_gnome_shell_multimonitor_windows
 install_kde_config
 check_inotify_watches
 switch_to_zsh
