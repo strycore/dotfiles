@@ -1,0 +1,18 @@
+# Reference snippet — KWin window rules installed by install.sh.
+# The actual install merges these keys into ~/.config/kwinrulesrc via
+# kwriteconfig6 so existing rules on the target machine are preserved.
+#
+# Rule: VS Code — disable Focus Stealing Prevention and Focus Protection.
+# With both at None, `code .` raises the existing window even if it's
+# minimized or on another virtual desktop, instead of just blinking the
+# taskbar entry.
+
+[0863600a-ba7b-48d1-b6c2-59f28b10fc13]
+Description=VS Code — no focus stealing prevention
+wmclass=^[Cc]ode$
+wmclassmatch=3
+wmclasscomplete=false
+fsplevel=0
+fsplevelrule=2
+fpplevel=0
+fpplevelrule=2

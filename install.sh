@@ -171,6 +171,50 @@ install_kde_config() {
     fi
 }
 
+install_kwin_rules() {
+    # Install KWin window rules (merged into existing kwinrulesrc).
+    if [ "$XDG_CURRENT_DESKTOP" != "KDE" ] && [ "$KDE_FULL_SESSION" != "true" ]; then
+        echo "[SKIP] KDE not detected, skipping KWin rules"
+        return
+    fi
+    if ! command -v kwriteconfig6 >/dev/null 2>&1; then
+        echo "[SKIP] kwriteconfig6 not found, skipping KWin rules"
+        return
+    fi
+    echo "[INSTALL] Installing KWin window rules"
+
+    # Rule: VS Code — disable focus stealing prevention / protection.
+    local uuid="0863600a-ba7b-48d1-b6c2-59f28b10fc13"
+    kwriteconfig6 --file kwinrulesrc --group "$uuid" --key Description "VS Code — no focus stealing prevention"
+    kwriteconfig6 --file kwinrulesrc --group "$uuid" --key wmclass '^[Cc]ode$'
+    kwriteconfig6 --file kwinrulesrc --group "$uuid" --key wmclassmatch 3
+    kwriteconfig6 --file kwinrulesrc --group "$uuid" --key wmclasscomplete false
+    kwriteconfig6 --file kwinrulesrc --group "$uuid" --key fsplevel 0
+    kwriteconfig6 --file kwinrulesrc --group "$uuid" --key fsplevelrule 2
+    kwriteconfig6 --file kwinrulesrc --group "$uuid" --key fpplevel 0
+    kwriteconfig6 --file kwinrulesrc --group "$uuid" --key fpplevelrule 2
+
+    # Add UUID to General/rules if not already present, then refresh count.
+    local current_rules
+    current_rules=$(kreadconfig6 --file kwinrulesrc --group General --key rules 2>/dev/null)
+    if ! echo "$current_rules" | tr ',' '\n' | grep -Fxq "$uuid"; then
+        if [ -z "$current_rules" ]; then
+            kwriteconfig6 --file kwinrulesrc --group General --key rules "$uuid"
+        else
+            kwriteconfig6 --file kwinrulesrc --group General --key rules "${current_rules},${uuid}"
+        fi
+    fi
+    local rule_count
+    rule_count=$(kreadconfig6 --file kwinrulesrc --group General --key rules | tr ',' '\n' | grep -c .)
+    kwriteconfig6 --file kwinrulesrc --group General --key count "$rule_count"
+
+    # Tell KWin to reload.
+    if command -v qdbus >/dev/null 2>&1; then
+        qdbus org.kde.KWin /KWin reconfigure >/dev/null 2>&1 || true
+    fi
+    echo "[ OK ] KWin rule installed: VS Code no-focus-stealing"
+}
+
 function install_fzf() {
     if [ ! -d "$HOME/.fzf" ]; then
         git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
@@ -196,5 +240,6 @@ install_ohmyzsh_plugins
 install_fzf
 install_font
 install_kde_config
+install_kwin_rules
 check_inotify_watches
 switch_to_zsh
