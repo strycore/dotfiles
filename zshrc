@@ -80,6 +80,7 @@ alias gethigh="ssh -t $SALTMASTER sudo /usr/bin/salt \"\*\" state.highstate"
 # Fixes flatpak permissions (aka I want my software to see my data)
 alias unfuck_flatpak='for i in $(flatpak list | cut -f 2); do flatpak override --user --filesystem=host $i; done'
 alias swagger-codegen=java -jar /usr/bin/swagger-codegen-cli.jar
+alias ssh-legacy='OPENSSL_CONF=~/.ssh/legacy-openssl.cnf OPENSSL_ENABLE_SHA1_SIGNATURES=1 ssh'
 
 # Some dumbass at MS removed code from $PATH
 [[ -e /usr/share/code/bin/code ]] && alias code=/usr/share/code/bin/code
