@@ -268,3 +268,6 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 # FVM (Flutter Version Management) — relocated from the default ~/fvm
 export FVM_CACHE_PATH="$HOME/Software/fvm"
+
+export SCCACHE_DIR="$HOME/.cache/sccache"
+export SCCACHE_CACHE_SIZE="50G"
