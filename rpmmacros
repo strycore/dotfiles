@@ -1,0 +1,4 @@
+%_enable_debug_packages 0
+%debug_package %{nil}
+%dist %{nil}
+%_topdir    %(echo $HOME)/Projects/rpmbuild
