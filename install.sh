@@ -236,6 +236,7 @@ link_file mancolor
 link_file xbindkeysrc
 link_file shell_functions.sh
 link_file rpmmacros
+link_file robots.sh
 install_ohmyzsh
 install_ohmyzsh_plugins
 install_fzf

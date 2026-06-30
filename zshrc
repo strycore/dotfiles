@@ -5,6 +5,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+export MOI_HOME="~/Nextcloud"
 export EDITOR='vim'
 export BROWSER='firefox'
 export PYTHONIOENCODING=UTF-8
@@ -271,3 +272,6 @@ export FVM_CACHE_PATH="$HOME/Software/fvm"
 
 export SCCACHE_DIR="$HOME/.cache/sccache"
 export SCCACHE_CACHE_SIZE="50G"
+
+# moi robots
+source ~/.robots.sh
