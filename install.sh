@@ -224,6 +224,8 @@ function install_fzf() {
 
 link_file vim
 link_file vimrc
+mkdir -p "$HOME/.config"
+link_file nvim "$HOME/.config"
 link_file bashrc
 link_file zshrc
 link_file screenrc
