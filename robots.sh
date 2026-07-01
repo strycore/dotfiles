@@ -5,7 +5,7 @@ export MOI_HOME
 
 # Each robot loads its persona via --append-system-prompt and gets read/write
 # access to the moi tree via --add-dir. Run from any directory.
-robot() { claude --dangerously-skip-permissions --append-system-prompt "$(cat "$MOI_HOME/Robots/$1/CLAUDE.md")" --add-dir "$MOI_HOME"; }
+robot() { local name="$1"; shift; claude --dangerously-skip-permissions --append-system-prompt "$(cat "$MOI_HOME/Robots/$name/CLAUDE.md")" --add-dir "$MOI_HOME" "$@"; }
 
 alias zeni='robot zeni'      # finance
 alias lumen='robot lumen'    # photographer
