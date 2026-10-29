@@ -14,12 +14,14 @@ export DEBFULLNAME="Mathieu Comandon"
 export LANG="en_US.UTF-8"
 [[ -z "$KITTY_WINDOW_ID" ]] && export TERM="xterm-256color"
 
-ZSH=$HOME/.oh-my-zsh
+ZSH=${ZSH:-$HOME/.oh-my-zsh}
+# A read-only oh-my-zsh (e.g. from Nix) can't hold custom plugins/themes
+[[ -w $ZSH ]] || ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_UPDATE_PROMPT=true
 
 
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 plugins=(git command-not-found zsh-syntax-highlighting poetry)
 source $ZSH/oh-my-zsh.sh
 

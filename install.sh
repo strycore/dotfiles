@@ -15,7 +15,10 @@ function switch_to_zsh {
 }
 
 function install_ohmyzsh {
-    if [ ! -d "$HOME/.oh-my-zsh" ]
+    # oh-my-zsh may be provided elsewhere (e.g. by Nix), which exports $ZSH
+    if [ -n "$ZSH" ] && [ -f "$ZSH/oh-my-zsh.sh" ]; then
+        echo "[SKIP] oh-my-zsh is already provided at $ZSH"
+    elif [ ! -d "$HOME/.oh-my-zsh" ]
     then
         echo "[INSTALL] Installing oh-my-zsh"
         if [ "$(which curl)" ]; then
@@ -33,33 +36,40 @@ function install_ohmyzsh {
 }
 
 function install_ohmyzsh_plugins {
-    if [ -d $HOME/.oh-my-zsh/custom ]; then
-        if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/grunt" ]; then
-            echo "[INSTALL] zsh Grunt plugin"
-            mkdir -p ~/.oh-my-zsh/custom/plugins
-            git clone https://github.com/yonchu/grunt-zsh-completion.git ~/.oh-my-zsh/custom/plugins/grunt
-        fi
+    local omz="${ZSH:-$HOME/.oh-my-zsh}"
+    if [ ! -f "$omz/oh-my-zsh.sh" ]; then
+        echo "[SKIP] oh-my-zsh not found, skipping plugins"
+        return
+    fi
+    # Must match the ZSH_CUSTOM logic in zshrc
+    local custom="$omz/custom"
+    if [ ! -w "$omz" ]; then
+        custom="$HOME/.oh-my-zsh-custom"
+    fi
+    mkdir -p "$custom/plugins" "$custom/themes"
 
-        if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
-            echo "[INSTALL] zsh syntax highlighting"
-            mkdir -p ~/.oh-my-zsh/custom/plugins
-            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
-        fi
+    if [ ! -d "$custom/plugins/grunt" ]; then
+        echo "[INSTALL] zsh Grunt plugin"
+        git clone https://github.com/yonchu/grunt-zsh-completion.git "$custom/plugins/grunt"
+    fi
 
-        if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/git-flow-completion" ]; then
-            echo "[INSTALL] zsh git flow completion"
-            git clone https://github.com/bobthecow/git-flow-completion ~/.oh-my-zsh/custom/plugins/git-flow-completion
-        fi
+    if [ ! -d "$custom/plugins/zsh-syntax-highlighting" ]; then
+        echo "[INSTALL] zsh syntax highlighting"
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$custom/plugins/zsh-syntax-highlighting"
+    fi
 
-        if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel9k" ]; then
-            echo "[INSTALL] powerlevel9k theme"
-            mkdir -p ~/.oh-my-zsh/custom/themes/
-            git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-        fi
-        if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
-            echo "[INSTALL] powerlevel10k theme"
-            git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-        fi
+    if [ ! -d "$custom/plugins/git-flow-completion" ]; then
+        echo "[INSTALL] zsh git flow completion"
+        git clone https://github.com/bobthecow/git-flow-completion "$custom/plugins/git-flow-completion"
+    fi
+
+    if [ ! -d "$custom/themes/powerlevel9k" ]; then
+        echo "[INSTALL] powerlevel9k theme"
+        git clone https://github.com/bhilburn/powerlevel9k.git "$custom/themes/powerlevel9k"
+    fi
+    if [ ! -d "$custom/themes/powerlevel10k" ]; then
+        echo "[INSTALL] powerlevel10k theme"
+        git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git "$custom/themes/powerlevel10k"
     fi
 }
 
@@ -136,8 +146,12 @@ function install_awesome_fonts {
 }
 
 function install_nerd_fonts {
-    cd $FONTS_DIR
-    wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Mononoki/Regular/MononokiNerdFontMono-Regular.ttf"
+    local font="MononokiNerdFontMono-Regular.ttf"
+    if [ -f "$FONTS_DIR/$font" ]; then
+        echo "[SKIP] $font is already installed"
+        return
+    fi
+    wget -P "$FONTS_DIR" "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Mononoki/$font"
 }
 
 function install_font() {
